@@ -1,0 +1,42 @@
+@startuml
+class Main{
++ static UI ui
++ static String path
++ static void main(String[] args)
+}
+
+
+class Bank{
+ - String name
+ - ArrayList<Customer> customers
+ - ArrayList<String> listOfActions
+ - Customer currentCustomer
+ + Bank(String name)
+ + void runDialog()
+ - void createCustomer(String name, int balance)
+ + void displayCustomers()
+}
+
+class Customer{
+- String name
+- int balance
++ Customer(String name)
++ void deposit(int amount)
++ int getBalance()
++ String toString()
++ String getName()
+}
+
+class TextUI{
+- Scanner scanner
++ void displayMsg(String s)
++ int promptNumeric(String msg)
++ String promptText(String msg)
++ int promptChoice(String msg, ArrayList<String> list)
+}
+
+Main *-- TextUI
+Main *-- Bank
+Bank *-- Customer
+
+@enduml

@@ -1,0 +1,28 @@
+********
+FIELDDATA
+********
+
+ID: et tal mellem 1 og 40
+
+FieldType: kan være “Plot”, “Brewery", “ShippingLine", “Chance”, “Prison”, “Visit”, “Parking", “Start” eller “Tax”
+
+Label: navnet på feltet som spilleren ser det
+fx. “Rådhuspladsen”
+
+Cost: det beløb der skal betales når man lander på et felt forbundet med en omkostning.
+Fx prisen på køb af en property.
+Felter som ikke kan købes og ikke er forbundet med en omkostning har 0 som værdi.
+
+Income: det beløb der inkasseres når nogen lander på en property.
+Ved start feltet noteres passér start beløbet.
+
+Series ID: et tal der grupperer grunde, redderier eller bryghuse.
+Serierne nummereres fortløbende.
+Hvidovrevej og Rødovrevej har begge serieID 1,
+Redderierne har serieID 2,
+Rådhuspladsen har serieID10.
+
+
+******
+Card data
+******

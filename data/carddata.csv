@@ -1,0 +1,17 @@
+Message, Income, Cost, Event
+De har kørt frem for "fuldt stop" betal 1.000 kr. i bøde, 0, -1000, payment
+Ryk frem til start, 0, 0, 1
+Gå i fængsel. Ryk direkte til fængslet. Selv om de passerer "START" indkasserer De ikke kr. 4000, 0, 0, 11
+De har kørt frem for "fuldt stop" betal 1.000 kr. i bøde, 0, -1000, payment
+De har modtaget Deres tandlægeregning. Betal kr. 2.000, 0, -2000, payment
+Værdien af egen avl fra nyttehaven udgør kr. 200. som De modtager af banken, 200, 0, receive
+De har været en tur i udlandet og haft for mange cigaretter med hjem. Betal told 200 kr, 0, -200, payment
+Det er Deres fødselsdag. Modtag af hver medspiller kr. 200, 200, 0, receive (penge fra andre spiller)
+De har vundet i Klasselotteriet. Modtag 500 kr, 500, 0, receive
+Tag ind på Rådhuspladsen, 0, 0, 40
+De har vundet i Klasselotteriet. Modtag kr. 500, 500, 0, receive
+De modtager Deres aktieudbytte. Modtag kr. 1000 af banken, 1000, 0, receive
+De har købt 4 nye dæk til Deres vogn. Betal kr. 1000, 0, -1000, payment
+I anledning af kongens fødselsdag benådes De herved for fængsel. Dette kort kan opbevares indstil De får brug for det eller De kan sælge det, 0, 0, Out of jail
+De har fået en parkeringsbøde. Betal kr. 200 i bøde, 0, -200, payment
+Betal kr. 3000 for reparation af Deres vogn, 0, -3000, payment

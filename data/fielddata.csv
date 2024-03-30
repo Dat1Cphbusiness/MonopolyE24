@@ -1,0 +1,41 @@
+ID, FieldType, Label, Cost, Income, SeriesID.
+1, Start, Start, 0, 4000, N/A
+2, Plot, Rødovrevej, 1200, 50, 1
+3, Chance, Chance, 0, 0, N/A
+4, plot, Hvidovrevej, 1200, 50, 1
+5, Tax, Tax, 4000, 0, N/A
+6, ShippingLine, Helsingør-Helsingborg, 4000, 500,2
+7, Plot, Roskildevej, 1200, 100, 3
+8, Chance, Chance, 0, 0, N/A
+9, Plot, ValbyLanggade, 2000, 100, 3
+10, plot, Allégade, 2400, 150, 3
+11, Chance, Chance, 0, 0, N/A
+12, plot, Frederiksberg Allé, 2800, 200, 4
+13, Brewery, TuborgSquash, 3000, 0,5
+14, plot, Bülowsvej, 2800, 200, 4
+15, Plot, GL.Kongevej, 3200, 250, 4
+16, ShippingLine, Mols-Linien, 4000, 500, 2
+17, Plot, Bernstorffsvej, 3600, 300, 6
+18, Chance, Chance, 0, 0, N/A
+19, Plot, Hellerupvej, 3600, 300, 6
+20, Plot, Strandvejen, 4000, 350, 6
+21, Parkering, Parkering, 0, 0, N/A
+22, Plot, Trianglen, 4400, 350, 7
+23, Chance, Chance, 0, 0, N/A
+24, Plot, Osterbrogade, 4400, 350, 7
+25, Plot, Gronningen, 4800, 400, 7
+26, ShippingLine, Scandlines Gedser - Rostock, 4000, 500, 2
+27, Plot, Bredgade, 5200, 450, 8
+28, Plot, Kgs. Nytorv, 5200 , 450, 8
+29, Brewery, Coca-Cola, 3000, 0, 5
+30, Plot, Ostergade, 5600, 500, 7
+31, Prison, Prison, 0, 0, N/a
+32, Plot, Amagertorv, 6000, 550, 9
+33, Plot, Vimmelskaftet, 6000, 550, 9
+34, Chance, Chance, 0, 0, N/A
+35, Plot, Nygade, 6400, 600, 9
+36, ShippingLine, Scandlines Rødby - Puttgarden, 4000, 500, 2
+37, Chance, Chance, 0, 0, N/A
+38, Plot, Frederiksverggade, 7000, 700, 10
+39, Tax, Tax, 0,2000, N/A
+40, Plot, Rådhuspladsen, 8000, 1000, 10

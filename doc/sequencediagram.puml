@@ -1,0 +1,58 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+Main -> UI: new()
+UI --> Main: ui
+Main -> Bank: bank = new("Lollandsbanken")
+Bank --> Main: bank
+loop
+Main -> Bank: createCustomer(name, balance)
+Bank -> Customer: new()
+end
+Main -> Bank: userDialog()
+
+Bank -> UI:Main.ui.displayMsg()
+loop (action != 7)
+ Bank --> UI:action = Main.ui.promptChoice()
+  'switch-case on action
+ alt (case 1)
+ 'create new customer
+   Bank -> UI: customername = promptText()
+   Bank -> Bank: createCustomer(customername,0)
+   Bank -> Customer: new(customername
+   Customer --> Customer: createAccount(accountname)
+   Customer --> Account: new()
+ end
+ 'Show all accounts
+ alt (case 2)
+   Bank -> Customer:accountsOverview = toString()
+   Bank -> UI: displayMsg(accountsOverview);
+ end
+ 'Show account details
+  alt (case 3)
+    Bank -> UI: accountChoice = promptChoice(cust.accounts)
+    Bank -> Customer: getAccountDetails(accountChoice)
+  end
+  'Deposit money
+   alt (case 4)
+      Bank -> UI: amount = promptNumeric()
+      UI --> Bank: 2000
+      Bank -> Customer: deposit(2000)
+    end
+    'Create new account
+   alt (case 5)
+       Bank -> UI: accountName = promptText()
+       Bank -> Customer: createAccount(accountname)
+       Customer -> Account: new()
+   end
+   'Choose existing Customer
+   alt (case 5)
+        Bank -> UI: custID = promptNumeric()
+        Bank -> Bank: currentCustomer = customers.get(custID)
+
+   end
+
+
+end
+
+@enduml
