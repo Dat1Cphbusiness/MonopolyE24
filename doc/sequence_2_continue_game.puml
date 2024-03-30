@@ -1,0 +1,25 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+
+alt Continue game
+
+Game -> Game: loadPlayerData()
+Game -> IO: data[]=readPlayerData()
+alt data[] not empty
+loop
+Game -> Game: createPlayer(name, balance);
+Game -> Player: new(name, balance)
+end
+
+else
+
+Game -> Game: registerPlayers()
+end
+Game -> Game: displayPlayers()
+Game -> Game: runGameLoop();
+end
+
+
+@enduml
+
