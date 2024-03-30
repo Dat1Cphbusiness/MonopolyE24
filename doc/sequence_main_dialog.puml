@@ -1,0 +1,18 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+Main -> Game: new()
+Main -> Game: runDialog()
+Game -> UI: displayMsg()
+loop
+Game -> UI: promptText("Choose action")
+alt 1. Start new game
+
+end
+alt 2. Continue game
+
+end
+Game -> IO:saveGame()
+end
+
+@enduml

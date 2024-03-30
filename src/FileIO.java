@@ -35,7 +35,7 @@ public class FileIO {
     }
 
 
-    public static void savePlayerData(ArrayList<Player> players, String path) {
+    public static void saveData(ArrayList<Player> players, String path) {
 
 
         try {

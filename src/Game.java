@@ -4,7 +4,7 @@ public class Game {
  private String name;
  private ArrayList<Player> players;
  private ArrayList<String> listOfActions;
- private TextUI ui = new TextUI();;
+ private TextUI ui = new TextUI();
  private FileIO io = new FileIO();
  private String playerDataPath = "data/playerData.csv";
 
@@ -24,34 +24,36 @@ public class Game {
     }
     public void createPlayer(String name, int balance){
         if(name == null) {
-            name = ui.promptText("Spillerens navn: ");
+            name = ui.promptText("Type player name: ");
         }
         currentPlayer =  new Player(name, balance);
         this.players.add(currentPlayer);
     }
     public void runDialog(){
-        ui.displayMsg("Velkommen til "+this.name);
+        ui.displayMsg("welcome to "+this.name);
         int action = 0;
 
         while(action != listOfActions.size()){// the quit action is the last action
-         action = ui.promptChoice(listOfActions, "Vælg en af følgende:");
+         action = ui.promptChoice(listOfActions, "Choose action:");
 
          switch(action){
              case 1:
                  //start new game
 
-                    this.registerPlayers();
-                    this.runGameLoop();
+                  this.registerPlayers();
+                  this.runGameLoop();
                   break;
               case 2:
                   // Continue game
-                  displayPlayers();
+
                   this.loadPlayerData();
+                  this.displayPlayers();
                   this.runGameLoop();
                   break;
 
          }
-        // Main.saveData(this.players);
+
+        io.saveData(this.players, playerDataPath);
         }
 
 
@@ -76,7 +78,7 @@ public class Game {
     }
 
     private void registerPlayers() {
-        players = new ArrayList<>();//reset players array
+        players = new ArrayList<>();//reset players array, so that a new game may be created mid session
         while(this.players.size()<6){
             createPlayer(null,0);
         }

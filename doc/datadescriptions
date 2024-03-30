@@ -26,3 +26,8 @@ Rådhuspladsen har serieID10.
 ******
 Card data
 ******
+
+message : besked der beskriver en hændelse
+income : det beløb man skal modtage
+cost: det beløb der skal betales
+event: en hændelse skal kategorieseres som en af følgende typer: reward, rewardFromPlayers, payment, joker

@@ -1,0 +1,20 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+
+alt Start game
+
+Game -> Game: registerPlayers()
+loop
+Game -> Game: createPlayer(null, 0)
+alt name == null
+Game -> UI:name = promptText("Type player name: ")
+else
+Game -> Player: new(name, balance)
+end
+end
+end
+
+
+@enduml
+
