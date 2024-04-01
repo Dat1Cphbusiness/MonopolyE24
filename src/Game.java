@@ -43,27 +43,33 @@ public class Game {
 
          switch(action){
              case 1:
-                 //start new game
-
+                  //start new game
                   this.registerPlayers();
                   this.runGameLoop();
                   break;
               case 2:
-                  // Continue game
-
+                  //Continue (last saved) game
                   this.loadPlayerData();
                   this.displayPlayers();
                   this.runGameLoop();
                   break;
+             case 3:
+                 //quit game
+                 this.endGame();
+                 break;
 
          }
 
-        io.saveData(this.players, playerDataPath);
+
         }
 
 
 
 
+    }
+
+    private void endGame() {
+        io.saveData(this.players, playerDataPath);
     }
 
     private void loadPlayerData() {
@@ -90,7 +96,7 @@ public class Game {
     }
 
     public void displayPlayers(){
- for(Player c: players){
+    for(Player c: players){
         System.out.println(c);
     }
 }
