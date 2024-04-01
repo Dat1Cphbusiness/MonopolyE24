@@ -1,30 +1,43 @@
 @startuml
 class Main{
-+ static UI ui
-+ static String path
 + static void main(String[] args)
 }
 
 
-class Bank{
+class Game{
  - String name
- - ArrayList<Customer> customers
+ - ArrayList<Player> players
  - ArrayList<String> listOfActions
- - Customer currentCustomer
- + Bank(String name)
+ - Player currentPlayer
+ - TextUI ui
+ - FileIO io
+ - String playerDataPath
+ + Game(String name)
  + void runDialog()
- - void createCustomer(String name, int balance)
- + void displayCustomers()
+ - void createPlayer(String name, int balance)
+  - void displayPlayers()
+  ' new: we will load the data as strings and create player objects from the data in each element
+  - loadPlayerData()
+ ' new: in a turnbased game we would want to create as many players as the game allows
+ - void registerPlayers()
+ 'new: we need a loop to manage each players' turn during the life cycle of the game
+ - void runGameLoop();
+
 }
 
-class Customer{
+class Player{
 - String name
 - int balance
-+ Customer(String name)
++ Player(String name, int startAmount)
 + void deposit(int amount)
 + int getBalance()
 + String toString()
 + String getName()
+
+}
+class FileIO{
++ ArrayList<String> readPlayerData(String path)
++ void saveData(ArrayList<Player> players, String path)
 }
 
 class TextUI{
@@ -33,10 +46,12 @@ class TextUI{
 + int promptNumeric(String msg)
 + String promptText(String msg)
 + int promptChoice(String msg, ArrayList<String> list)
+
 }
 
-Main *-- TextUI
-Main *-- Bank
-Bank *-- Customer
+Game *-- TextUI
+Main *-- Game
+Game *-- Player
+Game *-- FileIO
 
 @enduml

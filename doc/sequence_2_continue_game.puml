@@ -1,8 +1,7 @@
 @startuml
 'https://plantuml.com/sequence-diagram
+title use-case 2: Continue Game
 
-
-alt Continue game
 
 Game -> Game: loadPlayerData()
 Game -> IO: data[]=readPlayerData()
@@ -13,12 +12,14 @@ Game -> Player: new(name, balance)
 end
 
 else
-
 Game -> Game: registerPlayers()
+note left
+see use-case startNewGame
+end note
 end
 Game -> Game: displayPlayers()
 Game -> Game: runGameLoop();
-end
+
 
 
 @enduml

@@ -2,14 +2,16 @@
 'https://plantuml.com/sequence-diagram
 
 Main -> Game: new()
+Game -> UI: new()
+Game -> IO: new()
 Main -> Game: runDialog()
-Game -> UI: displayMsg()
+Game -> UI: displayMsg("Welcome")
 loop
-Game -> UI: promptText("Choose action")
-alt 1. Start new game
+Game -> UI: action= promptChoice("Choose action", listOfActions)
+alt action 1: Start new game
 
 end
-alt 2. Continue game
+alt action 2: Continue game
 
 end
 Game -> IO:saveGame()
