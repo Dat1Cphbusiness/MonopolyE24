@@ -1,0 +1,40 @@
+@startuml
+
+object Main
+object gamePlay
+object player
+object dice
+object board
+object field
+object chanceCard
+object bank
+object chance
+object busniess
+object plot
+object tax
+object prison
+object visit
+object Deck
+object parking
+object proptertyField
+object Deed
+
+Main *-- gamePlay
+gamePlay o-- "2..6" player: has
+proptertyField <|-- field
+prison *-- "1" visit
+gamePlay *-- "2" dice: has
+proptertyField o--"6" busniess: has
+field <|-- "1" prison: has
+field <|-- "2" tax: has
+field <|-- "1" parking: has
+field <|-- "28" plot: has
+gamePlay o-- "1" bank: has
+gamePlay *-- "1" board: has
+gamePlay *-- "1" Deck: has
+Deck *-- "46" chanceCard: has
+chanceCard *-- chance
+board <|-- proptertyField
+player *-- Deed
+
+@enduml
