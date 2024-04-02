@@ -74,7 +74,9 @@ public class Game {
 
     private void loadPlayerData() {
         ArrayList<String> data = io.readPlayerData(playerDataPath);  //"Tess, 2000"
-
+        // obs: hvis der allerede er startet et nyt spil , og vi så loader flere spillere,
+        // vil vi både få spillere fra det nystartede spil og fra det gemte spil i player listen
+        players = new ArrayList<>();//clear playerlisten.
         if(data.size()>0){
             for (String s:data) {
                 String[] values = s.split(",");//"Tess, 2000" == ["Tess", " 2000"]
