@@ -6,7 +6,7 @@ public class Game {
     private ArrayList<String> listOfActions;
     private TextUI ui;
     private FileIO io;
-    private String playerDataPath = "data/playerData_.csv";
+    private String playerDataPath = "data/playerData.csv";
 
 
     private int maxPlayers = 6;
@@ -28,7 +28,11 @@ public class Game {
         listOfActions.add("1) start new game");
         listOfActions.add("2) continue game");
         listOfActions.add("3) quit game");
+        this.setup();
+    }
 
+    private void setup() {
+        io.readBoardData();
     }
 
     public void createPlayer(String name, int balance) {

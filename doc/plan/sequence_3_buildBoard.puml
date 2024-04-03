@@ -1,19 +1,19 @@
 @startuml
 'https://plantuml.com/sequence-diagram
 
-autonumber
-Main -> Game: setup
-Game -> FileIO: String[] data = readBoardData("fields.csv")
 
-Game -> Board : new(data)
+Game -> Game: setup
+Game -> FileIO: String[] fielddata = readBoardData("fields.csv")
+
+Game -> Board : new(fielddata)
 Board -> Board : createFields(data)
 
 loop data.length
 Board -> Field : new (id, label, cost, income)
 end
-Game -> FileIO: String[] data = readBoardData("cards.csv")
+Game -> FileIO: String[] carddata = readBoardData("cards.csv")
 
-Game -> CardDeck : new(data)
+Game -> CardDeck : new(carddata)
 CardDeck -> CardDeck : createCards(data)
 
 loop data.length
