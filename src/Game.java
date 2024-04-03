@@ -15,6 +15,8 @@ public class Game {
     private Player currentPlayer;
 
     boolean morePlayers = true;
+    private Board board;
+    private CardDeck cardDeck;
 
     public Game(String name) {
         this.name = name;
@@ -33,7 +35,11 @@ public class Game {
 
     private void setup() {
 
-        io.readBoardData();
+        String [] fielddata = io.readBoardData("fielddata.csv",40);
+        this.board = new Board(fielddata);
+        String [] carddata = io.readBoardData("carddata.csv",100);
+        this.cardDeck = new CardDeck(carddata);
+
     }
 
     public void createPlayer(String name, int balance) {
