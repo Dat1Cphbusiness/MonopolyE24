@@ -10,5 +10,10 @@
 
 
 user --> UC1
-
+UC1 --> UC2
+UC1 --> UC3
+UC3 --> UC4
+UC4 --> UC3
+UC3 --> UC5
+UC1 --> UC5
 @enduml
