@@ -3,10 +3,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Board {
-    private Field[] fields;
+  //  private Field[] fields;
 
     public Board(String[] data) {
-        fields = new Field[40];
+   //     fields = new Field[40];
         createFields(data);
     }
 
@@ -19,10 +19,10 @@ public class Board {
             int cost = Integer.parseInt(values[3].trim());
             int income = Integer.parseInt(values[4].trim());
             int seriesID = Integer.parseInt(values[5].trim());
-            this.fields[i] = new Field(id, fieldType, label, cost, income, seriesID);
+       //     this.fields[i] = new Field(id, fieldType, label, cost, income, seriesID);
         }
     }
-    public Field getFields(int i) {
-        return fields[i-1];
-    }
+  //  public Field getFields(int i) {
+   //     return fields[i-1];
+    //}
 }
