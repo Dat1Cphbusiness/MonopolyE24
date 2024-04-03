@@ -117,29 +117,31 @@ public class Game {
         */
 
 
-      /*
-        Bud2: André
 
-        createPlayer(null, 0);
-        createPlayer(null,0);
+      //  Bud2: André
+
+
         boolean morePlayers = true;
         while(morePlayers && players.size()<6){
-            String choice = ui.promptText("Tilføj flere spillere? Y/N:");
-            if(choice.equalsIgnoreCase("Y")){
-                createPlayer(null,0);
+            String name = ui.promptText("Tast spiller navn eller tast Q");
+            if(!name.equalsIgnoreCase("Q")){
+                createPlayer(name,0);
             }else{
-            morePlayers=false;
+                if(players.size() >1) {
+                    morePlayers = false;
+                }
+                ui.displayMsg("Minimum 2 spillere");
             }
 
         }
-        problem: UX, man skal hele tiden svare på om der skal flere spillere
-      */
+    //    problem: UX, man skal hele tiden svare på om der skal flere spillere
 
-        while(this.players.size() < maxPlayers && morePlayers == true){
+/*
+        while(this.players.size() < 6){
             createPlayer(null,0);
         }
 
-
+*/
 
     }
 
