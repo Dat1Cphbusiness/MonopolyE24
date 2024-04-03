@@ -32,6 +32,7 @@ public class Game {
     }
 
     private void setup() {
+
         io.readBoardData();
     }
 
