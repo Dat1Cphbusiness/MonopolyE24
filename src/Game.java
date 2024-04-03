@@ -24,10 +24,14 @@ public class Game {
 
         players = new ArrayList<>();
 
+        setUp("data/carddata.cvs","data/boarddata.cvs");
+
         listOfActions = new ArrayList<>();
         listOfActions.add("1) start new game");
         listOfActions.add("2) continue game");
         listOfActions.add("3) quit game");
+
+
 
     }
 
@@ -88,7 +92,7 @@ public class Game {
         io.saveData(this.players, playerDataPath);
     }
     private void loadPlayerData() {
-        ArrayList<String> data = io.readPlayerData(playerDataPath);  //"Tess, 2000"
+        ArrayList<String> data = io.readBoardData(playerDataPath, 40);  //"Tess, 2000"
         // obs: hvis der allerede er startet et nyt spil , og vi så loader flere spillere,
         // vil vi både få spillere fra det nystartede spil og fra det gemte spil i player listen
         players = new ArrayList<>();//clear playerlisten.
@@ -163,5 +167,13 @@ public class Game {
                 count = 0;
             }
         }
+    }
+
+    public void setUp(String cardPath, String boardPath){
+        String[] cardData = io.readBoardData(cardPath, 100);
+        //CardDeck cardDeck = new CardDeck(cardData);
+        String[] boarddata = io.readBoardData(boardPath,40);
+        // Board board = new Board(boarddata);
+
     }
 }

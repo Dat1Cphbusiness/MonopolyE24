@@ -2,30 +2,32 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class FileIO {
 
-    public ArrayList<String> readPlayerData(String path){
+    public String[] readBoardData(String path, int length){
 
-        ArrayList<String> data = new ArrayList<>();
+        String [] data = new String[length];
 
         File file = new File(path);
+
         try {
             Scanner scan = new Scanner(file);
             scan.nextLine();//skip header
 
-        while(scan.hasNextLine()){
-            String line = scan.nextLine();//"Tess, 2000"
-            data.add(line);//
+
+            for(int i = 0; i < length; i++){
+                String line = scan.nextLine();//"Tess, 2000"
+                data[i] = line;
+            }
 
           /*  String[] values= line.split(",");
             String name = values[0];
             int balance = Integer.parseInt(values[1].trim());
             game.createPlayer(name,balance);*/
-
-        }
 
     }catch(FileNotFoundException e){
         System.out.println("File was not found");
