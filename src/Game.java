@@ -14,7 +14,7 @@ public class Game {
 
     private Player currentPlayer;
 
-    boolean morePlayers = true;
+
     private Board board;
     private CardDeck cardDeck;
 
@@ -35,30 +35,16 @@ public class Game {
 
     private void setup() {
 
-        String [] fielddata = io.readBoardData("fielddata.csv",40);
+         String [] fielddata = io.readBoardData("fielddata.csv",40);
         this.board = new Board(fielddata);
-        String [] carddata = io.readBoardData("carddata.csv",100);
-        this.cardDeck = new CardDeck(carddata);
+       String [] carddata = io.readBoardData("carddata.csv",100);
+      this.cardDeck = new CardDeck(carddata);
 
     }
 
     public void createPlayer(String name, int balance) {
-
-        if (name == null) {
-            name = ui.promptText("Type player name: ");//eller 'q' for at afslutte
-        }
-      //  if (!name.equalsIgnoreCase("q")) {
             currentPlayer = new Player(name, balance);
             this.players.add(currentPlayer);
-       /* }else if(this.players.size()>1){
-            morePlayers = false;
-        }else{
-             ui.displayMsg("Der skal være mindst 2 spillere");
-             createPlayer(null, 0);
-     }*/
-
-
-
     }
 
     public void runDialog(){
@@ -105,7 +91,7 @@ public class Game {
         players = new ArrayList<>();//clear playerlisten.
         if(data.size()>0){
             for (String s:data) {
-                String[] values = s.split(",");//"Tess, 2000" == ["Tess", " 2000"]
+                String[] values = s.split(",");//"Tess, 2000" >> ["Tess", " 2000"]
                 int balance = Integer.parseInt(values[1].trim());
                  String name = values[0];
                  createPlayer(name, balance);
@@ -118,41 +104,22 @@ public class Game {
     private void registerPlayers() {
         players = new ArrayList<>();//reset players array, so that a new game may be created mid session
 
-        /*
-        Bud1: Johan og Lasse
-        int numberOfPlayers = ui.promptNumeric("Tast antal spillere:");
-         while(this.players.size() < numberOfPlayers ){
-            createPlayer(null,0);
-        }
-        Problem: ingen test af om numberOfPlayers er mellem 2 og 6
-        */
-
-
-
-      //  Bud2: André
-
 
         boolean morePlayers = true;
-        while(morePlayers && players.size()<6){
-            String name = ui.promptText("Tast spiller navn eller tast Q");
+        while(morePlayers && players.size() < maxPlayers){
+            String name = ui.promptText("Tast spiller navn. 'Q' for at quitte");
             if(!name.equalsIgnoreCase("Q")){
                 createPlayer(name,0);
+
             }else{
-                if(players.size() >1) {
+                if(players.size() > 1) {
                     morePlayers = false;
                 }
                 ui.displayMsg("Minimum 2 spillere");
             }
 
         }
-    //    problem: UX, man skal hele tiden svare på om der skal flere spillere
 
-/*
-        while(this.players.size() < 6){
-            createPlayer(null,0);
-        }
-
-*/
 
     }
 
