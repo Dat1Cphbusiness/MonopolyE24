@@ -1,19 +1,22 @@
 import java.util.ArrayList;
 
 public class Game {
- private String name;
- private ArrayList<Player> players;
- private ArrayList<String> listOfActions;
+    private String name;
+    private ArrayList<Player> players;
+    private ArrayList<String> listOfActions;
     private TextUI ui;
     private FileIO io;
- private String playerDataPath = "data/playerData.csv";
+    private String playerDataPath = "data/playerData_.csv";
 
 
+    private int maxPlayers = 6;
 
 
     private Player currentPlayer;
 
-    public Game(String name){
+    boolean morePlayers = true;
+
+    public Game(String name) {
         this.name = name;
 
         this.ui = new TextUI();
@@ -27,13 +30,26 @@ public class Game {
         listOfActions.add("3) quit game");
 
     }
-    public void createPlayer(String name, int balance){
-        if(name == null) {
-            name = ui.promptText("Type player name: ");
+
+    public void createPlayer(String name, int balance) {
+
+        if (name == null) {
+            name = ui.promptText("Type player name: ");//eller 'q' for at afslutte
         }
-        currentPlayer =  new Player(name, balance);
-        this.players.add(currentPlayer);
+      //  if (!name.equalsIgnoreCase("q")) {
+            currentPlayer = new Player(name, balance);
+            this.players.add(currentPlayer);
+       /* }else if(this.players.size()>1){
+            morePlayers = false;
+        }else{
+             ui.displayMsg("Der skal være mindst 2 spillere");
+             createPlayer(null, 0);
+     }*/
+
+
+
     }
+
     public void runDialog(){
         ui.displayMsg("welcome to "+this.name);
         int action = 0;
@@ -71,7 +87,6 @@ public class Game {
     private void endGame() {
         io.saveData(this.players, playerDataPath);
     }
-
     private void loadPlayerData() {
         ArrayList<String> data = io.readPlayerData(playerDataPath);  //"Tess, 2000"
         // obs: hvis der allerede er startet et nyt spil , og vi så loader flere spillere,
@@ -89,12 +104,45 @@ public class Game {
             registerPlayers();
         }
     }
-
     private void registerPlayers() {
         players = new ArrayList<>();//reset players array, so that a new game may be created mid session
-        while(this.players.size()<6){
+
+        /*
+        Bud1: Johan og Lasse
+        int numberOfPlayers = ui.promptNumeric("Tast antal spillere:");
+         while(this.players.size() < numberOfPlayers ){
             createPlayer(null,0);
         }
+        Problem: ingen test af om numberOfPlayers er mellem 2 og 6
+        */
+
+
+
+      //  Bud2: André
+
+
+        boolean morePlayers = true;
+        while(morePlayers && players.size()<6){
+            String name = ui.promptText("Tast spiller navn eller tast Q");
+            if(!name.equalsIgnoreCase("Q")){
+                createPlayer(name,0);
+            }else{
+                if(players.size() >1) {
+                    morePlayers = false;
+                }
+                ui.displayMsg("Minimum 2 spillere");
+            }
+
+        }
+    //    problem: UX, man skal hele tiden svare på om der skal flere spillere
+
+/*
+        while(this.players.size() < 6){
+            createPlayer(null,0);
+        }
+
+*/
+
     }
 
     public void displayPlayers(){
@@ -115,7 +163,5 @@ public class Game {
                 count = 0;
             }
         }
-
- }
-
+    }
 }
