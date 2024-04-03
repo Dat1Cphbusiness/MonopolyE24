@@ -92,7 +92,6 @@ class Board{
 class CardDeck {
 - String[] carddata
 - ArrayList<Card> cards
-+ CardDeck
 + CardDeck(String[] carddata)
 + Card getNext()
 }

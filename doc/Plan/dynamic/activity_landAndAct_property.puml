@@ -1,0 +1,21 @@
+@startuml
+
+(*)  --> "Land on Property"
+If "Someone owns the property?" then
+--> [No] "OPTION: Do you want to buy?"
+
+
+    If "Accept?" then
+    --> [yes] "Buy"
+    else
+    --> [No] "Auction"
+    Endif
+    else
+--> [Yes] " OPTION: Pay rent ? "
+    If "Accept?" then
+    --> [yes] "Pay"
+    else
+        --> [No] "You have been removed from this game"
+Endif
+
+@enduml
