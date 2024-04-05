@@ -1,7 +1,9 @@
 public class  Player {
     private String name;
-    private int balance;
 
+    //fjernet Balance
+    private Account account; //Developer B (Account intialiseret)
+    private int position;
 
     public Player(String name, int startAmount){
         this.name = name;
@@ -12,13 +14,8 @@ public class  Player {
     }
 
 
-    public void deposit(int amount){
-        this.balance = this.balance + amount;
-    }
-
-
     public String toString(){
-        return this.name +", "+this.balance;
+        return this.name +", "+this.account.getBalance();
     }
 
     public int getBalance() {
