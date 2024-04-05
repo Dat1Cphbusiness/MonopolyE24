@@ -1,13 +1,13 @@
-import java.io.File;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Board {
     private Field[] fields;
+    private ArrayList<Property> listOfpropertyFields;
 
     public Board(String[] data) {
         fields = new Field[40];
         createFields(data);
+        this.listOfpropertyFields = new ArrayList<Property>();
     }
 
     private void createFields(String[] data){
@@ -21,7 +21,43 @@ public class Board {
             int seriesID = Integer.parseInt(values[5].trim());
 
 
-            this.fields[i] = new Field(id, label, cost, income);
+            Field f = null;
+
+            switch (fieldType)
+            {
+                case "Chance":
+                   f = new Chance(id, label, income, cost);
+                    break;
+                case "Start":
+                    f = new Start(id, label, income, cost);
+                    break;
+                case "Shipping Line":
+                    f = new ShippingLine(id, label, income, cost, seriesID);
+                    break;
+                case "Plot":
+                    f = new Plot(id, label, income, cost, seriesID);
+                    break;
+                case "Tax":
+                    f = new Tax(id, label, income, cost);
+                    break;
+                case "Visit":
+                    f = new Visit(id, label, income, cost);
+                    break;
+                case "Parkering":
+                    f = new Parkering(id, label, income, cost);
+                    break;
+                case "Brewery":
+                    f = new Brewery(id, label, income, cost, seriesID);
+                    break;
+                case "Prison":
+                    f = new Prison(id, label, income, cost);
+                    break;
+                default: f = new Field(id, label, cost, income);
+            }
+            if (f instanceof Property) {
+                this.listOfpropertyFields.add(f);
+            }
+            fields[i] = f;
         }
     }
      public Field getField(int i) {
