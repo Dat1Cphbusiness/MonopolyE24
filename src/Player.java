@@ -5,7 +5,10 @@ public class  Player {
 
     public Player(String name, int startAmount){
         this.name = name;
-        this.balance = startAmount;
+        startAmount = getBalance();
+        String deeds; //Developer B (deeds initialiserers)
+        this.account = new Account(startAmount);
+
     }
 
 
@@ -19,10 +22,15 @@ public class  Player {
     }
 
     public int getBalance() {
-        return balance;
+        return this.account.getBalance();
     }
 
     public String getName() {
         return name;
+    }
+
+    public int updatePosition(int value){
+        this.position = value;
+        return position;
     }
 }
