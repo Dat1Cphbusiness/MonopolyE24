@@ -10,7 +10,7 @@ public class CardDeck{
     public CardDeck(String[] carddata){
         this.cards = new ArrayList<Card>();
         createCards(carddata);
-      //  Collections.shuffle(cards);
+        Collections.shuffle(cards);
     }
 
     public void createCards(String[] carddata){
