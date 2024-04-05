@@ -33,3 +33,8 @@ Ved start feltet noteres passér start beløbet.
  - **cost**: det beløb der skal betales
 
  - **event**: en hændelse skal kategorieseres som en af følgende typer: reward, rewardFromPlayers, payment, joker
+
+
+## Noter vedrørende "mangler"
+- **Huse/Hoteller**: Man kan ikke skrive i dataen hvad income er hvis man har huse eller hoteller.
+- **Komma**: Man kan ikke skrive kommarerne fra chance kortene.
