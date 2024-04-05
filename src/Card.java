@@ -14,4 +14,8 @@ public class Card {
         this.event = event;
     }
 
+    @Override
+    public String toString() {
+        return message;
+    }
 }
