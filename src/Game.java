@@ -36,9 +36,11 @@ public class Game {
     private void setup() {
 
          String [] fielddata = io.readBoardData("fielddata.csv",40);
-        this.board = new Board(fielddata);
-       String [] carddata = io.readBoardData("carddata.csv",100);
-      this.cardDeck = new CardDeck(carddata);
+         this.board = new Board(fielddata);
+
+
+         String [] carddata = io.readBoardData("carddata.csv",100);
+         this.cardDeck = new CardDeck(carddata);
 
     }
 

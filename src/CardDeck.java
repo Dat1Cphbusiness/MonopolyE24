@@ -6,7 +6,6 @@ public class CardDeck{
     public CardDeck(String[] carddata, ArrayList<Card> cards){
         this.carddata = carddata;
         this.cards = new ArrayList<Card>();
-
     }
 
     public void createCards(String[] carddata){

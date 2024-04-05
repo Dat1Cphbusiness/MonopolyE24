@@ -24,10 +24,6 @@ public class FileIO {
                 data[i] = line;
             }
 
-          /*  String[] values= line.split(",");
-            String name = values[0];
-            int balance = Integer.parseInt(values[1].trim());
-            game.createPlayer(name,balance);*/
 
     }catch(FileNotFoundException e){
         System.out.println("File was not found");
