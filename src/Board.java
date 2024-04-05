@@ -57,6 +57,7 @@ public class Board {
             if (f instanceof Property) {
                 this.listOfpropertyFields.add(f);
             }
+            fields[i] = f;
         }
     }
      public Field getField(int i) {
