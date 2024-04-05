@@ -19,10 +19,12 @@ public class Board {
             int cost = Integer.parseInt(values[3].trim());
             int income = Integer.parseInt(values[4].trim());
             int seriesID = Integer.parseInt(values[5].trim());
-            this.fields[i] = new Field(id, fieldType, label, cost, income, seriesID);
+
+
+            this.fields[i] = new Field(id, label, cost, income);
         }
     }
-    public Field getFields(int i) {
+     public Field getField(int i) {
         return fields[i-1];
-    }
+     }
 }

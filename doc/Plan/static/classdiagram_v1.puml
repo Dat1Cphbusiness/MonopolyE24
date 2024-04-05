@@ -90,8 +90,7 @@ class Board{
 }
 
 class CardDeck {
-- String[] carddata
-- ArrayList<Card> cards
+- Card[] cards
 + CardDeck(String[] carddata)
 + Card getNext()
 }

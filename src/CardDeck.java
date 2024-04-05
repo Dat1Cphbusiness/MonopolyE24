@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 
 public class CardDeck{
-    private String[] carddata;
+
     private ArrayList<Card> cards;
-    public CardDeck(String[] carddata, ArrayList<Card> cards){
-        this.carddata = carddata;
+    public CardDeck(String[] carddata){
+
         this.cards = new ArrayList<Card>();
     }
 
@@ -17,11 +17,10 @@ public class CardDeck{
             String event = values[3];
             Card c = new Card(message, income, cost, event);
 
-
-
         }
     }
     public Card getNext(){
+
         return null;
     }
 

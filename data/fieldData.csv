@@ -19,8 +19,8 @@ ID, FieldType, Label, Cost, Income, SeriesID
 18, Chance, Prøv lykken, 0, 0, 0
 19, Plot, Hellerupvej, 3600, 300, 6
 20, Plot, Strandvejen, 4000, 350, 6
-21, Parkering, Parkering, 0, 0,
-22, Plot, Trianglen, 4400kr, 350, 7
+21, Parkering, Parkering, 0, 0,0
+22, Plot, Trianglen, 4400, 350, 7
 23, Chance, Prøv lykken,0,0, 0
 24, Plot, Østerbrogade, 4400, 350, 7
 25, Plot, Grønningen, 4800, 400, 7

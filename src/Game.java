@@ -7,7 +7,8 @@ public class Game {
     private TextUI ui;
     private FileIO io;
     private String playerDataPath = "data/playerData.csv";
-
+    private String fieldDataPath = "data/fieldData.csv";
+    private String cardDataPath = "data/cardData.csv";
 
     private int maxPlayers = 6;
 
@@ -35,12 +36,12 @@ public class Game {
 
     private void setup() {
 
-         String [] fielddata = io.readBoardData("fielddata.csv",40);
-         this.board = new Board(fielddata);
+         String [] fieldData = io.readBoardData(fieldDataPath,40);
+         this.board = new Board(fieldData);
+        System.out.println(board.getField(40));
 
-
-         String [] carddata = io.readBoardData("carddata.csv",100);
-         this.cardDeck = new CardDeck(carddata);
+         String [] cardData = io.readBoardData(cardDataPath,46);
+         this.cardDeck = new CardDeck(cardData);
 
     }
 
