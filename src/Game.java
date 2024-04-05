@@ -9,7 +9,7 @@ public class Game {
     private String playerDataPath = "data/playerData.csv";
     private String fieldDataPath = "data/fieldData.csv";
     private String cardDataPath = "data/cardData.csv";
-
+   private Dice dice = new Dice();
     private int maxPlayers = 6;
 
 
@@ -42,6 +42,11 @@ public class Game {
          String [] cardData = io.readBoardData(cardDataPath,46);
          this.cardDeck = new CardDeck(cardData);
     }
+
+
+
+
+
 
     public void createPlayer(String name, int balance) {
             currentPlayer = new Player(name, balance);
@@ -138,5 +143,10 @@ public class Game {
                 count = 0;
             }
         }
+    }
+
+    public void throwAndMove(){
+int result = dice.rollDice();
+
     }
 }
