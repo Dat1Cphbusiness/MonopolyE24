@@ -1,11 +1,15 @@
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class CardDeck{
 
-    private ArrayList<Card> cards;
+    private static ArrayList<Card> cards;
+    private static ArrayList<Card> cardsShuffled = new ArrayList<>(cards);
+    private static int currentCardIndex = 0;
     public CardDeck(String[] carddata){
 
         this.cards = new ArrayList<Card>();
+        createCards(carddata);
     }
 
     public void createCards(String[] carddata){
@@ -20,8 +24,13 @@ public class CardDeck{
         }
     }
     public Card getNext(){
+        Collections.shuffle(cardsShuffled);
 
-        return null;
+        Card nextObject = cardsShuffled.get(currentCardIndex);
+
+        currentCardIndex = (currentCardIndex + 1) % cards.size();
+
+        return nextObject;
     }
 
 }
