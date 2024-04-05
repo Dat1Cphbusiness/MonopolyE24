@@ -136,7 +136,7 @@ public class Game {
         while(input.equalsIgnoreCase("Y")){
             currentPlayer = players.get(count);
             ui.displayMsg("Det er "+currentPlayer.getName()+"'s tur");
-            //throwAndMove()
+            throwAndMove();
             input = ui.promptText("Fortsæt? Y/N: ");
             count++;
             if(count == players.size()){
@@ -146,7 +146,14 @@ public class Game {
     }
 
     public void throwAndMove(){
-int result = dice.rollDice();
+            int result = dice.rollDiceSum();
+
+            int newPosition = currentPlayer.updatePosition(result);
+              Field f = board.getField(newPosition);
+
+        System.out.println(f);
+
+        // f.landAndAct();
 
     }
 }

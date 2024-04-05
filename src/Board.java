@@ -6,11 +6,13 @@ public class Board {
 
     public Board(String[] data) {
         fields = new Field[40];
-        createFields(data);
         this.listOfpropertyFields = new ArrayList<Property>();
+        createFields(data);
     }
 
     private void createFields(String[] data){
+
+
         for(int i = 0;i<data.length;i++){
             String[] values = data[i].split(",");
             int id = Integer.parseInt(values[0].trim());
@@ -44,7 +46,7 @@ public class Board {
                     f = new Visit(id, label, income, cost);
                     break;
                 case "Parkering":
-                    f = new Parkering(id, label, income, cost);
+                    f = new Parking(id, label, income, cost);
                     break;
                 case "Brewery":
                     f = new Brewery(id, label, income, cost, seriesID);
@@ -54,9 +56,12 @@ public class Board {
                     break;
                 default: f = new Field(id, label, cost, income);
             }
+
             if (f instanceof Property) {
-                this.listOfpropertyFields.add(f);
+                Property p = (Property)f;
+                this.listOfpropertyFields.add(p);
             }
+
             fields[i] = f;
         }
     }

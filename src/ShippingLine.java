@@ -1,6 +1,7 @@
-public class ShippingLine extends Business{
-    public ShippingLine(int id, String label, int cost, int income) {
-        super(id, label, cost, income);
+public class ShippingLine extends Property{
+    public ShippingLine(int id, String label, int cost, int income, int seriesID) {
+
+        super(id, label, cost, income, seriesID);
     }
 
     @Override
