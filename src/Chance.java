@@ -1,5 +1,5 @@
-public class Prison extends Field{
-    public Prison(int id, String label, int cost, int income) {
+public class Chance extends Prison{
+    public Chance(int id, String label, int cost, int income) {
         super(id, label, cost, income);
     }
 
