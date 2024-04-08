@@ -1,9 +1,9 @@
 public class Field {
     private int ID;
     private String label;
-    private int cost;
-    private int income;
-    private String option;
+    protected int cost;
+    protected int income;
+    protected String option;
 
     public Field(int id, String label, int cost, int income) {
         this.ID = id;

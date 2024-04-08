@@ -36,4 +36,12 @@ public class  Player {
         this.position += value;
         return position;
     }
+
+    public boolean startPassed(){
+        return true;
+    }
+
+    public int getPosition(){
+        return this.position;
+    }
 }

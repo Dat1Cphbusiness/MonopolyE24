@@ -17,7 +17,7 @@ public class Game {
 
 
     private Board board;
-    private CardDeck cardDeck;
+    protected static CardDeck cardDeck;
 
     public Game(String name) {
         this.name = name;
@@ -42,11 +42,6 @@ public class Game {
          String [] cardData = io.readBoardData(cardDataPath,46);
          this.cardDeck = new CardDeck(cardData);
     }
-
-
-
-
-
 
     public void createPlayer(String name, int balance) {
             currentPlayer = new Player(name, balance);
