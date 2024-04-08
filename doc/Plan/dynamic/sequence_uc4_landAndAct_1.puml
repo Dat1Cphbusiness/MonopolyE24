@@ -1,0 +1,30 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+participant Game as game
+participant TextUI as ui
+participant SubField  as subField
+participant Field  as field
+
+
+game -> game : landAndAct(f)
+game -> subField : msg = onLand(player)
+subField -> field : msg = super.onLand(player);
+field --> subField: "Egon er landet på Valbylanggade"
+
+alt owner == null
+
+subField -> subField : this.option = "buy" \nmsg =  "Vil du købe Valbylanggade? Y/N"
+
+
+else if owner != player
+
+subField -> subField :  this.option = "payRent"\nmsg = "Betal 2000kr i husleje. Indforstået? Y/N"
+
+else if owner == player && hasMonopoly(this.seriesID)
+
+subField -> subField :  this.option = "build"\nmsg = "Vil du bygge? Y/N"
+end
+
+subField --> game : "Vil du købe Valbylanggade? Y/N"
+@enduml
