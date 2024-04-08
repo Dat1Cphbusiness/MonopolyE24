@@ -1,9 +1,7 @@
 public class Property extends Field {
-
     private int serieID;
-    private Player Owner;
 
-    public Property(int id, String label, int cost, int income, int serieID){
+    public Property(int id, String label, int cost, int income, int serieID) {
         super(id, label, cost, income);
         this.serieID = serieID;
 
@@ -16,12 +14,27 @@ public class Property extends Field {
 
     @Override
     public String onLand(Player p) {
-        return super.onLand(p);
+        String msg = super.onLand(p);
+        if(owner == null){
+            this.option  = "buy";
+            msg += "Vil du købe " + super.getLabel() + "? (Y/N)";
+        }else if(owner != p){
+            this.option = "payRent";
+            msg += "Du skal betale " + super.getIncome() + ". Indforstået Y/N";
+        }
+        return msg;
     }
 
     @Override
     protected String onAccept(Player p) {
-        return "";
+        if (this.option.equalsIgnoreCase("buy")){
+            System.out.println("Du har mulighed for at købe "+ getLabel()+ ".");
+            buyProperty();
+        }else if (this.option.equalsIgnoreCase("payRent")){
+            System.out.println("Du skal betale husleje til ejeren af "+ getLabel() + "."); //Evt ændre fra label til ejer af "Deed"
+            pay();
+        }
+        return null;
     }
 
     @Override
@@ -29,3 +42,9 @@ public class Property extends Field {
         return "";
     }
 }
+
+
+
+
+
+
