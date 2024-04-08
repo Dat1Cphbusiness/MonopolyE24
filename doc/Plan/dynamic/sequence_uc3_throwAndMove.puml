@@ -5,7 +5,6 @@ participant Game as game
 participant Dice as dice
 participant Player as player
 participant Board as board
-participant Field as field
 main -> game : runGameLoop()
 loop !quitgame
 game -> game : currentPlayer = players[count]

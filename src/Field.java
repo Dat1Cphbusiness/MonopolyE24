@@ -12,15 +12,30 @@ public class Field {
         this.income = income;
     }
 
+    public String processResponse(String response, Player p) {
+        String msg = "";
+        if (response.equalsIgnoreCase("Y")) {
+            msg = onAccept(p);
+        } else if (response.equalsIgnoreCase("N")) {
+            msg = onReject(p);
+        } else {
+            System.out.println("Invalid input");
+            processResponse(response, p);
+        }
+        return msg;
+    }
+
     @Override
     public String toString() {
         return "felt " + ID + ": " + label;
     }
 
+
     public String onLand(Player p) {
         String s = p.getName() + " er landet på " + this.toString();
         return s;
     }
+
     public String processResponse(Player p) {
         return "";
     }
@@ -33,4 +48,14 @@ public class Field {
         return "";
     }
 
+    public String getLabel() {
+        return label;
+    }
+
+    public int getIncome() {
+        return income;
+    }
+    public int getCost(){
+        return this.cost;
+    }
 }

@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Game {
     private String name;
-    private ArrayList<Player> players;
+    private static ArrayList<Player> players;
     private ArrayList<String> listOfActions;
     private TextUI ui;
     private FileIO io;
@@ -34,10 +34,14 @@ public class Game {
         this.setup();
     }
 
+    public static ArrayList<Player> getPlayers() {
+        return players;
+
+    }
+
     private void setup() {
          String [] fieldData = io.readBoardData(fieldDataPath,40);
          this.board = new Board(fieldData);
-         System.out.println(board.getField(40));
 
          String [] cardData = io.readBoardData(cardDataPath,46);
          this.cardDeck = new CardDeck(cardData);
@@ -150,9 +154,19 @@ public class Game {
 
         //  System.out.println(f);
 
-        f.landAndAct();
+           landAndAct(f);
 
     }
+
+     public void landAndAct(Field f){
+
+        String msg = f.onLand(currentPlayer);
+        String response = ui.promptText(msg);
+        msg = f.processResponse(response, currentPlayer);
+
+        ui.displayMsg(msg);
+
+     }
 
     public Player getCurrentPlayer() {
         return currentPlayer;

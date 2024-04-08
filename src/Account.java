@@ -12,10 +12,11 @@ public class Account {
 
     public boolean withdraw(int amount) {
         if (balance >= amount) {
-            withdraw(amount);
+            balance = balance -amount;
+
             return true;
         } else {
-            System.out.println("Not enough money in account");
+         //System.out.println("Not enough money in account");
             return false;
         }
     }

@@ -23,7 +23,7 @@ alt response "Y"
              subField -> Player :payRent(rent, owner)
              Player -> Account : withdraw(rent)
              Player -> Account : owner.deposit(rent)
-             subField --> game : "Egon købte Valbylanggade"
+             subField --> game : "Egon betalte for at stå på Valbylanggade"
     end
 
 else response "N"

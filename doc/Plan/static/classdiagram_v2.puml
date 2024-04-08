@@ -1,11 +1,13 @@
 @startuml
+!pragma layout smetana
 class Main{
 + static void main(String[] args)
 }
 
 class Property
 {
-    - int serieID;
+    - int serieID
+    + Property(ID, label, cost, income, serieID)
 }
 
 class Plot
@@ -18,10 +20,7 @@ class Brewery
 
 }
 
-class Business
-{
 
-}
 
 class ShippingLine
 {
@@ -177,16 +176,15 @@ Game *-- Dice
 Player *-- Card
 Player *-- Field
 Field <|-- Property
-Business <|-- Brewery
-Business <|-- ShippingLine
+Property <|-- Brewery
+Property <|-- ShippingLine
 Property <|-- Plot
-Property --|> Business
 Field <|-- Prison
-Prison <|-- Taxes
-Prison <|-- Parking
-Prison <|-- Visit
-Prison <|-- Start
-Prison <|-- Chance
+Field <|-- Tax
+Field <|-- Parking
+Field <|-- Visit
+Field <|-- Start
+Field <|-- Chance
 
 
 
