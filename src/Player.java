@@ -45,8 +45,8 @@ public class  Player {
     }
 
     public boolean pay(int amount){
-        boolean enoughMoney = this.account.withdraw(amount);
-        return enoughMoney;
+        boolean success = this.account.withdraw(amount);
+        return success;
 
     }
 
