@@ -3,7 +3,7 @@
 
 participant Game as game
 participant TextUI as ui
-participant SubField  as subField
+participant Property as subField
 participant Field  as field
 
 
@@ -13,20 +13,13 @@ subField -> field : msg = super.onLand(player);
 field --> subField: "Egon er landet på Valbylanggade"
 
 alt owner == null
-
-subField -> subField : this.option = "buy" \nmsg =  "Vil du købe Valbylanggade? Y/N"
-
-
+ subField -> subField : this.option = "buy" \nmsg +=  "Vil du købe Valbylanggade? Y/N"
 else if owner != player
-
-subField -> subField :  this.option = "payRent"\nmsg = "Betal 2000kr i husleje. Indforstået? Y/N"
-
-else if owner == player && hasMonopoly(this.seriesID)
-
-subField -> subField :  this.option = "build"\nmsg = "Vil du bygge? Y/N"
+ subField -> subField :  this.option = "pay"\nmsg += "Betal 2000kr i husleje. Indforstået? Y/N"
+ subField -> Player :payRent(this.income, this.owner)
 end
 
-subField --> game : "Vil du købe Valbylanggade? Y/N"
+subField --> game : "Egon er landet på Valbylanggade. Vil du købe Valbylanggade? Y/N"
 
 game -> ui : response = promptText( msg )
 
@@ -35,14 +28,27 @@ game -> field : msg = processResponse(player, response )
 
 alt response "Y"
     field  -> subField : onAccept(player)
-    subField  -> Player: buyProperty(this)
-    Player -> Account : withdraw(costOfField)
+
+    alt option == "buy"
+        subField  -> Player: buyProperty(this)
+        Player -> Account : withdraw(costOfField)
     subField --> game : "Egon købte Valbylanggade"
+
+    else if option == "pay"
+             subField -> Player :payRent(rent, owner)
+             Player -> Account : withdraw(rent)
+             Player -> Account : owner.deposit(rent)
+    end
+
 else response "N"
     field -> subField : onReject(player)
     end
 
-
 game -> ui : displayMessage( msg )
+
+
+' only in Plot.onLand
+' alt this.isMonopolised
+' subField -> subField :  this.option = "build"\nmsg = "Vil du bygge? Y/N"'
 
 @enduml

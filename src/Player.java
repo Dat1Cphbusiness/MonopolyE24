@@ -1,18 +1,24 @@
+import java.util.ArrayList;
+
 public class  Player {
     private String name;
-
-    //fjernet Balance
-    private Account account; //Developer B (Account intialiseret)
+    private ArrayList<Field> deeds;
+    private Account account;
     private int position;
 
-    public Player(String name, int startAmount){
+    public Player(String name, int balance){
         this.name = name;
-        startAmount = getBalance();
-        String deeds; //Developer B (deeds initialiserers)
-        this.account = new Account(startAmount);
 
+        deeds = new ArrayList<>();
+
+
+        this.account = new Account(balance);
+        this.setBalance(balance);
     }
 
+    private void setBalance(int balance) {
+        this.account.deposit(balance);
+    }
 
     public String toString(){
         return this.name +", "+this.account.getBalance();
@@ -27,7 +33,7 @@ public class  Player {
     }
 
     public int updatePosition(int value){
-        this.position = value;
+        this.position += value;
         return position;
     }
 }

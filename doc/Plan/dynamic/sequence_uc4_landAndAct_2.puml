@@ -3,7 +3,7 @@
 
 participant Game as game
 participant TextUI as ui
-participant SubField  as subField
+participant Property  as subField
 participant Field  as field
 
 game -> ui : response = promptText( msg )
@@ -13,9 +13,19 @@ game -> field : msg = processResponse(player, response )
 
 alt response "Y"
     field  -> subField : onAccept(player)
-    subField  -> Player: buyProperty(this)
-    Player -> Account : withdraw(costOfField)
+
+    alt option == "buy"
+        subField  -> Player: buyProperty(this)
+        Player -> Account : withdraw(costOfField)
     subField --> game : "Egon købte Valbylanggade"
+
+    else if option == "pay"
+             subField -> Player :payRent(rent, owner)
+             Player -> Account : withdraw(rent)
+             Player -> Account : owner.deposit(rent)
+             subField --> game : "Egon købte Valbylanggade"
+    end
+
 else response "N"
     field -> subField : onReject(player)
     end

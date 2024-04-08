@@ -55,8 +55,8 @@ public class Game {
 
     public void runDialog(){
         ui.displayMsg("welcome to "+this.name);
-        int action = 0;
 
+        int action=0;
         while(action != listOfActions.size()){// the quit action is the last action
          action = ui.promptChoice(listOfActions, "Choose action:");
 
@@ -84,9 +84,10 @@ public class Game {
 
 
     private void endGame() {
+
         io.saveData(this.players, playerDataPath);
     }
-    private void loadPlayerData() {
+    public void loadPlayerData() {
         ArrayList<String> data = io.readPlayerData(playerDataPath);  //"Tess, 2000"
         // obs: hvis der allerede er startet et nyt spil , og vi så loader flere spillere,
         // vil vi både få spillere fra det nystartede spil og fra det gemte spil i player listen
@@ -105,8 +106,6 @@ public class Game {
     }
     private void registerPlayers() {
         players = new ArrayList<>();//reset players array, so that a new game may be created mid session
-
-
         boolean morePlayers = true;
         while(morePlayers && players.size() < maxPlayers){
             String name = ui.promptText("Tast spiller navn. 'Q' for at quitte");
@@ -134,6 +133,9 @@ public class Game {
         int count = 0;
         String input = "Y";
         while(input.equalsIgnoreCase("Y")){
+
+            // todo: var det et dobbelslag?
+            //todo: some kind of counter
             currentPlayer = players.get(count);
             ui.displayMsg("Det er "+currentPlayer.getName()+"'s tur");
             throwAndMove();
@@ -149,11 +151,15 @@ public class Game {
             int result = dice.rollDiceSum();
 
             int newPosition = currentPlayer.updatePosition(result);
-              Field f = board.getField(newPosition);
+            Field f = board.getField(newPosition);
 
-        System.out.println(f);
+        //  System.out.println(f);
 
-        // f.landAndAct();
+        f.landAndAct();
 
+    }
+
+    public Player getCurrentPlayer() {
+        return currentPlayer;
     }
 }
