@@ -36,4 +36,38 @@ public class  Player {
         this.position += value;
         return position;
     }
+
+    public boolean buyProperty(Field f){
+        f.getCost();
+        boolean success = this.account.withdraw(f.getCost());
+        return success;
+
+    }
+
+    public boolean pay(int amount){
+        boolean enoughMoney = this.account.withdraw(amount);
+        return enoughMoney;
+
+    }
+
+    public void receive(int amount){
+        this.account.deposit(amount);
+
+    }
+    // this pay is for payRent
+    public boolean pay(int amount, Player recipient){
+        recipient.receive(amount);
+        return pay(amount);
+
+    }
+
+    public void collect(int amount){
+        for (Player p : Game.getPlayers()){
+            p.pay(amount, this);
+
+        }
+
+
+    }
+
 }
