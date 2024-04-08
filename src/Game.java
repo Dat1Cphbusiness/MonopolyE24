@@ -42,7 +42,6 @@ public class Game {
     private void setup() {
          String [] fieldData = io.readBoardData(fieldDataPath,40);
          this.board = new Board(fieldData);
-         System.out.println(board.getField(40));
 
          String [] cardData = io.readBoardData(cardDataPath,46);
          this.cardDeck = new CardDeck(cardData);
