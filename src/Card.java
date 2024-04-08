@@ -18,4 +18,20 @@ public class Card {
     public String toString() {
         return message;
     }
+
+    public int getCost() {
+        return this.cost;
+    }
+
+    public int getIncome() {
+        return income;
+    }
+
+    public String getEvent() {
+        return event;
+    }
+
+    public String getMessage() {
+        return message;
+    }
 }
