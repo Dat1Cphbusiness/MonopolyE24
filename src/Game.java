@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Game {
     private String name;
-    private ArrayList<Player> players;
+    private static ArrayList<Player> players;
     private ArrayList<String> listOfActions;
     private TextUI ui;
     private FileIO io;
@@ -32,6 +32,11 @@ public class Game {
         listOfActions.add("2) continue game");
         listOfActions.add("3) quit game");
         this.setup();
+    }
+
+    public static ArrayList<Player> getPlayers() {
+        return players;
+
     }
 
     private void setup() {
@@ -165,7 +170,7 @@ public class Game {
         String response = ui.promptText(msg);
         msg = f.processResponse(response, currentPlayer);
 
-
+        ui.displayMsg(msg);
 
      }
 

@@ -28,14 +28,17 @@ public class Property extends Field {
 
     @Override
     protected String onAccept(Player p) {
+        String msg = "";
         if (this.option.equalsIgnoreCase("buy")){
-            System.out.println("Du har mulighed for at købe "+ getLabel()+ ".");
-            p.buyProperty();
+            msg = "Du har mulighed for at købe "+ getLabel()+ ".";
+            p.buyProperty(this);
+            this.owner = p;
+
         }else if (this.option.equalsIgnoreCase("payRent")){
-            System.out.println("Du skal betale husleje til ejeren af "+ getLabel() + "."); //Evt ændre fra label til ejer af "Deed"
-            p.pay();
+            msg ="Du skal betale husleje til ejeren af "+ getLabel() + "."; //Evt ændre fra label til ejer af "Deed"
+            p.pay(this.getIncome(),owner);
         }
-        return null;
+        return msg;
     }
 
     @Override
