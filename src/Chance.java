@@ -28,7 +28,7 @@ public class Chance extends Field{
                 p.recieve(this.income);
                 break;
             case "collect":
-                p.collectFromAll(this.income);
+                p.collect(this.income);
                 break;
             case "-3":
                 p.updatePosition(-3);
@@ -42,6 +42,9 @@ public class Chance extends Field{
             case "11":
                 p.updatePosition((51 - p.getPosition()) % 40);
                 break;
+            case "16":
+                p.updatePosition((56 - p.getPosition()) % 40);
+                break;
             case "25":
                 p.updatePosition((65 - p.getPosition()) % 40);
                 break;
@@ -54,6 +57,8 @@ public class Chance extends Field{
             case "40":
                 p.updatePosition(40 - p.getPosition());
                 break;
+            case "rederi":
+                p.updatePosition((16 - p.getPosition() % 10 ) % 10 );
 
         }
         return "";
