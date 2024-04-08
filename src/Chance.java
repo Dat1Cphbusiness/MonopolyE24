@@ -16,16 +16,15 @@ public class Chance extends Field{
     }
     @Override
     public String onAccept(Player p){
-        String value = this.option;
 
         //TODO p.startPassed() og implementing af methode
-
-        switch (value) {
+        String msg = "";
+        switch (this.option) {
             case "payment":
                 p.pay(this.cost);
                 break;
             case "reward":
-                p.recieve(this.income);
+                p.receive(this.income);
                 break;
             case "collect":
                 p.collect(this.income);
@@ -59,8 +58,12 @@ public class Chance extends Field{
                 break;
             case "rederi":
                 p.updatePosition((16 - p.getPosition() % 10 ) % 10 );
+                break;
+            default:
+                msg = "Endnu ikke implementeret.";
+                break;
 
         }
-        return "";
+        return msg;
     }
 }
