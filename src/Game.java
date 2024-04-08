@@ -155,9 +155,19 @@ public class Game {
 
         //  System.out.println(f);
 
-        f.landAndAct();
+           landAndAct(f);
 
     }
+
+     public void landAndAct(Field f){
+
+        String msg = f.onLand(currentPlayer);
+        String response = ui.promptText(msg);
+        msg = f.processResponse(response, currentPlayer);
+
+
+
+     }
 
     public Player getCurrentPlayer() {
         return currentPlayer;
