@@ -13,15 +13,16 @@ public class Field {
     }
 
     public String processResponse(String response, Player p) {
+        String msg = "";
         if (response.equalsIgnoreCase("Y")) {
-            onAccept(p);
+            msg = onAccept(p);
         } else if (response.equalsIgnoreCase("N")) {
-            onReject(p);
+            msg = onReject(p);
         } else {
             System.out.println("Invalid input");
             processResponse(response, p);
         }
-        return "";
+        return msg;
     }
 
     @Override
