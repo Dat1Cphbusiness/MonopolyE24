@@ -1,5 +1,6 @@
 public class Property extends Field {
     private int serieID;
+    private Player owner;
 
     public Property(int id, String label, int cost, int income, int serieID) {
         super(id, label, cost, income);
@@ -29,10 +30,10 @@ public class Property extends Field {
     protected String onAccept(Player p) {
         if (this.option.equalsIgnoreCase("buy")){
             System.out.println("Du har mulighed for at købe "+ getLabel()+ ".");
-            buyProperty();
+            p.buyProperty();
         }else if (this.option.equalsIgnoreCase("payRent")){
             System.out.println("Du skal betale husleje til ejeren af "+ getLabel() + "."); //Evt ændre fra label til ejer af "Deed"
-            pay();
+            p.pay();
         }
         return null;
     }
