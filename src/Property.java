@@ -10,7 +10,7 @@ public class Property extends Field {
 
     @Override
     public String toString() {
-        return super.toString() + serieID;
+        return super.toString();
     }
 
     @Override
@@ -18,10 +18,10 @@ public class Property extends Field {
         String msg = super.onLand(p);
         if(owner == null){
             this.option  = "buy";
-            msg += "Vil du købe " + super.getLabel() + "? (Y/N)";
+            msg += "\nVil du købe " + super.getLabel() + "? (Y/N)";
         }else if(owner != p){
             this.option = "payRent";
-            msg += "Du skal betale " + super.getIncome() + ". Indforstået Y/N";
+            msg += "\nDu skal betale " + super.getIncome() + ". Indforstået Y/N";
         }
         return msg;
     }
@@ -30,12 +30,12 @@ public class Property extends Field {
     protected String onAccept(Player p) {
         String msg = "";
         if (this.option.equalsIgnoreCase("buy")){
-            msg = "Du har mulighed for at købe "+ getLabel()+ ".";
+            msg = "Du har købt "+this.getLabel();
             p.buyProperty(this);
             this.owner = p;
 
         }else if (this.option.equalsIgnoreCase("payRent")){
-            msg ="Du skal betale husleje til ejeren af "+ getLabel() + "."; //Evt ændre fra label til ejer af "Deed"
+            msg ="Du har betalt til "+this.owner; //Evt ændre fra label til ejer af "Deed"
             p.pay(this.getIncome(),owner);
         }
         return msg;
