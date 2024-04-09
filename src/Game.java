@@ -51,7 +51,6 @@ public class Game {
 
     }
 
-
     public void createPlayer(String name, int balance) {
             currentPlayer = new Player(name, balance);
             this.players.add(currentPlayer);

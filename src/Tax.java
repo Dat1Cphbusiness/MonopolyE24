@@ -6,7 +6,7 @@ public class Tax extends Field {
     public String onLand(Player p) {
         String msg = super.onLand(p);
         msg += "\nSkat trækker et beløb der svarer til 10 % af dine aktiver. \n" +
-                "Vil du hellere betale fast beløb på " + this.cost + "kr? Y/N";
+                "Vil du hellere betale fast beløb på " + this.getCost() + "kr? Y/N";
         return msg;
 
     }
@@ -14,8 +14,8 @@ public class Tax extends Field {
     @Override
     protected String onAccept(Player p) {
         String msg = "";
-        p.pay(this.cost);
-        msg += "\nDu har betalt "+this.cost+"kr i skat.";
+        p.pay(this.getCost());
+        msg += "\nDu har betalt "+ this.getCost() +"kr i skat.";
         return msg;
     }
 

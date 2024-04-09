@@ -8,12 +8,8 @@ public class  Player {
 
     public Player(String name, int balance){
         this.name = name;
-
         deeds = new ArrayList<>();
-
-
         this.account = new Account(balance);
-        this.setBalance(balance);
     }
 
     private void setBalance(int balance) {
