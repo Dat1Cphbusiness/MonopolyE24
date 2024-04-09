@@ -22,15 +22,19 @@ public class Chance extends Field{
         switch (this.option) {
             case "payment":
                 p.pay(this.cost);
+                msg = "Du har betalt.";
                 break;
             case "reward":
                 p.receive(this.income);
+                msg = "Du har modtaget penge.";
                 break;
             case "collect":
                 p.collect(this.income);
+                msg = "Du har modtaget penge fra alle.";
                 break;
             case "-3":
                 p.updatePosition(-3);
+                msg = "Ryk tre felter tilbage";
                 break;
             case "1":
                 p.updatePosition(41 - p.getPosition());
@@ -59,9 +63,7 @@ public class Chance extends Field{
             case "rederi":
                 p.updatePosition((16 - p.getPosition() % 10 ) % 10 );
                 break;
-            default:
-                msg = "Endnu ikke implementeret.";
-                break;
+
 
         }
         return msg;
