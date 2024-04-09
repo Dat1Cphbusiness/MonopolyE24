@@ -44,26 +44,22 @@ public class Game {
     private void setup() {
          String [] fieldData = io.readBoardData(fieldDataPath,40);
          this.board = new Board(fieldData);
-
-
          String [] cardData = io.readBoardData(cardDataPath,46);
          this.cardDeck = new CardDeck(cardData);
-
     }
 
-    public void createPlayer(String name, int balance) {
-            currentPlayer = new Player(name, balance);
+    public void createPlayer(String name, int balance, int position) {
+            currentPlayer = new Player(name, balance, position);
             this.players.add(currentPlayer);
     }
 
     public void runDialog(){
         ui.displayMsg("Welcome to "+this.name);
-
         int action=0;
         while(action != listOfActions.size()){// the quit action is the last action
-         action = ui.promptChoice(listOfActions, "Choose action:");
+          action = ui.promptChoice(listOfActions, "Choose action:");
 
-         switch(action){
+          switch(action){
              case 1:
                   //start new game
                   this.registerPlayers();
@@ -99,7 +95,8 @@ public class Game {
                 String[] values = s.split(",");//"Tess, 2000" >> ["Tess", " 2000"]
                 int balance = Integer.parseInt(values[1].trim());
                  String name = values[0];
-                 createPlayer(name, balance);
+                 int position = Integer.parseInt(values[2].trim());
+                 createPlayer(name, balance, position);
             }
 
         }else{
@@ -112,7 +109,7 @@ public class Game {
         while(morePlayers && players.size() < maxPlayers){
             String name = ui.promptText("Tast spiller navn. 'Q' for at quitte");
             if(!name.equalsIgnoreCase("Q")){
-                createPlayer(name,0);
+                createPlayer(name,0, 1);
 
             }else{
                 if(players.size() > 1) {
@@ -137,7 +134,7 @@ public class Game {
         while(input.equalsIgnoreCase("Y")){
 
             // todo: var det et dobbelslag?
-            //todo: some kind of counter
+            // todo: some kind of counter
             // if currentPlayer diceDoubleCount  > 0  && <3 , count--
 
             currentPlayer = players.get(count);
@@ -155,23 +152,23 @@ public class Game {
 
     public void throwAndMove(){
 
-            int result = 5; // dice.rollDiceSum();
+            int result = dice.rollDiceSum();
 
             ui.displayMsg(currentPlayer.getName()+" slog "+dice.getDice()[0] +" og "+dice.getDice()[1]);
             int newPosition = currentPlayer.updatePosition(result);
             Field f = board.getField(newPosition);
 
             landAndAct(f);
-
     }
 
      public void landAndAct(Field f){
 
         String msg = f.onLand(currentPlayer);
-        String response = ui.promptText(msg);
-        msg = f.processResponse(response, currentPlayer);
-
-        ui.displayMsg(msg);
+        //if(somethingToProcess) {
+            String response = ui.promptText(msg);
+            msg = f.processResponse(response, currentPlayer);
+            ui.displayMsg(msg);
+       // }
 
      }
 

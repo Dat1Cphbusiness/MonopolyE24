@@ -6,18 +6,23 @@ public class  Player {
     private Account account;
     private int position;
 
-    public Player(String name, int balance){
+
+    private int diceDoubleCount;
+  /*  enum DoubleCount {
+        1,
+        2,
+        3
+    }*/
+    public Player(String name, int balance, int position){
         this.name = name;
         deeds = new ArrayList<>();
         this.account = new Account(balance);
+        this.position = position;
     }
 
-    private void setBalance(int balance) {
-        this.account.deposit(balance);
-    }
 
     public String toString(){
-        return this.name +", "+this.account.getBalance();
+        return this.name +", "+this.account.getBalance()+ ", "+ this.position;
     }
 
     public int getBalance() {
@@ -88,4 +93,5 @@ public class  Player {
         }
         return sum;
     }
+
 }
