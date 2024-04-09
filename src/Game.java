@@ -9,7 +9,7 @@ public class Game {
     private String playerDataPath = "data/playerData.csv";
     private String fieldDataPath = "data/fieldData.csv";
     private String cardDataPath = "data/cardData.csv";
-    private Dice dice = new Dice();
+   private Dice dice = new Dice();
     private int maxPlayers = 6;
 
 
@@ -17,7 +17,7 @@ public class Game {
 
 
     private Board board;
-    private CardDeck cardDeck;
+    protected static CardDeck cardDeck;
 
     public Game(String name) {
         this.name = name;
@@ -47,14 +47,13 @@ public class Game {
          this.cardDeck = new CardDeck(cardData);
     }
 
-
     public void createPlayer(String name, int balance) {
             currentPlayer = new Player(name, balance);
             this.players.add(currentPlayer);
     }
 
     public void runDialog(){
-        ui.displayMsg("Welcome to "+this.name);
+        ui.displayMsg("welcome to "+this.name);
 
         int action=0;
         while(action != listOfActions.size()){// the quit action is the last action
@@ -84,6 +83,7 @@ public class Game {
 
 
     private void endGame() {
+
         io.saveData(this.players, playerDataPath);
     }
     public void loadPlayerData() {
@@ -135,11 +135,7 @@ public class Game {
 
             // todo: var det et dobbelslag?
             //todo: some kind of counter
-            // if currentPlayer diceDoubleCount  > 0  && <3 , count--
-
             currentPlayer = players.get(count);
-            // if currentPlayer diceDoubleCount == 3, i fængsel
-
             ui.displayMsg("Det er "+currentPlayer.getName()+"'s tur");
             throwAndMove();
             input = ui.promptText("Fortsæt? Y/N: ");
@@ -151,14 +147,14 @@ public class Game {
     }
 
     public void throwAndMove(){
+            int result = dice.rollDiceSum();
 
-            int result = 3;//dice.rollDiceSum();
-
-            ui.displayMsg(currentPlayer.getName()+" slog "+dice.getDice()[0] +" og "+dice.getDice()[1]);
             int newPosition = currentPlayer.updatePosition(result);
             Field f = board.getField(newPosition);
 
-            landAndAct(f);
+        //  System.out.println(f);
+
+           landAndAct(f);
 
     }
 

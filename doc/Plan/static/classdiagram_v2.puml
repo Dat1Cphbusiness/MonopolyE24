@@ -99,6 +99,7 @@ class Player{
 + String toString()
 + String getName()
 + int getBalance()
++ int getPosition()
 }
 class Account{
 - int balance
