@@ -67,8 +67,8 @@ public class  Player {
     }
 
     public void collect(int amount){
-      // ArrayList<Player> listOfPlayers = Main.games.get(0).getPlayers();
-        for (Player p : Game.players){
+      ArrayList<Player> listOfPlayers = Main.games.get(0).getPlayers();
+        for (Player p : listOfPlayers){
             p.pay(amount, this);
 
         }
@@ -83,5 +83,13 @@ public class  Player {
 
     public int getPosition(){
         return this.position;
+    }
+
+    public int totalValue() {
+        int sum = this.getBalance();
+        for (Field d:deeds) {
+            sum += d.getCost();
+        }
+        return sum;
     }
 }

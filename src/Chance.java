@@ -7,13 +7,13 @@ public class Chance extends Field{
 
     @Override
     public String onLand(Player p) {
-        //CardDeck deck = Main.games.get(0).getDeck();
 
-        Card card = Game.cardDeck.getNext();
+        CardDeck deck = Main.games.get(0).getDeck();
+        Card card = deck.getNext();
         String s = super.onLand(p);
-        this.cost = card.getCost();
-        this.income = card.getIncome();
-        this.option = card.getEvent();
+        this.setCost(card.getCost());
+        this.setIncome(card.getIncome());
+        this.setOption(card.getEvent());
         s += "\n Træk et kort fra bunken: " + card.getMessage();
         
         return s;
@@ -23,17 +23,17 @@ public class Chance extends Field{
 
         //TODO p.startPassed() og implementing af methode
         String msg = "";
-        switch (this.option) {
+        switch (this.getOption()) {
             case "payment":
-                p.pay(this.cost);
+                p.pay(this.getCost());
                 msg = "Du har betalt.";
                 break;
             case "reward":
-                p.receive(this.income);
+                p.receive(this.getIncome());
                 msg = "Du har modtaget penge.";
                 break;
             case "collect":
-                p.collect(this.income);
+                p.collect(this.getIncome());
                 msg = "Du har modtaget penge fra alle.";
                 break;
             case "-3":

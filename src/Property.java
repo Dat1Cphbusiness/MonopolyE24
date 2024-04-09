@@ -17,10 +17,11 @@ public class Property extends Field {
     public String onLand(Player p) {
         String msg = super.onLand(p);
         if(owner == null){
-            this.option  = "buy";
+
+            this.setOption("buy");
             msg += "\nVil du købe " + super.getLabel() + " til "+this.getCost()+"? (Y/N)";
         }else if(owner != p){
-            this.option = "payRent";
+            this.setOption("payRent");
             msg += "\nDu skal betale " + super.getIncome() + ". Indforstået Y/N";
         }
         return msg;
@@ -29,12 +30,12 @@ public class Property extends Field {
     @Override
     protected String onAccept(Player p) {
         String msg = "";
-        if (this.option.equalsIgnoreCase("buy")){
+        if (this.getOption().equalsIgnoreCase("buy")){
             msg = "Du har købt "+this.getLabel();
             p.buyProperty(this);
             this.owner = p;
 
-        }else if (this.option.equalsIgnoreCase("payRent")){
+        }else if (this.getOption().equalsIgnoreCase("payRent")){
             msg ="Du har betalt til "+this.owner; //Evt ændre fra label til ejer af "Deed"
             p.pay(this.getIncome(),owner);
         }
@@ -44,10 +45,10 @@ public class Property extends Field {
     @Override
     protected String onReject(Player p) {
         String msg = "";
-        if (this.option.equalsIgnoreCase("buy")){
+        if (getOption().equalsIgnoreCase("buy")){
             msg = "Så ryger feltet på auktion...";
 
-        }else if (this.option.equalsIgnoreCase("payRent")){
+        }else if (getOption().equalsIgnoreCase("payRent")){
            msg = "Du er ikke længere med i spillet, makker!";
         }
         return msg;

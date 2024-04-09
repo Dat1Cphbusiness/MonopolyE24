@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 public class Game {
+    private final int id;
     private String name;
 
     private ArrayList<String> listOfActions;
@@ -14,11 +15,11 @@ public class Game {
 
 
     private Player currentPlayer;
-    protected static CardDeck cardDeck;
-    protected static ArrayList<Player> players;
+    protected CardDeck cardDeck;
+    protected ArrayList<Player> players;
 
     private Board board;
-
+ static int count = 0;
 
 
     public Game(String name) {
@@ -34,6 +35,8 @@ public class Game {
         listOfActions.add("2) continue game");
         listOfActions.add("3) quit game");
         this.setup();
+        this.id = count;
+        count++;
     }
 
 
@@ -153,7 +156,7 @@ public class Game {
 
     public void throwAndMove(){
 
-            int result = dice.rollDiceSum();
+            int result = 5; // dice.rollDiceSum();
 
             ui.displayMsg(currentPlayer.getName()+" slog "+dice.getDice()[0] +" og "+dice.getDice()[1]);
             int newPosition = currentPlayer.updatePosition(result);

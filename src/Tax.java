@@ -21,7 +21,7 @@ public class Tax extends Field {
 
     @Override
     protected String onReject(Player p) {
-        int tax = (p.getBalance()/10);
+        int tax = (p.totalValue()/10);
         p.pay(tax);
         String msg = "Du har betalt " + tax + "kr i skat";
         return msg;

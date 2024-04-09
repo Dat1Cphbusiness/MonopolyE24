@@ -1,10 +1,13 @@
 public class Field {
     private int ID;
     private String label;
-    protected int cost;
-    protected int income;
-    protected String option;
-    protected Board board;
+    private int cost;
+    private int income;
+    private String option;
+
+    public String getOption() {
+        return option;
+    }
 
     public Field(int id, String label, int cost, int income) {
         this.ID = id;
@@ -42,11 +45,11 @@ public class Field {
     }
 
     protected String onAccept(Player p) {
-        return "";
+        return "Du tastede Y \n ";
     }
 
     protected String onReject(Player p) {
-        return "";
+        return "Du tasted N \n";
     }
 
     public String getLabel() {
@@ -58,5 +61,17 @@ public class Field {
     }
     public int getCost(){
         return this.cost;
+    }
+
+    protected void setOption(String option) {
+        this.option = option;
+    }
+
+    protected void setIncome(int income) {
+        this.income= income;
+    }
+
+    protected void setCost(int cost) {
+        this.cost = cost;
     }
 }
