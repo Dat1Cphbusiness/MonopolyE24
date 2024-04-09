@@ -16,6 +16,7 @@ public class Dice {
         die2 = rand.nextInt(6)+1;
         int sum = die1 + die2;
 
+
         if(die1 == die2){
             isDouble = true;
         }else{
