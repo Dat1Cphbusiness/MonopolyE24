@@ -67,7 +67,8 @@ public class  Player {
     }
 
     public void collect(int amount){
-        for (Player p : Game.getPlayers()){
+      // ArrayList<Player> listOfPlayers = Main.games.get(0).getPlayers();
+        for (Player p : Game.players){
             p.pay(amount, this);
 
         }

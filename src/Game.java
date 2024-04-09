@@ -2,8 +2,7 @@ import java.util.ArrayList;
 
 public class Game {
     private String name;
-    private static ArrayList<Player> players;
-    protected static CardDeck cardDeck;
+
     private ArrayList<String> listOfActions;
     private TextUI ui;
     private FileIO io;
@@ -15,9 +14,11 @@ public class Game {
 
 
     private Player currentPlayer;
-
+    protected static CardDeck cardDeck;
+    protected static ArrayList<Player> players;
 
     private Board board;
+
 
 
     public Game(String name) {
@@ -35,17 +36,16 @@ public class Game {
         this.setup();
     }
 
-    public static ArrayList<Player> getPlayers() {
-        return players;
 
-    }
 
     private void setup() {
          String [] fieldData = io.readBoardData(fieldDataPath,40);
          this.board = new Board(fieldData);
 
+
          String [] cardData = io.readBoardData(cardDataPath,46);
          this.cardDeck = new CardDeck(cardData);
+
     }
 
 
@@ -153,7 +153,7 @@ public class Game {
 
     public void throwAndMove(){
 
-            int result = 3;//dice.rollDiceSum();
+            int result = dice.rollDiceSum();
 
             ui.displayMsg(currentPlayer.getName()+" slog "+dice.getDice()[0] +" og "+dice.getDice()[1]);
             int newPosition = currentPlayer.updatePosition(result);
@@ -175,5 +175,13 @@ public class Game {
 
     public Player getCurrentPlayer() {
         return currentPlayer;
+    }
+
+    public ArrayList<Player> getPlayers() {
+        return players;
+    }
+
+    public CardDeck getDeck() {
+        return this.cardDeck;
     }
 }

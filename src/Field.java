@@ -4,6 +4,7 @@ public class Field {
     protected int cost;
     protected int income;
     protected String option;
+    protected Board board;
 
     public Field(int id, String label, int cost, int income) {
         this.ID = id;

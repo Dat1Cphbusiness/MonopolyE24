@@ -29,8 +29,8 @@ public class CardDeck{
         if (cards.size() == counter) {
             counter = 0;
             Collections.shuffle(cards);
-
         }
+
         Card nextCard = cards.get(counter);
         counter++;
         return nextCard;

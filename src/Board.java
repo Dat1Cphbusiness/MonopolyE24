@@ -1,14 +1,19 @@
 import java.util.ArrayList;
 
 public class Board {
+
     private Field[] fields;
     private ArrayList<Property> listOfpropertyFields;
+
+
 
     public Board(String[] data) {
         fields = new Field[40];
         this.listOfpropertyFields = new ArrayList<Property>();
         createFields(data);
+
     }
+
 
     private void createFields(String[] data){
 
@@ -68,4 +73,6 @@ public class Board {
      public Field getField(int i) {
         return fields[i-1];
      }
+
+
 }

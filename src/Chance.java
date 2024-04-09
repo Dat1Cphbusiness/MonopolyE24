@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Chance extends Field{
     public Chance(int id, String label, int cost, int income) {
         super(id, label, cost, income);
@@ -5,6 +7,8 @@ public class Chance extends Field{
 
     @Override
     public String onLand(Player p) {
+        //CardDeck deck = Main.games.get(0).getDeck();
+
         Card card = Game.cardDeck.getNext();
         String s = super.onLand(p);
         this.cost = card.getCost();
