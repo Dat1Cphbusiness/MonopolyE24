@@ -6,14 +6,18 @@ public class Dice {
     Random rand = new Random();
     private int dice1;
     private int dice2;
+    private int[] die = new int[2];
+
+
+
 
     public int rollDiceSum(){
-       dice1  = rand.nextInt(6)+1;
-       dice2 = rand.nextInt(6)+1;
-       int sum = dice1 + dice2;
+        dice1 = rand.nextInt(6)+1;
+        dice2 = rand.nextInt(6)+1;
+        int sum = dice1 + dice2;
 
         if(dice1 == dice2){
-           isDouble = true;
+            isDouble = true;
         }else{
             isDouble = false;
         }
@@ -25,6 +29,12 @@ public class Dice {
     public boolean isDouble(){
         return isDouble;
 
+    }
+
+    public int [] getDie(){
+        die[0] = this.dice1;
+        die[1] = this.dice2;
+        return die;
     }
 
 

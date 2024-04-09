@@ -58,7 +58,7 @@ public class Game {
     }
 
     public void runDialog(){
-        ui.displayMsg("welcome to "+this.name);
+        ui.displayMsg("Welcome to "+this.name);
 
         int action=0;
         while(action != listOfActions.size()){// the quit action is the last action
