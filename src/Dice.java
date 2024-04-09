@@ -4,26 +4,24 @@ public class Dice {
 
     private boolean isDouble;
     Random rand = new Random();
-    private int dice1;
-    private int dice2;
-    private int[] die = new int[2];
+    private int die1;
+    private int die2;
+    private int[] dice = new int[2];
 
 
 
 
     public int rollDiceSum(){
-        dice1 = rand.nextInt(6)+1;
-        dice2 = rand.nextInt(6)+1;
-        int sum = dice1 + dice2;
+        die1 = rand.nextInt(6)+1;
+        die2 = rand.nextInt(6)+1;
+        int sum = die1 + die2;
 
-        if(dice1 == dice2){
+        if(die1 == die2){
             isDouble = true;
         }else{
             isDouble = false;
         }
         return sum;
-
-
     }
 
     public boolean isDouble(){
@@ -31,10 +29,10 @@ public class Dice {
 
     }
 
-    public int [] getDie(){
-        die[0] = this.dice1;
-        die[1] = this.dice2;
-        return die;
+    public int [] getDice(){
+        dice[0] = this.die1;
+        dice[1] = this.die2;
+        return dice;
     }
 
 

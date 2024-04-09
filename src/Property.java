@@ -18,7 +18,7 @@ public class Property extends Field {
         String msg = super.onLand(p);
         if(owner == null){
             this.option  = "buy";
-            msg += "\nVil du købe " + super.getLabel() + "? (Y/N)";
+            msg += "\nVil du købe " + super.getLabel() + " til "+this.getCost()+"? (Y/N)";
         }else if(owner != p){
             this.option = "payRent";
             msg += "\nDu skal betale " + super.getIncome() + ". Indforstået Y/N";
@@ -43,7 +43,14 @@ public class Property extends Field {
 
     @Override
     protected String onReject(Player p) {
-        return "";
+        String msg = "";
+        if (this.option.equalsIgnoreCase("buy")){
+            msg = "Så ryger feltet på auktion...";
+
+        }else if (this.option.equalsIgnoreCase("payRent")){
+           msg = "Du er ikke længere med i spillet, makker!";
+        }
+        return msg;
     }
 }
 

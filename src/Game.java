@@ -48,10 +48,6 @@ public class Game {
     }
 
 
-
-
-
-
     public void createPlayer(String name, int balance) {
             currentPlayer = new Player(name, balance);
             this.players.add(currentPlayer);
@@ -139,7 +135,11 @@ public class Game {
 
             // todo: var det et dobbelslag?
             //todo: some kind of counter
+            // if currentPlayer diceDoubleCount  > 0  && <3 , count--
+
             currentPlayer = players.get(count);
+            // if currentPlayer diceDoubleCount == 3, i fængsel
+
             ui.displayMsg("Det er "+currentPlayer.getName()+"'s tur");
             throwAndMove();
             input = ui.promptText("Fortsæt? Y/N: ");
@@ -152,14 +152,13 @@ public class Game {
 
     public void throwAndMove(){
 
-            int result = dice.rollDiceSum();
-            ui.displayMsg(currentPlayer.getName()+" slog "+result);
+            int result = 2;//dice.rollDiceSum();
+
+            ui.displayMsg(currentPlayer.getName()+" slog "+dice.getDice()[0] +" og "+dice.getDice()[1]);
             int newPosition = currentPlayer.updatePosition(result);
             Field f = board.getField(newPosition);
 
-        //  System.out.println(f);
-
-           landAndAct(f);
+            landAndAct(f);
 
     }
 

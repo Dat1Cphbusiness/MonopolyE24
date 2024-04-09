@@ -31,28 +31,28 @@ public class Board {
                    f = new Chance(id, label, income, cost);
                     break;
                 case "Start":
-                    f = new Start(id, label, income, cost);
+                    f = new Start(id, label,  cost, income);
                     break;
-                case "Shipping Line":
-                    f = new ShippingLine(id, label, income, cost, seriesID);
+                case "ShippingLine":
+                    f = new ShippingLine(id, label,  cost, income, seriesID);
                     break;
                 case "Plot":
-                    f = new Plot(id, label, income, cost, seriesID);
+                    f = new Plot(id, label, cost, income, seriesID);
                     break;
                 case "Tax":
-                    f = new Tax(id, label, income, cost);
+                    f = new Tax(id, label,  cost, income);
                     break;
                 case "Visit":
-                    f = new Visit(id, label, income, cost);
+                    f = new Visit(id, label,  cost, income);
                     break;
                 case "Parkering":
-                    f = new Parking(id, label, income, cost);
+                    f = new Parking(id, label,  cost, income);
                     break;
                 case "Brewery":
-                    f = new Brewery(id, label, income, cost, seriesID);
+                    f = new Brewery(id, label, cost, income, seriesID);
                     break;
                 case "Prison":
-                    f = new Prison(id, label, income, cost);
+                    f = new Prison(id, label, cost, income);
                     break;
                 default: f = new Field(id, label, cost, income);
             }
