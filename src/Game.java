@@ -153,7 +153,7 @@ public class Game {
 
     public void throwAndMove(){
 
-            int result = 2;//dice.rollDiceSum();
+            int result = 3;//dice.rollDiceSum();
 
             ui.displayMsg(currentPlayer.getName()+" slog "+dice.getDice()[0] +" og "+dice.getDice()[1]);
             int newPosition = currentPlayer.updatePosition(result);

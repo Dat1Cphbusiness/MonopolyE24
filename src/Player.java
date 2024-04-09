@@ -33,7 +33,12 @@ public class  Player {
     }
 
     public int updatePosition(int value){
+
         this.position += value;
+        if(position > 40){
+            //todo pay borgerløn
+            position-=40;
+        }
         return position;
     }
 
