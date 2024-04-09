@@ -4,14 +4,13 @@ public class Dice {
 
     private boolean isDouble;
     Random rand = new Random();
-
-
-
+    private int dice1;
+    private int dice2;
 
     public int rollDiceSum(){
-        int dice1 = rand.nextInt(6)+1;
-        int dice2 = rand.nextInt(6)+1;
-        int sum = dice1 + dice2;
+       dice1  = rand.nextInt(6)+1;
+       dice2 = rand.nextInt(6)+1;
+       int sum = dice1 + dice2;
 
         if(dice1 == dice2){
            isDouble = true;

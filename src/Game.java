@@ -9,7 +9,7 @@ public class Game {
     private String playerDataPath = "data/playerData.csv";
     private String fieldDataPath = "data/fieldData.csv";
     private String cardDataPath = "data/cardData.csv";
-   private Dice dice = new Dice();
+    private Dice dice = new Dice();
     private int maxPlayers = 6;
 
 
@@ -88,7 +88,6 @@ public class Game {
 
 
     private void endGame() {
-
         io.saveData(this.players, playerDataPath);
     }
     public void loadPlayerData() {
@@ -152,8 +151,9 @@ public class Game {
     }
 
     public void throwAndMove(){
-            int result = dice.rollDiceSum();
 
+            int result = dice.rollDiceSum();
+            ui.displayMsg(currentPlayer.getName()+" slog "+result);
             int newPosition = currentPlayer.updatePosition(result);
             Field f = board.getField(newPosition);
 
