@@ -8,7 +8,7 @@ public class Chance extends Field{
     @Override
     public String onLand(Player p) {
 
-        CardDeck deck = Main.games.get(0).getDeck();
+        CardDeck deck = Main.getCurrentGame().getDeck();
         Card card = deck.getNext();
         String s = super.onLand(p);
         this.setCost(card.getCost());
