@@ -163,12 +163,12 @@ public class Game {
 
      public void landAndAct(Field f){
 
-        String msg = f.onLand(currentPlayer);
-        //if(somethingToProcess) {
-            boolean response = ui.promptBinary(msg, "Y", "N");
-            msg = f.processResponse(response, currentPlayer);
-            ui.displayMsg(msg);
-       // }
+         String msg = f.onLand(currentPlayer);
+         //if(somethingToProcess) {
+         boolean response = ui.promptBinary(msg, "Y", "N");
+         msg = f.processResponse(response, currentPlayer);
+         ui.displayMsg(msg);
+         // }
 
      }
 
