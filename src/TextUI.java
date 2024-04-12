@@ -12,7 +12,7 @@ public class TextUI {
         }
     }
     public String promptText(String msg){
-        System.out.println(msg);
+        displayMsg(msg);
         String input = scan.nextLine();
         return input;
     }
@@ -46,8 +46,9 @@ public class TextUI {
     }
 
   public void displayMsg(String msg){
-
+      System.out.println("\n***************");
       System.out.println(msg);
+      System.out.println("***************\n");
   }
 
 }
