@@ -16,13 +16,14 @@ public class Field {
         this.income = income;
     }
 
-    public String processResponse(String input, Player p) {
+    public String processResponse(boolean input, Player p) {//change to boolean argument
         String msg = "";
-        if (input.equalsIgnoreCase("Y")) {
+        if (input) {//change to boolean eval
             msg = onAccept(p);
-        } else if (input.equalsIgnoreCase("N")) {
+        } else {//change to boolean eval
             msg = onReject(p);
         }
+
         return msg;
     }
 
