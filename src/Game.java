@@ -2,11 +2,11 @@ import processing.core.PApplet;
 
 import java.util.ArrayList;
 
-public class Game {
+public class Game extends PApplet{
     private final int id;
+    private PApplet pApplet;
     private String name;
     private static boolean processFlag = true;
-
     private ArrayList<String> listOfActions;
     private TextUI ui;
     private FileIO io;
@@ -15,7 +15,6 @@ public class Game {
     private String cardDataPath = "data/cardData.csv";
     private Dice dice = new Dice();
     private int maxPlayers = 6;
-
 
     private Player currentPlayer;
     protected CardDeck cardDeck;
@@ -38,17 +37,29 @@ public class Game {
         listOfActions.add("1) start new game");
         listOfActions.add("2) continue game");
         listOfActions.add("3) quit game");
-        this.setup();
+        this.boardSetup();
         this.id = count;
         count++;
     }
 
-    public static void setProcessFlag(boolean b) {
+    /**
+    *
+    * Contructor overloading. Used when GUI is present
+    * Alternatively, subclass Game with GraphicalGame and TextBasedGame
+    *
+    * */
+    public Game(String name, PApplet pApplet){
+
+        this(name);
+        this.pApplet = pApplet;
+    }
+
+    public void setProcessFlag(boolean b) {
         processFlag = b;
     }
 
 
-    private void setup() {
+    private void boardSetup() {
          String [] fieldData = io.readBoardData(fieldDataPath,40);
          this.board = new Board(fieldData);
          String [] cardData = io.readBoardData(cardDataPath,46);
@@ -64,6 +75,7 @@ public class Game {
     }
 
     public void runDialog(){
+
         ui.displayMsg("Welcome to "+this.name);
         int action=0;
         while(action != listOfActions.size()){// the quit action is the last action
@@ -195,5 +207,20 @@ public class Game {
 
     public CardDeck getDeck() {
         return this.cardDeck;
+    }
+
+    public int getID() {
+        return id;
+    }
+
+    public Board getBoard() {
+        return this.board;
+    }
+    public void setup(){
+        String[] appletArgs = new String[]{"Game"};
+        PApplet.main(appletArgs);
+    }
+    public void settings() {
+        size(760, 900);
     }
 }
