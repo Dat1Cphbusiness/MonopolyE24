@@ -17,16 +17,16 @@ public class Property extends Field {
     public String onLand(Player p) {
         String msg = super.onLand(p);
         if(owner == null){
-         //
           if(  p.hasSufficientFunds(this.getCost())) {
               this.setOption("buy");
               msg += "\nVil du købe " + super.getLabel() + " til " + this.getCost() + "? (Y/N)";
           }else{
-              //Tjek om spilleren ejer nogen ejendomme
-
-              this.setOption("pawn");
-              msg += "\nVil du pantsætte ";
-              //hvis ikke, sæt ejendommmen på auktion
+                  msg = "Du har ikke midlerne til denne grund";
+                  // Todo:
+                  // Tjek om spilleren ejer nogen ejendomme
+                  // this.setOption("pawn");
+                  // msg += "\nVil du pantsætte ";
+                  // hvis ikke, sæt ejendommmen på auktion
           }
         }else if(owner != p){
             this.setOption("payRent");
@@ -40,13 +40,9 @@ public class Property extends Field {
         String msg = "";
         if (this.getOption().equalsIgnoreCase("buy")){
 
-          if(p.buyProperty(this)) {
+
               msg = "Du har købt "+this.getLabel();
               this.owner = p;
-          }else{
-              msg = "Du har ikke midlerne til denne grund";
-              // Todo: ...vil du pantsætte? StartPawnFlow()
-          }
 
         }else if (this.getOption().equalsIgnoreCase("payRent")){
             msg ="Du har betalt til "+this.owner; //Evt ændre fra label til ejer af "Deed"
