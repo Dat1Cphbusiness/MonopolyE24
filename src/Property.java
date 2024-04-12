@@ -18,10 +18,12 @@ public class Property extends Field {
         String msg = super.onLand(p);
         if(owner == null){
           if(  p.hasSufficientFunds(this.getCost())) {
+              Game.setProcessFlag(true);
               this.setOption("buy");
               msg += "\nVil du købe " + super.getLabel() + " til " + this.getCost() + "? (Y/N)";
           }else{
-                  msg = "Du har ikke midlerne til denne grund";
+              msg += "\nDu har ikke midlerne til denne grund";
+              Game.setProcessFlag(false);
                   // Todo:
                   // Tjek om spilleren ejer nogen ejendomme
                   // this.setOption("pawn");

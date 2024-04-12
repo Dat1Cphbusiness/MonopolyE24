@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class Game {
     private final int id;
     private String name;
+    private static boolean processFlag = true;
 
     private ArrayList<String> listOfActions;
     private TextUI ui;
@@ -39,6 +40,9 @@ public class Game {
         count++;
     }
 
+    public static void setProcessFlag(boolean b) {
+        processFlag = b;
+    }
 
 
     private void setup() {
@@ -164,11 +168,14 @@ public class Game {
      public void landAndAct(Field f){
 
          String msg = f.onLand(currentPlayer);
-         //if(somethingToProcess) {
-         boolean response = ui.promptBinary(msg, "Y", "N");
-         msg = f.processResponse(response, currentPlayer);
-         ui.displayMsg(msg);
-         // }
+
+         if(processFlag) {
+            boolean response = ui.promptBinary(msg, "Y", "N");
+            msg = f.processResponse(response, currentPlayer);
+            ui.displayMsg(msg);
+          }else{
+             ui.displayMsg(msg);
+         }
 
      }
 
