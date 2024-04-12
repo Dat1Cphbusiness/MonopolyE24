@@ -46,6 +46,8 @@ public class  Player {
     public boolean buyProperty(Field f){
         f.getCost();
         boolean success = this.account.withdraw(f.getCost());
+
+
         return success;
 
     }

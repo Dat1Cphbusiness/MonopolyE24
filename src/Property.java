@@ -31,9 +31,13 @@ public class Property extends Field {
     protected String onAccept(Player p) {
         String msg = "";
         if (this.getOption().equalsIgnoreCase("buy")){
-            msg = "Du har købt "+this.getLabel();
-            p.buyProperty(this);
-            this.owner = p;
+
+          if(p.buyProperty(this)) {
+              msg = "Du har købt "+this.getLabel();
+              this.owner = p;
+          }else{
+              msg = "Du har ikke midlerne til denne grund vil du pantsætte?";
+          }
 
         }else if (this.getOption().equalsIgnoreCase("payRent")){
             msg ="Du har betalt til "+this.owner; //Evt ændre fra label til ejer af "Deed"

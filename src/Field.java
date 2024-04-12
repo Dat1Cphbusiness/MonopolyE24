@@ -16,15 +16,12 @@ public class Field {
         this.income = income;
     }
 
-    public String processResponse(String response, Player p) {
+    public String processResponse(String input, Player p) {
         String msg = "";
-        if (response.equalsIgnoreCase("Y")) {
+        if (input.equalsIgnoreCase("Y")) {
             msg = onAccept(p);
-        } else if (response.equalsIgnoreCase("N")) {
+        } else if (input.equalsIgnoreCase("N")) {
             msg = onReject(p);
-        } else {
-            System.out.println("Invalid input");
-            processResponse(response, p);
         }
         return msg;
     }

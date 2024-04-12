@@ -165,7 +165,7 @@ public class Game {
 
         String msg = f.onLand(currentPlayer);
         //if(somethingToProcess) {
-            String response = ui.promptText(msg);
+         String response = ui.promptBinary(msg, "Y", "N");
             msg = f.processResponse(response, currentPlayer);
             ui.displayMsg(msg);
        // }
