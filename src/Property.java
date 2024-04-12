@@ -36,7 +36,8 @@ public class Property extends Field {
               msg = "Du har købt "+this.getLabel();
               this.owner = p;
           }else{
-              msg = "Du har ikke midlerne til denne grund vil du pantsætte?";
+              msg = "Du har ikke midlerne til denne grund";
+              // Todo: ...vil du pantsætte? StartPawnFlow()
           }
 
         }else if (this.getOption().equalsIgnoreCase("payRent")){

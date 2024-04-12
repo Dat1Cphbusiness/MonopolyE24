@@ -16,10 +16,19 @@ public class TextUI {
         String input = scan.nextLine();
         return input;
     }
-    public String promptBinary(String msg, String option1, String option2 ){
-        //promptBinary(msg, "0", "1");
-        //todo check at der tastes enten y eller n
+    public boolean promptBinary(String msg, String accept, String reject ){
+        boolean output;
+        // todo: check at der tastes enten y eller n
         // lav rekursivt kald hvis det er noget tredje
+
+        String input = promptText(msg);
+        if(input.equalsIgnoreCase(accept)){
+            return true;
+        }else if(input.equalsIgnoreCase(reject)){
+            return false;
+        }else{
+            return promptBinary(msg,accept, reject);
+        }
 
     }
     public int promptNumeric(String msg){
