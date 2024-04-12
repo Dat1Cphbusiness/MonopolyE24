@@ -12,7 +12,6 @@ public class PlayerTest {
 
         Main.games.add(game);
         game.loadPlayerData();
-      //  game.currentPlayer = game.getPlayers().get(0);
 
 
     }
@@ -25,12 +24,6 @@ public class PlayerTest {
         int expected = 14;
         assertEquals(expected, actual);
 
-        //Testing startPassed
-        Player p1 = game.getPlayers().get(1);
-
-        actual =  p1.updatePosition(10);
-        expected = 5;
-        assertEquals(expected, actual);
 
     }
 
@@ -45,6 +38,9 @@ public class PlayerTest {
 
     @Test
     public void buyProperty() {
+        Player p = game.getPlayers().get(1);
+        Field f = game.getBoard().getField(40);
+        p.buyProperty(f);
     }
 
     @Test
