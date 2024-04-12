@@ -10,13 +10,18 @@ public class Account {
         this.balance = this.balance + amount;
     }
 
-    public boolean withdraw(int amount) {
+    public boolean hasSufficientFunds(int amount){
         if (balance >= amount) {
-            balance = balance -amount;
-
             return true;
         } else {
-         //System.out.println("Not enough money in account");
+            return false;
+        }
+    }
+    public boolean withdraw(int amount) {
+        if (hasSufficientFunds(amount)) {
+            balance = balance -amount;
+            return true;
+        } else {
             return false;
         }
     }
