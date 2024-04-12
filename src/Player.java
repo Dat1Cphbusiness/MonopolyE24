@@ -34,10 +34,9 @@ public class  Player {
     }
 
     public int updatePosition(int value){
-
         this.position += value;
         if(position > 40){
-            //todo pay borgerløn
+            this.pay(Main.getCurrentGame().getBoard().getField(1).getCost());
             position-=40;
         }
         return position;
@@ -47,9 +46,7 @@ public class  Player {
         f.getCost();
         boolean success = this.account.withdraw(f.getCost());
         deeds.add(f);
-
         return success;
-
     }
 
     public boolean pay(int amount){
@@ -70,7 +67,7 @@ public class  Player {
     }
 
     public void collect(int amount){
-      ArrayList<Player> listOfPlayers = Main.games.get(0).getPlayers();
+      ArrayList<Player> listOfPlayers = Main.getCurrentGame().getPlayers();
         for (Player p : listOfPlayers){
             p.pay(amount, this);
 
