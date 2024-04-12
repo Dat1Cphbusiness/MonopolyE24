@@ -17,9 +17,17 @@ public class Property extends Field {
     public String onLand(Player p) {
         String msg = super.onLand(p);
         if(owner == null){
+         //
+          if(  p.hasSufficientFunds(this.getCost())) {
+              this.setOption("buy");
+              msg += "\nVil du købe " + super.getLabel() + " til " + this.getCost() + "? (Y/N)";
+          }else{
+              //Tjek om spilleren ejer nogen ejendomme
 
-            this.setOption("buy");
-            msg += "\nVil du købe " + super.getLabel() + " til "+this.getCost()+"? (Y/N)";
+              this.setOption("pawn");
+              msg += "\nVil du pantsætte ";
+              //hvis ikke, sæt ejendommmen på auktion
+          }
         }else if(owner != p){
             this.setOption("payRent");
             msg += "\nDu skal betale " + super.getIncome() + ". Indforstået Y/N";
