@@ -5,7 +5,7 @@ public class Main extends PApplet{
    static ArrayList<Game> games = new ArrayList<>();
    public void setup(){
 
-       Game game = new Game("Monopoly", this);
+       Game game = new Game("Monopoly");//, this
        games.add(game);
        game.runDialog();
    }

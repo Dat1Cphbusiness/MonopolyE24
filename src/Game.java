@@ -25,7 +25,7 @@ public class Game {
     static int count = 0;
 
 
-    public Game(String name, PApplet pApplet) {
+    public Game(String name) {
 
         this.name = name;
 
