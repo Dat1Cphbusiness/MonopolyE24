@@ -96,4 +96,13 @@ public class  Player {
         return sum;
     }
 
+    public boolean hasSufficientFunds(int amount) {
+        return this.account.hasSufficientFunds(amount);
+    }
+
+    public boolean hasDeeds(){
+
+        return deeds.size() > 0;
+
+    }
 }
