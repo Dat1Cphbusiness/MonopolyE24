@@ -1,3 +1,5 @@
+import processing.core.PApplet;
+
 import java.util.ArrayList;
 
 public class Game {
@@ -20,10 +22,11 @@ public class Game {
     protected ArrayList<Player> players;
 
     private Board board;
- static int count = 0;
+    static int count = 0;
 
 
-    public Game(String name) {
+    public Game(String name, PApplet pApplet) {
+
         this.name = name;
 
         this.ui = new TextUI();
@@ -50,6 +53,9 @@ public class Game {
          this.board = new Board(fieldData);
          String [] cardData = io.readBoardData(cardDataPath,46);
          this.cardDeck = new CardDeck(cardData);
+
+
+
     }
 
     public void createPlayer(String name, int balance, int position) {
