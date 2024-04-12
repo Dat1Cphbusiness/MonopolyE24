@@ -130,8 +130,8 @@ public class Game {
 }
  private void runGameLoop(){
         int count = 0;
-        String input = "Y";
-        while(input.equalsIgnoreCase("Y")){
+        boolean input = true;
+        while(input){
 
             // todo: var det et dobbelslag?
             // todo: some kind of counter
@@ -142,7 +142,7 @@ public class Game {
 
             ui.displayMsg("Det er "+currentPlayer.getName()+"'s tur");
             throwAndMove();
-            input = ui.promptText("Fortsæt? Y/N: ");
+            input = ui.promptBinary("Fortsæt? Y/N: ", "Y", "N");
             count++;
             if(count == players.size()){
                 count = 0;
@@ -165,7 +165,7 @@ public class Game {
 
         String msg = f.onLand(currentPlayer);
         //if(somethingToProcess) {
-         String response = ui.promptBinary(msg, "Y", "N");
+            boolean response = ui.promptBinary(msg, "Y", "N");
             msg = f.processResponse(response, currentPlayer);
             ui.displayMsg(msg);
        // }
