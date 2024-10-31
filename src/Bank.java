@@ -36,19 +36,13 @@ public class Bank {
         String continueDialog = "Y";
         while (continueDialog.equalsIgnoreCase("Y")) {
 
-
             String name = ui.promptText("Type name of customer:");
-
-
             int startAmount = ui.promptNumeric("Type start amount:");
-
 
             Customer c = new Customer(name, startAmount);
             this.addCustomer(c);
 
-
             continueDialog = ui.promptText("Do you wish to create another customer?Y/N");
-
 
         }
     }

@@ -9,6 +9,7 @@ class Bank{
  - List<Customer> customers
  - List<String> listOfActions
  - Customer selectedCustomer
+ - String customerDataPath
  - TextUI ui
  - FileIO io
 
