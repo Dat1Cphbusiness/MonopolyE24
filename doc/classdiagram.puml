@@ -1,0 +1,51 @@
+@startuml
+class Main{
+ {static}+ static void main(String[] args)
+ {static}- saveData()
+}
+
+class Bank{
+ - String name
+ - List<Customer> customers
+ - List<String> listOfActions
+ - Customer selectedCustomer
+ + Bank(String)
+ + void addCustomer(Customer)
+ + void createCustomer(String, double)
+ + void endSession()
+ + List<Customer> getCustomers()
+ + void runCreateCustomersDialog()
+ + String toString()
+}
+
+class Customer{
+ - String name
+ - double balance
+ + Customer(String, double)
+ + void addToBalance(double)
+ + void setBalance(double)
+ + String toString()
+
+}
+
+class TextUI{
+ {static}- Scanner scan
+ {static}+ void displayList(list<String>, String)
+ {static}+ void displayMsg(String)
+ {static}+ int promptChoice(List<String>, String)
+ {static}+int promptNumeric(String)
+ {static}+ String promptText(String)
+
+}
+class FileIO{
+{static}+List<String> readData(String)
+{static}+void saveData(List<String>,String,String)
+}
+
+
+Main *-- Bank
+Bank *-- Customer
+Bank *-- TextUI
+Bank *-- FileIO
+
+@enduml
