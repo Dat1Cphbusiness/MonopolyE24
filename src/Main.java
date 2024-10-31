@@ -1,40 +1,42 @@
-import java.util.ArrayList;
-/*
-*
-TODO: Man modtager plot selvom man ikke har råd (der er noget med pay og buyProperty).
-TODO: Hvis man svarer noget forkert, så crasher programmet grundet rekursivt kald i processResponse.
-TODO: Jail er ikke implementeret.
-updatePosition tager ikke højde for at man kan rykke 3 felter tilbage, og skal tildele penge (4000) når man rykker over start.
-TODO: Balance gemmes ikke i csv.
-TODO: Hvis man slår dobbelt tre gange i træk, så ryger man i fængsel.
-TODO: Nogle chancekort er ikke implementeret endnu.
-André — Today at 9:10 AM
-TODO: Pantsætning er ikke implementeret
-TODO: Når man starter nyt spil, har spillerne ingen penge.
-*
-* */
-public class Main {
-    static ArrayList<Game> games = new ArrayList<>();
-    static int currentID;
 
 
+/** This example demonstrates the foundations of building an object-oriented system in Java.
+ *  It uses the domain of a bank
+ *
+ *
+ *  adHoc_object_creation branch demonstrates the following subjects and techniques:
+ *     Bank class
+ *    - using the Scanner with a while loop for user dialog
+ *    - Scanner bug
+ *
+ *    Main class
+ *    - condition to check state of an array
+ *
+ *
+ *  THINGS TO CONSIDER
+ *
+ *    The user can now add customers to the bank.
+ *    But only if the list of customer objects is empty
+ *    what if we want the user to add customers at various times during the session?
+ *    what about other actions, like adding money to a customer's account?
+ *    How could this be achieved?
+ *
+ */
+
+
+class Main {
 
     public static void main(String[] args) {
 
-        Game game = new Game("Monopoly");
+        Bank bank = new Bank("Sparekassen");
+        bank.createCustomersFromData();
 
-        games.add(game);
+        if(bank.getCustomers().isEmpty()){
+            bank.runCreateCustomersDialog();
+        }
 
+        System.out.print(bank);
 
-        game.runDialog();
-        currentID = game.getID();
+        bank.endSession();
     }
-
-    public static Game getCurrentGame() {
-        return games.get(currentID);
-    }
-
-
-
 }
-

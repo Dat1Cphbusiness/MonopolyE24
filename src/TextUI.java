@@ -1,54 +1,43 @@
+
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class TextUI {
+    Scanner scan = new Scanner(System.in);
 
-    private Scanner scan = new Scanner(System.in);
+    public ArrayList<String> promptChoice(ArrayList<String> options, int limit, String msg){
+        ArrayList<String> choices = new ArrayList<String>();  //Lave en beholder til at gemme brugerens valg
+        int count = 1;
+        while(choices.size() < limit){             //tjekke om brugeren skal vælge flere drinks
+            String choice = promptText(count+":");
+            choices.add(choice);
+            count++;
+        }
+        return choices;
+    }
 
-    public void displayList(ArrayList<String> list, String msg){
+    public void displayList(ArrayList<String> options, String msg){
+        System.out.println("*******");
         System.out.println(msg);
-        for (String option : list) {
-            System.out.println(option);
+        System.out.println("*******");
+
+        int i = 1;
+        for (String option : options) {
+            System.out.println(i+": "+option);
+            i++;
         }
     }
+
     public String promptText(String msg){
-        displayMsg(msg);
+        System.out.println(msg);//Stille brugeren et spørgsmål
         String input = scan.nextLine();
         return input;
     }
-    public boolean promptBinary(String msg, String accept, String reject ){
-        boolean output;
-        // todo: check at der tastes enten y eller n
-        // lav rekursivt kald hvis det er noget tredje
-
-        String input = promptText(msg);
-        if(input.equalsIgnoreCase(accept)){
-            return true;
-        }else if(input.equalsIgnoreCase(reject)){
-            return false;
-        }else{
-            return promptBinary(msg,accept, reject);
-        }
-
-    }
     public int promptNumeric(String msg){
-        String input = promptText(msg);         //Give brugere et sted at placere sit svar og vente pÃ¥ svaret
+        System.out.println(msg);//Stille brugeren et spørgsmål
+        String input = scan.nextLine();          //Give brugere et sted at placere sit svar og vente på svaret
         int number = Integer.parseInt(input);       //Konvertere svaret til et tal
         return number;
     }
-    public int promptChoice(ArrayList<String> optionslist, String msg){//["Gin&Tonic", "Beer","Vine" ]
-        displayMsg(msg);
-        displayList(optionslist, "");
-        int input = promptNumeric("");//1
-      //  return optionslist.get(input-1);
-        return input;
-
-    }
-
-  public void displayMsg(String msg){
-      System.out.println("\n***************");
-      System.out.println(msg);
-      System.out.println("***************\n");
-  }
-
 }
