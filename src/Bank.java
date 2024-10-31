@@ -4,12 +4,14 @@ import java.util.List;
 public class Bank {
     private String name;
     private List<Customer> customers;
-    private TextUI ui = new TextUI();
-    private FileIO io = new FileIO();
+    private TextUI ui;
+    private FileIO io;
 
     public Bank(String name) {
         this.name = name;
         customers = new ArrayList<>();
+        ui = new TextUI();
+        io = new FileIO();
     }
     public void addCustomer(Customer c){
         this.customers.add(c);
