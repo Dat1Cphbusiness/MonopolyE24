@@ -14,9 +14,9 @@ class Game{
  + Game(String name)
  + void runDialog()
  - void createPlayer(String name, int balance)
-  - void displayPlayers()
+ - void displayPlayers()
   ' new: we will load the data as strings and create player objects from the data in each element
-  - loadPlayerData()
+ - loadPlayerData()
  ' new: in a turnbased game we would want to create as many players as the game allows
  - void registerPlayers()
  'new: we need a loop to manage each players' turn during the life cycle of the game

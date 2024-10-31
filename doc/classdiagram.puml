@@ -14,7 +14,7 @@ class Bank{
 
  + Bank(String)
  + void addCustomer(Customer)
- + void createCustomersFromData()
+ + void loadCustomerData()
  + void endSession()
  + List<Customer> getCustomers()
  + void registerCustomers()

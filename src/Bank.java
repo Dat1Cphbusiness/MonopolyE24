@@ -50,7 +50,7 @@ public class Bank {
 
         }
     }
-   public void createCustomersFromData(){
+   public void loadCustomerData(){
      ArrayList<String> data = io.readData("data/customerdata.csv");
 
        if(!data.isEmpty()) {
