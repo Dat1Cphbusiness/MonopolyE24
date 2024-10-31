@@ -4,6 +4,8 @@ import java.util.List;
 public class Bank {
     private String name;
     private List<Customer> customers;
+    private TextUI ui = new TextUI();
+    private FileIO io = new FileIO();
 
     public Bank(String name) {
         this.name = name;
@@ -26,7 +28,7 @@ public class Bank {
     }
 
     public void runCreateCustomersDialog() {
-        TextUI ui = new TextUI();
+
         String continueDialog = "Y";
         while (continueDialog.equalsIgnoreCase("Y")) {
 
@@ -47,7 +49,7 @@ public class Bank {
         }
     }
    public void createCustomersFromData(){
-     ArrayList<String> data = FileIO.readData("data/customerdata.csv");
+     ArrayList<String> data = io.readData("data/customerdata.csv");
 
        if(!data.isEmpty()) {
            for (String s:data) {

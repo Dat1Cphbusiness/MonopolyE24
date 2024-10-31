@@ -3,7 +3,6 @@ class Main{
 + static void main(String[] args)
 }
 
-
 class Game{
  - String name
  - ArrayList<Player> players

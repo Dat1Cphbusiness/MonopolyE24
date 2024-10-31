@@ -9,9 +9,12 @@ class Bank{
  - List<Customer> customers
  - List<String> listOfActions
  - Customer selectedCustomer
+ - TextUI ui
+ - FileIO io
+
  + Bank(String)
  + void addCustomer(Customer)
- + void createCustomer(String, double)
+ + void createCustomersFromData()
  + void endSession()
  + List<Customer> getCustomers()
  + void runCreateCustomersDialog()
