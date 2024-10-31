@@ -6,12 +6,14 @@ public class Bank {
     private List<Customer> customers;
     private TextUI ui;
     private FileIO io;
+    private String customerDataPath;
 
     public Bank(String name) {
         this.name = name;
-        customers = new ArrayList<>();
-        ui = new TextUI();
-        io = new FileIO();
+        this.customers = new ArrayList<>();
+        this.ui = new TextUI();
+        this.io = new FileIO();
+        this.customerDataPath="data/customerdata.csv";
     }
     public void addCustomer(Customer c){
         this.customers.add(c);
@@ -51,7 +53,7 @@ public class Bank {
         }
     }
    public void loadCustomerData(){
-     ArrayList<String> data = io.readData("data/customerdata.csv");
+     ArrayList<String> data = io.readData(this.customerDataPath);
 
        if(!data.isEmpty()) {
            for (String s:data) {
@@ -69,7 +71,7 @@ public class Bank {
         for (Customer c:customers) {
             customersAsText.add(c.toString());
         }
-        FileIO.saveData(customersAsText, "data/customerdata.csv", "name, balance");
+        FileIO.saveData(customersAsText, this.customerDataPath, "name, balance");
     }
 
 }
