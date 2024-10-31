@@ -32,7 +32,7 @@ class Main {
         bank.createCustomersFromData();
 
         if(bank.getCustomers().isEmpty()){
-            bank.createCustomersDialog();
+            bank.registerCustomer();
         }
 
         System.out.print(bank);

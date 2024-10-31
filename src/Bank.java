@@ -29,7 +29,7 @@ public class Bank {
             return customers;
     }
 
-    public void runCreateCustomersDialog() {
+    public void registerCustomer() {
 
         String continueDialog = "Y";
         while (continueDialog.equalsIgnoreCase("Y")) {
