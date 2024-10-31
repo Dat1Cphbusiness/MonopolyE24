@@ -17,7 +17,7 @@ class Bank{
  + void createCustomersFromData()
  + void endSession()
  + List<Customer> getCustomers()
- + void registerCustomer()
+ + void registerCustomers()
  + String toString()
 }
 
