@@ -1,0 +1,26 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+Main -> Game: new()
+Game -> UI: new()
+Game -> IO: new()
+Main -> Game: setup()
+Game -> UI: displayMsg("Welcome")
+Game -> IO: data[]=readData()
+alt data[] not empty
+loop data[]
+Game -> Player: new(name, balance)
+end
+else
+Game -> Game: registerPlayers()
+loop
+Game -> IO: name = promptText("Type player name:")
+Game -> IO: balance = promptText("Type player name:")
+Game -> Player:  new(name, balance)
+end
+end
+Main -> Game:endSession()
+Game -> IO:saveData()
+
+@enduml
+
