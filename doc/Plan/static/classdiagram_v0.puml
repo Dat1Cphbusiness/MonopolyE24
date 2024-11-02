@@ -20,7 +20,7 @@ class Game{
   - void displayPlayers()
 
  'new: we need a loop to manage each players' turn during the life cycle of the game
- - void runGameLoop();
+ + void runGameLoop();
  + void endSession()
 
 }
