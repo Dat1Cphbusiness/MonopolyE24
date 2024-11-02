@@ -14,7 +14,8 @@ end
 alt action 2: Continue game
 
 end
-Game -> IO:saveGame()
-end
 
+end
+Game -> Game: endSession()
+Game -> IO:saveGame()
 @enduml
