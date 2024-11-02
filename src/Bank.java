@@ -46,7 +46,7 @@ public class Bank {
 
         }
     }
-   public void loadCustomerData(){
+   public void loadData(){
      ArrayList<String> data = io.readData(this.customerDataPath);
 
        if(!data.isEmpty()) {

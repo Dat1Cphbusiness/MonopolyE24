@@ -29,7 +29,7 @@ class Main {
     public static void main(String[] args) {
 
         Bank bank = new Bank("Sparekassen");
-        bank.loadCustomerData();
+        bank.loadData();
 
         if(bank.getCustomers().isEmpty()){
             bank.registerCustomer();
