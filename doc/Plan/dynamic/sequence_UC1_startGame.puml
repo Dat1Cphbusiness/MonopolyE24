@@ -9,12 +9,7 @@ Game -> Player: new(name, balance)
 end
 else
 Game -> Game: registerPlayers()
-loop
-Game -> IO: name = promptText("Type player name:")
-Game -> IO: balance = promptText("Type player name:")
-Game -> Player: player = new(name, balance)
-Game -> Game: addPlayer(player)
-end
+
 end
 'indsæt de to sidste kald
 
