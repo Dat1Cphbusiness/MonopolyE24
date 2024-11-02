@@ -32,20 +32,21 @@ class Customer{
 
 }
 
-class TextUI{
- {static}- Scanner scan
- {static}+ void displayList(list<String>, String)
- {static}+ void displayMsg(String)
- {static}+ int promptChoice(List<String>, String)
- {static}+int promptNumeric(String)
- {static}+ String promptText(String)
 
-}
 class FileIO{
-{static}+List<String> readData(String)
-{static}+void saveData(List<String>,String,String)
++ ArrayList<String> readData(String path)
++ void saveData(ArrayList<String> items, String path)
 }
 
+class TextUI{
+- Scanner scanner
++ void displayMsg(String s)
++ int promptNumeric(String msg)
++ String promptText(String msg)
++ int promptChoice(String msg, ArrayList<String> list)
+
+
+}
 
 Main *-- Bank
 Bank *-- Customer

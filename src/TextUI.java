@@ -23,6 +23,7 @@ public class TextUI {
         System.out.println("*******");
 
         int i = 1;
+
         for (String option : options) {
             System.out.println(i+": "+option);
             i++;
@@ -35,9 +36,13 @@ public class TextUI {
         return input;
     }
     public int promptNumeric(String msg){
-        System.out.println(msg);//Stille brugeren et spørgsmål
-        String input = scan.nextLine();          //Give brugere et sted at placere sit svar og vente på svaret
-        int number = Integer.parseInt(input);       //Konvertere svaret til et tal
+        System.out.println(msg);              // Stille brugeren et spørgsmål
+        String input = scan.nextLine();       // Give brugere et sted at placere sit svar og vente på svaret
+        int number = Integer.parseInt(input); // Konvertere svaret til et tal
         return number;
     }
+    public void displayMsg(String msg){
+        System.out.println(msg);
+    }
+
 }

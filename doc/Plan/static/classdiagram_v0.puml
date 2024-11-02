@@ -47,6 +47,7 @@ class TextUI{
 + String promptText(String msg)
 + int promptChoice(String msg, ArrayList<String> list)
 
+
 }
 
 Game *-- TextUI
