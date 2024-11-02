@@ -1,0 +1,21 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+title use-case 1: Start New Game
+
+
+
+Game -> Game: registerPlayers()
+Game -> UI:playerNum = promtText("Type number of players:")
+loop count > playerNum or maxPlayers
+Game -> Game: createPlayer(null, 0)
+alt name == null
+Game -> UI:name = promptText("Type player name: ")
+else
+Game -> Player: new(name, balance)
+end
+end
+
+
+
+@enduml
+
