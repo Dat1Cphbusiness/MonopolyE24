@@ -6,21 +6,22 @@ class Main{
 class Game{
  - String name
  - ArrayList<Player> players
- - ArrayList<String> listOfActions
  - Player currentPlayer
  - TextUI ui
  - FileIO io
  - String playerDataPath
  + Game(String name)
- + void runDialog()
- - void createPlayer(String name, int balance)
- - void displayPlayers()
-  ' new: we will load the data as strings and create player objects from the data in each element
- - loadPlayerData()
- ' new: in a turnbased game we would want to create as many players as the game allows
- - void registerPlayers()
+
+ ' new: the creation of player objects (based on either data or userinput), will happen from the Game class instead of main)
+ + void setUp()
+
+  - void registerPlayers()
+  - void addPlayer(Player p)
+  - void displayPlayers()
+
  'new: we need a loop to manage each players' turn during the life cycle of the game
  - void runGameLoop();
+ + void endSession()
 
 }
 
@@ -35,8 +36,8 @@ class Player{
 
 }
 class FileIO{
-+ ArrayList<String> readPlayerData(String path)
-+ void saveData(ArrayList<Player> players, String path)
++ ArrayList<String> readData(String path)
++ void saveData(ArrayList<String> items, String path)
 }
 
 class TextUI{
