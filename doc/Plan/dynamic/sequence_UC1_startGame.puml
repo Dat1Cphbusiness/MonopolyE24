@@ -2,12 +2,8 @@
 'https://plantuml.com/sequence-diagram
 
 Main -> Game: new()
-Game -> UI: new()
-Game -> IO: new()
-Main -> Game: setup()
-Game -> UI: displayMsg("Welcome")
-Game -> IO: data[]=readData()
-alt data[] not empty
+'indsæt de kald der mangler herfra og ned til at vi tjekker om der var noget spildata
+alt data[] not empty && continue saved game
 loop data[]
 Game -> Player: new(name, balance)
 end
@@ -16,11 +12,11 @@ Game -> Game: registerPlayers()
 loop
 Game -> IO: name = promptText("Type player name:")
 Game -> IO: balance = promptText("Type player name:")
-Game -> Player:  new(name, balance)
+Game -> Player: player = new(name, balance)
+Game -> Game: addPlayer(player)
 end
 end
-Main -> Game:endSession()
-Game -> IO:saveData()
+'indsæt de to sidste kald
 
 @enduml
 
