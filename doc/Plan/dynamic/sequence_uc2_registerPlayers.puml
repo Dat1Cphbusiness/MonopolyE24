@@ -1,5 +1,5 @@
 @startuml
-
+Game -> Game:registerPlayers
 Game -> UI: playerNum = promptNumeric("Type number of players:")
 loop playerNum > players.size()
 Game -> IO: name = promptText("Type player name:")
@@ -7,5 +7,5 @@ Game -> IO: balance = promptText("Type player name:")
 Game -> Player: player = new(name, balance)
 Game -> Game: addPlayer(player)
 end
-Game -> Game: runGameLoop()
+
 @enduml

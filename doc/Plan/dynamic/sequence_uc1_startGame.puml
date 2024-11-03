@@ -2,16 +2,17 @@
 'https://plantuml.com/sequence-diagram
 
 Main -> Game: new()
-'indsæt de kald der mangler herfra og ned til at vi tjekker om der var noget spildata
+'indsæt instansieringer i Game konstruktor
+'indsæt kaldet til setup()
+'indsæt hvad der sker i toppen af setup()
 alt data[] not empty && continue saved game
-loop data[]
-Game -> Player: new(name, balance)
+loop for each s in data[]
+'indsæt hvad der sker i loopet
 end
 else
-Game -> Game: registerPlayers()
+'indsæt kaldet til registerPlayers()
 
 end
-'indsæt de to sidste kald
 
 @enduml
 

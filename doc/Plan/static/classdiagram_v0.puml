@@ -12,10 +12,12 @@ class Game{
  - String playerDataPath
  + Game(String name)
 
- ' new: the creation of player objects (based on either data or userinput), will happen from the Game class instead of main)
+ ' gamedataload, object creation, option to start new game
  + void setUp()
 
+ 'object creation with UI
   - void registerPlayers()
+
   - void addPlayer(Player p)
   - void displayPlayers()
 
