@@ -49,9 +49,10 @@ public class Game {
     }   // end registerPlayer()
 
    public void setup(){
+     ui.displayMsg("Velkomst!\n");
      ArrayList<String> data = io.readData(this.playerDataPath);
 
-       if(!data.isEmpty()) {
+       if(!data.isEmpty() && ui.promptText("Continue previously saved gamed? Y/N").equalsIgnoreCase("Y")) {
            for (String str  :  data) {
                String[] values= str.split(",");
                String name = values[0];
