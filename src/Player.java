@@ -1,9 +1,9 @@
 
-public class Customer {
+public class Player {
 
     private String name;
     private int balance;
-    public Customer(String name, int balance) {
+    public Player(String name, int balance) {
         this.name = name;
         this.balance = balance;
     }
@@ -18,6 +18,10 @@ public class Customer {
 
     public String toString(){
         return this.name + ", "+ this.balance;
+    }
+
+    public String getName(){
+        return this.name;
     }
 
 }
