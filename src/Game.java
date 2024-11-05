@@ -50,7 +50,7 @@ public class Game {
         ui.displayMsg("velkommen til Matador");
      ArrayList<String> data = io.readData(this.playerDataPath);
 
-       if(!data.isEmpty()) {
+       if(!data.isEmpty() && ui.promptText("Continue previously saved game? Y/N").equalsIgnoreCase("Y")) {
            for (String s:data) {
                String[] values= s.split(",");
                String name = values[0];

@@ -5,7 +5,7 @@ public class Player {
     private int balance;
     public Player(String name, int startAmount) {
         this.name = name;
-        this.balance = balance;
+        this.balance = startAmount;
     }
 
 
