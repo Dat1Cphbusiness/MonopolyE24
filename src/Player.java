@@ -19,7 +19,7 @@ public class Player {
     
     public String getName() {
         return this.name;
-    }
+    }   // end getName
 
     public String toString(){
         return this.name + ", "+ this.balance;
