@@ -21,14 +21,14 @@ public class Game {
         this.players.add(c);
     }   // end addPlayer()
 
+    @Override
     public String toString(){
         String str = "";
         for (Player c: players) {
-            str+=c+"\n";
+            str += c + "\n";
         }   // end for-each loop
         return str;
     }   // end toString()
-
 
     public List getPlayers() {
             return players;
@@ -48,7 +48,7 @@ public class Game {
         }   // end while-loop
     }   // end registerPlayer()
 
-   public void loadData(){
+   public void setup(){
      ArrayList<String> data = io.readData(this.playerDataPath);
 
        if(!data.isEmpty()) {
@@ -59,7 +59,9 @@ public class Game {
                Player c = new Player(name, balance);
                players.add(c);
            }    // end for-each loop
-       }    // end if-statement
+       }  else {
+           registerPlayer();
+       }    // end if-else statement
    }    // end loadData()
 
     public void endSession(){

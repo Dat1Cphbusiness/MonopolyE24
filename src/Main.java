@@ -29,11 +29,7 @@ class Main {
     public static void main(String[] args) {
 
         Game game = new Game("Matador");
-        game.loadData();    // reads the playerdata.csv file
-
-        if(game.getPlayers().isEmpty()){
-            game.registerPlayer();
-        }
+        game.setup();    // reads the playerdata.csv file
 
         System.out.print(game);
 
