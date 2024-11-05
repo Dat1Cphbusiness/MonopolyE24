@@ -1,19 +1,19 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Bank {
+public class Game {
     private String name;
     private List<Player> players;
     private TextUI ui;
     private FileIO io;
-    private String customerDataPath;
+    private String playerDataPath;
 
-    public Bank(String name) {
+    public Game(String name) {
         this.name = name;
         this.players = new ArrayList<>();
         this.ui = new TextUI();
         this.io = new FileIO();
-        this.customerDataPath="data/customerdata.csv";
+        this.playerDataPath="data/playerdata.csv";
     }
     public void addCustomer(Player c){
         this.players.add(c);
@@ -31,12 +31,12 @@ public class Bank {
             return players;
     }
 
-    public void registerCustomer() {
+    public void registerPlayer() {
 
         String continueDialog = "Y";
         while (continueDialog.equalsIgnoreCase("Y")) {
 
-            String name = ui.promptText("Type name of customer:");
+            String name = ui.promptText("Type name of player:");
             int startAmount = ui.promptNumeric("Type start amount:");
 
             Player c = new Player(name, startAmount);
