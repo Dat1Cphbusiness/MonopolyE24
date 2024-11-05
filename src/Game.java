@@ -1,37 +1,37 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Bank {
+public class Game {
     private String name;
-    private List<Customer> customers;
+    private List<Player> players;
     private TextUI ui;
     private FileIO io;
-    private String customerDataPath;
+    private String playerDataPath;
 
-    public Bank(String name) {
+    public Game(String name) {
         this.name = name;
-        this.customers = new ArrayList<>();
+        this.players = new ArrayList<>();
         this.ui = new TextUI();
         this.io = new FileIO();
-        this.customerDataPath="data/customerdata.csv";
+        this.playerDataPath="data/playerdata.csv";
     }
-    public void addCustomer(Customer c){
-        this.customers.add(c);
+    public void addPlayers(Player c){
+        this.players.add(c);
     }
     public String toString(){
         String s = "";
-        for (Customer c:customers) {
+        for (Player c: players) {
             s+=c+"\n";
         }
         return s;
     }
 
 
-    public List getCustomers() {
-            return customers;
+    public List getPlayers() {
+            return players;
     }
 
-    public void registerCustomer() {
+    public void registerPlayers() {
 
         String continueDialog = "Y";
         while (continueDialog.equalsIgnoreCase("Y")) {
@@ -39,33 +39,33 @@ public class Bank {
             String name = ui.promptText("Type name of customer:");
             int startAmount = ui.promptNumeric("Type start amount:");
 
-            Customer c = new Customer(name, startAmount);
-            this.addCustomer(c);
+            Player c = new Player(name, startAmount);
+            this.addPlayers(c);
 
             continueDialog = ui.promptText("Do you wish to create another customer?Y/N");
 
         }
     }
    public void loadData(){
-     ArrayList<String> data = io.readData(this.customerDataPath);
+     ArrayList<String> data = io.readData(this.playerDataPath);
 
        if(!data.isEmpty()) {
            for (String s:data) {
                String[] values= s.split(",");
                String name = values[0];
                int balance = Integer.parseInt(values[1].trim());
-               Customer c = new Customer(name, balance);
-               customers.add(c);
+               Player c = new Player(name, balance);
+               players.add(c);
            }
        }
    }
     public void endSession(){
 
         ArrayList<String> customersAsText = new ArrayList<>();
-        for (Customer c:customers) {
+        for (Player c: players) {
             customersAsText.add(c.toString());
         }
-        FileIO.saveData(customersAsText, this.customerDataPath, "name, balance");
+        FileIO.saveData(customersAsText, this.playerDataPath, "name, balance");
     }
 
 }

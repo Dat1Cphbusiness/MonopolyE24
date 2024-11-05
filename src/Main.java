@@ -28,15 +28,15 @@ class Main {
 
     public static void main(String[] args) {
 
-        Bank bank = new Bank("Sparekassen");
-        bank.loadData();
+        Game game = new Game("Sparekassen");
+        game.loadData();
 
-        if(bank.getCustomers().isEmpty()){
-            bank.registerCustomer();
+        if(game.getPlayers().isEmpty()){
+            game.registerPlayers();
         }
 
-        System.out.print(bank);
+        System.out.print(game);
 
-        bank.endSession();
+        game.endSession();
     }
 }
