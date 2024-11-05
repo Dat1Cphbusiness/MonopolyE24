@@ -11,17 +11,17 @@ public class Player {
 
     public void addToBalance(int amount) {
         this.setBalance(this.balance+amount);
-    }   // end addToBalance
+    }   // end addToBalance()
 
     public void setBalance(int amount){
         this.balance = amount;
-    }   // end setBalance
+    }   // end setBalance()
     
     public String getName() {
         return this.name;
-    }   // end getName
+    }   // end getName()
 
     public String toString(){
         return this.name + ", "+ this.balance;
-    }   // end toString
+    }   // end toString()
 }   // end Customer

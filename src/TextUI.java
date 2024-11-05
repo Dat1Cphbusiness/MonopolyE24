@@ -13,7 +13,7 @@ public class TextUI {
             count++;
         }   // end while
         return choices;
-    }   // end promptChoice
+    }   // end promptChoice()
 
     public void displayList(ArrayList<String> options, String msg){
         /*
@@ -30,7 +30,7 @@ public class TextUI {
             System.out.println(i + ": "+option); // prints a number based on each index of the ArrayList (index 1) & print the String for each index
             ++i;
         }   // end for-each loop
-    }   // end displayList
+    }   // end displayList()
 
     public String promptText(String msg){
         /*
@@ -39,7 +39,7 @@ public class TextUI {
         System.out.println(msg);//Stille brugeren et spørgsmål
         String input = scan.nextLine(); // saves userInput in 'input' variable
         return input;   // returns
-    }   // end promptText
+    }   // end promptText()
 
     public int promptNumeric(String msg){
         /*
@@ -49,12 +49,12 @@ public class TextUI {
         String input = scan.nextLine();       // Give brugere et sted at placere sit svar og vente på svaret
         int number = Integer.parseInt(input); // Konvertere svaret til et tal
         return number;
-    }   // end PromptNumeric
+    }   // end PromptNumeric()
 
     public void displayMsg(String msg){
         /*
         Displays a message which is the parameter for the func
          */
         System.out.println(msg);
-    }   // end displayMsg
+    }   // end displayMsg()
 }   // end TextUI

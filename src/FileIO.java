@@ -24,7 +24,7 @@ public class FileIO {
             System.out.println("File was not found");
         }   // end try-catch
         return data;
-    }   // end readData
+    }   // end readData()
 
     public static void saveData(List<String> items, String path, String header) {
         try {
@@ -38,5 +38,5 @@ public class FileIO {
         }catch (IOException e){
             System.out.println("something went wrong when writing to file");
         }   // end try-catch
-    }   // end saveData
+    }   // end saveData()
 }   // end FileIO
