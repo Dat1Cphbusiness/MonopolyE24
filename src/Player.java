@@ -12,6 +12,10 @@ public class Player {
         return name;
     }
 
+    public int getBalance() {
+        return balance;
+    }
+
     public void addToBalance(int amount) {
         this.setBalance(this.balance+amount);
     }
