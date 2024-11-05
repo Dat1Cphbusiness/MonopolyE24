@@ -35,6 +35,7 @@ public class TextUI {
         String input = scan.nextLine();
         return input;
     }
+
     public int promptNumeric(String msg){
         System.out.println(msg);              // Stille brugeren et spørgsmål
         String input = scan.nextLine();       // Give brugere et sted at placere sit svar og vente på svaret

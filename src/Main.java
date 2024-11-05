@@ -28,12 +28,8 @@ class Main {
 
     public static void main(String[] args) {
 
-        Game game = new Game("Sparekassen");
-        game.loadData();
-
-        if(game.getPlayers().isEmpty()){
-            game.registerPlayers();
-        }
+        Game game = new Game("Matador");
+        game.setup();
 
         System.out.print(game);
 
