@@ -15,7 +15,7 @@ public class Game {
         this.io = new FileIO();
         this.playerDataPath="data/playerdata.csv";
     }
-    public void addCustomer(Player c){
+    public void addPlayer(Player c){
         this.players.add(c);
     }
     public String toString(){
@@ -27,7 +27,7 @@ public class Game {
     }
 
 
-    public List getCustomers() {
+    public List getPlayer() {
             return players;
     }
 
@@ -40,14 +40,14 @@ public class Game {
             int startAmount = ui.promptNumeric("Type start amount:");
 
             Player c = new Player(name, startAmount);
-            this.addCustomer(c);
+            this.addPlayer(c);
 
-            continueDialog = ui.promptText("Do you wish to create another customer?Y/N");
+            continueDialog = ui.promptText("Do you wish to create another player?Y/N");
 
         }
     }
    public void loadData(){
-     ArrayList<String> data = io.readData(this.customerDataPath);
+     ArrayList<String> data = io.readData(this.playerDataPath);
 
        if(!data.isEmpty()) {
            for (String s:data) {
@@ -61,11 +61,11 @@ public class Game {
    }
     public void endSession(){
 
-        ArrayList<String> customersAsText = new ArrayList<>();
+        ArrayList<String> playerAsText = new ArrayList<>();
         for (Player c: players) {
-            customersAsText.add(c.toString());
+            playerAsText.add(c.toString());
         }
-        FileIO.saveData(customersAsText, this.customerDataPath, "name, balance");
+        FileIO.saveData(playerAsText, this.playerDataPath, "name, balance");
     }
 
 }
