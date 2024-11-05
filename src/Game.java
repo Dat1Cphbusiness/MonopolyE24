@@ -46,7 +46,8 @@ public class Game {
 
         }
     }
-   public void loadData(){
+   public void setup(){
+        ui.displayMsg("velkommen til Matador");
      ArrayList<String> data = io.readData(this.playerDataPath);
 
        if(!data.isEmpty()) {
@@ -57,6 +58,9 @@ public class Game {
                Player c = new Player(name, balance);
                players.add(c);
            }
+       }
+       else{
+           registerPlayer();
        }
    }
     public void endSession(){
