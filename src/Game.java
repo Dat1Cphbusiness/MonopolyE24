@@ -46,10 +46,12 @@ public class Game {
 
         }
     }
-   public void loadData(){
+   public void setup(){
+        ui.displayMsg("Welcome to Matador");
      ArrayList<String> data = io.readData(this.playerDataPath);
 
-       if(!data.isEmpty()) {
+       if(!data.isEmpty() && ui.promptText("Continue previosly saved game? Y/N").equals("Y")) {
+
            for (String s:data) {
                String[] values= s.split(",");
                String name = values[0];
@@ -57,6 +59,8 @@ public class Game {
                Player c = new Player(name, balance);
                players.add(c);
            }
+       } else{
+           registerPlayer();
        }
    }
     public void endSession(){

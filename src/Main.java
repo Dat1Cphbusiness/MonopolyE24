@@ -29,11 +29,7 @@ class Main {
     public static void main(String[] args) {
 
         Game game = new Game("Matador");
-        game.loadData();
-
-        if(game.getPlayer().isEmpty()){
-            game.registerPlayer();
-        }
+        game.setup();
 
         System.out.print(game);
 
