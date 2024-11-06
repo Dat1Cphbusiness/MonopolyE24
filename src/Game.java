@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class Game {
@@ -7,6 +9,8 @@ public class Game {
     private TextUI ui;
     private FileIO io;
     private String playerDataPath;
+    private String currentPlayer;
+
 
     public Game(String name) {
         this.name = name;
@@ -32,19 +36,23 @@ public class Game {
     }
 
     public void registerPlayers() {
+        int playerNum = ui.promptNumeric("Type numbers of players: ");
+        if (playerNum < 2 || playerNum > 6) {
+            registerPlayers();
+            return;
+        }
 
-        String continueDialog = "Y";
-        while (continueDialog.equalsIgnoreCase("Y")) {
+        while (playerNum != 0) {
 
             String name = ui.promptText("Type name of player:");
             int startAmount = ui.promptNumeric("Type start amount:");
 
             Player p = new Player(name, startAmount);
             this.addPlayer(p);
-
-            continueDialog = ui.promptText("Do you wish to create another player? Y/N");
-
+            playerNum--;
         }
+        Collections.shuffle(this.players);
+
     }
    public void setup(){
     ui.displayMsg("Velkommen til " + this.name);
