@@ -30,7 +30,7 @@ public class Game {
             return players;
     }
 
-    public void registerPlayer() {
+    public void registerPlayers() {
 
         String continueDialog = "Y";
         while (continueDialog.equalsIgnoreCase("Y")) {
@@ -59,7 +59,7 @@ public class Game {
            }
        }
        else{
-           registerPlayer();
+           registerPlayers();
        }
    }
     public void endSession(){
