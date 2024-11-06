@@ -28,7 +28,7 @@ class Main {
 
     public static void main(String[] args) {
 
-        Game game = new Game("Matador1111");
+        Game game = new Game("Matador11111");
 
         game.setup();
 
