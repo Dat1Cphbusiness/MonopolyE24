@@ -7,30 +7,27 @@ public class Game {
     private TextUI ui;
     private FileIO io;
     private String playerDataPath;
-
     public Game(String name) {
         this.name = name;
         this.players = new ArrayList<>();
         this.ui = new TextUI();
         this.io = new FileIO();
-        this.playerDataPath = "data/playerdata.csv";
+        this.playerDataPath ="data/playerdata.csv";
     }
-
-    public void addPlayers(Player c) {
-        this.players.add(c);
+    public void addPlayer(Player p){
+        this.players.add(p);
     }
-
-    public String toString() {
+    public String toString(){
         String s = "";
-        for (Player c : players) {
-            s += c + "\n";
+        for (Player p: players) {
+            s+=p+"\n";
         }
         return s;
     }
 
 
     public List getPlayers() {
-        return players;
+            return players;
     }
 
     public void registerPlayers() {
@@ -38,46 +35,40 @@ public class Game {
         String continueDialog = "Y";
         while (continueDialog.equalsIgnoreCase("Y")) {
 
-            String name = ui.promptText("Type name of customer:");
+            String name = ui.promptText("Type name of player:");
             int startAmount = ui.promptNumeric("Type start amount:");
 
-            Player c = new Player(name, startAmount);
-            this.addPlayers(c);
+            Player p = new Player(name, startAmount);
+            this.addPlayer(p);
 
-            continueDialog = ui.promptText("Do you wish to create another customer?Y/N");
+            continueDialog = ui.promptText("Do you wish to create another player? Y/N");
 
         }
     }
+   public void setup(){
+    ui.displayMsg("Velkommen til " + this.name);
+     ArrayList<String> data = io.readData(this.playerDataPath);
 
-    public void setup() {
-        ArrayList<String> data = io.readData(this.playerDataPath);
-        ui.displayMsg("Welcome to " + this.name);
+       if(!data.isEmpty() && ui.promptText("Continue previously saved game? y/n").equalsIgnoreCase("y")) {
+           for (String s:data) {
+               String[] values= s.split(",");
+               String name = values[0];
+               int balance = Integer.parseInt(values[1].trim());
+               Player p = new Player(name, balance);
+               players.add(p);
+           }
+       }
+       else{
+           registerPlayers();
+       }
+   }
+    public void endSession(){
 
-        if (!data.isEmpty() && ui.promptText("Continue previously saved game? Y/N").equalsIgnoreCase("Y")) {
-            // Continue with saved game
-            for (String s : data) {
-                String[] values = s.split(",");
-                String name = values[0];
-                int balance = Integer.parseInt(values[1].trim());
-                Player c = new Player(name, balance);
-                players.add(c);
-            }
-        } else if ((data.isEmpty() && ui.promptText("Continue previously saved game? Y/N").equalsIgnoreCase("N"))) {
-            ui.displayMsg("No game found");
-            registerPlayers();
-        } else {
-            ui.displayMsg("Invalid input - Must be either Y or N");
-            setup();
+        ArrayList<String> playersAsText = new ArrayList<>();
+        for (Player p: players) {
+            playersAsText.add(p.toString());
         }
+        FileIO.saveData(playersAsText, this.playerDataPath, "name, balance");
     }
 
-
-    public void endSession() {
-
-        ArrayList<String> customersAsText = new ArrayList<>();
-        for (Player c : players) {
-            customersAsText.add(c.toString());
-        }
-        FileIO.saveData(customersAsText, this.playerDataPath, "name, balance");
-    }
 }

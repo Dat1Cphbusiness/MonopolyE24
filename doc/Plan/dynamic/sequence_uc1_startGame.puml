@@ -2,16 +2,25 @@
 'https://plantuml.com/sequence-diagram
 
 Main -> Game: new()
+Game -> ArrayList: new()
+Game -> TextUI: new()
+Game -> FileIO: new()
+
+Main -> Game: setup()
+Game -> TextUI: displayMsg()
+Game -> FileIO: readData(path)
+FileIO --> Game: ArrayList data
 'indsæt instansieringer i Game konstruktor
 'indsæt kaldet til setup()
 'indsæt hvad der sker i toppen af setup()
 alt data[] not empty && continue saved game
 loop for each s in data[]
 'indsæt hvad der sker i loopet
+Game -> Player: new(name, balance)
 end
 else
 'indsæt kaldet til registerPlayers()
-
+Game -> Game: registerPlayers()
 end
 
 @enduml
