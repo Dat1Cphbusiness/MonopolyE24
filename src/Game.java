@@ -7,7 +7,6 @@ public class Game {
     private TextUI ui;
     private FileIO io;
     private String playerDataPath;
-
     public Game(String name) {
         this.name = name;
         this.players = new ArrayList<>();

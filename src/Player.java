@@ -9,6 +9,7 @@ public class Player {
         this.balance = balance;
     }
 
+
     public Player (String name){
         this.name = name;
         this.balance = startBalance;
