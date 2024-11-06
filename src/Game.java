@@ -16,14 +16,14 @@ public class Game {
         this.playerDataPath = "data/playerdata.csv";
     }
 
-    public void addPlayers(Player c) {
-        this.players.add(c);
+    public void addPlayers(Player p) {
+        this.players.add(p);
     }
 
     public String toString() {
         String s = "";
-        for (Player c : players) {
-            s += c + "\n";
+        for (Player p : players) {
+            s += p + "\n";
         }
         return s;
     }
@@ -41,8 +41,8 @@ public class Game {
             String name = ui.promptText("Type name of customer:");
             int startAmount = ui.promptNumeric("Type start amount:");
 
-            Player c = new Player(name, startAmount);
-            this.addPlayers(c);
+            Player p = new Player(name, startAmount);
+            this.addPlayers(p);
 
             continueDialog = ui.promptText("Do you wish to create another customer?Y/N");
 
@@ -59,25 +59,27 @@ public class Game {
                 String[] values = s.split(",");
                 String name = values[0];
                 int balance = Integer.parseInt(values[1].trim());
-                Player c = new Player(name, balance);
-                players.add(c);
+                Player p = new Player(name, balance);
+                players.add(p);
             }
         } else if ((data.isEmpty() && ui.promptText("Continue previously saved game? Y/N").equalsIgnoreCase("N"))) {
             ui.displayMsg("No game found");
             registerPlayers();
+
         } else {
             ui.displayMsg("Invalid input - Must be either Y or N");
             setup();
+
         }
     }
 
 
     public void endSession() {
 
-        ArrayList<String> customersAsText = new ArrayList<>();
-        for (Player c : players) {
-            customersAsText.add(c.toString());
+        ArrayList<String> playerAsText = new ArrayList<>();
+        for (Player p : players) {
+            playerAsText.add(p.toString());
         }
-        FileIO.saveData(customersAsText, this.playerDataPath, "name, balance");
+        FileIO.saveData(playerAsText, this.playerDataPath, "name, balance");
     }
 }

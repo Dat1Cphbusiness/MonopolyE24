@@ -33,6 +33,5 @@ class Main {
 
         System.out.print(game);
 
-        game.endSession();
-    }
+        game.endSession();}
 }
