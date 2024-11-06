@@ -1,0 +1,29 @@
+ @startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+Main -> Game:   new()
+Game -> Game: Create new Game Setup
+alt successful
+ Game -> TextUI: promptNumeric("Type the amount of players")
+        Game -> Game: registerPlayers()
+
+
+    loop successful case
+        Game -> ArrayList:  new()
+        Game -> TextUI:     new()
+        Game -> FileIO:     new()
+        ArrayList --> Game: players =  ArrayList<Player>
+        Game -> TextUI:     displayMsg()
+        Game -> FileIO:     readData(path)
+
+        FileIO --> Game:    name = promptText("Please type your name")
+        FileIO --> Game:    balance = promptNumeric("Please type you starting balance")
+        Game -> Player:     Player(name, balance)
+
+        Player --> Game: return player Object
+        Game -> Game: Add player Object to players(List)
+
+    end 'of loop
+end 'of alt
+@enduml

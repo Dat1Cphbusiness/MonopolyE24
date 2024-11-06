@@ -10,13 +10,13 @@ public class FileIO {
 
     public static ArrayList<String> readData(String path) {
         ArrayList<String> data = new ArrayList();
-        File file = new File(path);
+        File file = new File(path); // creates an instance of the File object with the path½
         try {
             Scanner scan = new Scanner(file);
             scan.nextLine();//skip header
 
             while(scan.hasNextLine()){
-                String line = scan.nextLine(); // "tess, 40000"
+                String line = scan.nextLine();                      // "tess, 40000"
                 data.add(line);
             }   // end while
 
@@ -29,9 +29,9 @@ public class FileIO {
     public static void saveData(List<String> items, String path, String header) {
         try {
             FileWriter writer = new FileWriter(path);
-            writer.write(header+"\n"); //Give csv file a header
+            writer.write(header+"\n");                        //Give csv file a header
             for (String str: items) {
-                writer.write(str+"\n"); //"Tess, 40000";
+                writer.write(str+"\n");                       //"Tess, 40000";
             }   // end for-each
             
             writer.close();

@@ -8,6 +8,7 @@ public class Game {
     private TextUI ui;
     private FileIO io;
     private String playerDataPath;
+    private Player currentPlayer;
 
     public Game(String name) {
         this.name = name;
@@ -17,39 +18,47 @@ public class Game {
         this.playerDataPath="data/playerdata.csv";
     }   // end Constructor
 
-    public void addPlayer(Player c){
-        this.players.add(c);
+    public void addPlayer(Player p){
+        this.players.add(p);
     }   // end addPlayer()
 
     @Override
     public String toString(){
         String str = "";
-        for (Player c: players) {
-            str += c + "\n";
+
+        for (Player p: players) {
+            str += p + "\n";
         }   // end for-each loop
         return str;
     }   // end toString()
 
     public List getPlayers() {
-            return players;
+            return this.players;
     }   // end getPlayers()
 
-    public void registerPlayer() {
-        String continueDialog = "Y";
-        while (continueDialog.equalsIgnoreCase("Y")) {
+    public void registerPlayers() {
+        int playerNum = ui.promptNumeric("Type number of players: ");
+        if (playerNum > 2 && playerNum < 7) {
+            int i = 0;
+            while (i< playerNum) {
 
-            String name = ui.promptText("Type name of player:");
-            int startAmount = ui.promptNumeric("Type start amount:");
+                String name = ui.promptText("Type name of player:");
+                int startAmount = ui.promptNumeric("Type start amount:");
 
-            Player c = new Player(name, startAmount);
-            this.addPlayer(c);
+                Player p = new Player(name, startAmount);
+                this.addPlayer(p);
+                ++i;
+                }   // end while-loop
+             }  else {
+            System.out.println("Amount of players is out of range.\nRange is within 3-6 players\n************");
+            registerPlayers();  //
+        }
 
-            continueDialog = ui.promptText("Do you wish to create another player?Y/N");
-        }   // end while-loop
+        ui.promptText("Number of players: " + players.size());
     }   // end registerPlayer()
 
    public void setup(){
-     ui.displayMsg("Velkomst!\n");
+     ui.displayMsg("Velkommen til Matador, " + this.name);
      ArrayList<String> data = io.readData(this.playerDataPath);
 
        if(!data.isEmpty() && ui.promptText("Continue previously saved gamed? Y/N").equalsIgnoreCase("Y")) {
@@ -57,11 +66,11 @@ public class Game {
                String[] values= str.split(",");
                String name = values[0];
                int balance = Integer.parseInt(values[1].trim());
-               Player c = new Player(name, balance);
-               players.add(c);
+               Player p = new Player(name, balance);
+               players.add(p);
            }    // end for-each loop
        }  else {
-           registerPlayer();
+           registerPlayers();
        }    // end if-else statement
    }    // end loadData()
 
@@ -73,5 +82,5 @@ public class Game {
         }   // end for-each loop
 
         FileIO.saveData(playerAsText, this.playerDataPath, "name, balance");
-    }   // end endSession
-}   // End Bank
+    }   // end endSession()
+}   // End Game

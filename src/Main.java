@@ -1,5 +1,4 @@
 
-
 /** This example demonstrates the foundations of building an object-oriented system in Java.
  *  It uses the domain of a bank
  *
@@ -32,7 +31,9 @@ class Main {
         game.setup();    // reads the playerdata.csv file
 
         System.out.print(game);
-
+        //new Dice().roll();
+//        System.out.println(new Dice().rollPrison());
+        System.out.println(new Prison().getOut());
         game.endSession();
-    }
-}
+    }   // end  main()
+}   // end Main
