@@ -19,7 +19,7 @@ class Game{
   - void registerPlayers()
 
   - void addPlayer(Player p)
-  - void displayPlayers()
+  + void displayPlayers()
 
  'new: we need a loop to manage each players' turn during the life cycle of the game
  + void runGameLoop();
@@ -30,6 +30,8 @@ class Game{
 class Player{
 - String name
 - int balance
+- final int startBalance
++ Player(String name)
 + Player(String name, int startAmount)
 + void deposit(int amount)
 + int getBalance()
