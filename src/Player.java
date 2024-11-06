@@ -3,9 +3,15 @@ public class Player {
 
     private String name;
     private int balance;
+    private final static int startBalance = 30000;
     public Player(String name, int balance) {
         this.name = name;
         this.balance = balance;
+    }
+
+    public Player (String name){
+        this.name = name;
+        this.balance = startBalance;
     }
 
     public void addToBalance(int amount) {

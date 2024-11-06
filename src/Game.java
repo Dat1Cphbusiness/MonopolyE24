@@ -46,10 +46,11 @@ public class Game {
 
         }
     }
-   public void loadData(){
+   public void setup(){
+    ui.displayMsg("Velkommen til " + this.name);
      ArrayList<String> data = io.readData(this.playerDataPath);
 
-       if(!data.isEmpty()) {
+       if(!data.isEmpty() && ui.promptText("Continue previously saved game? y/n").equalsIgnoreCase("y")) {
            for (String s:data) {
                String[] values= s.split(",");
                String name = values[0];
@@ -57,6 +58,9 @@ public class Game {
                Player p = new Player(name, balance);
                players.add(p);
            }
+       }
+       else{
+           registerPlayer();
        }
    }
     public void endSession(){
