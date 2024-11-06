@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Game {
@@ -25,25 +26,30 @@ public class Game {
         return s;
     }
 
+    public void runGameLoop(){
+        currentPlayer = players.get(0);
+        ui.displayMsg("It is currently " + currentPlayer.getName() + "'s turn");
+    }
 
     public List getPlayers() {
             return players;
     }
 
     public void registerPlayers() {
-
-        String continueDialog = "Y";
-        while (continueDialog.equalsIgnoreCase("Y")) {
+        int playerNum = ui.promptNumeric("type number of players between 2-6");
+        if(playerNum < 2 || playerNum > 6) {
+            registerPlayers();
+            return;
+        }
+        while (playerNum >players.size()) {
 
             String name = ui.promptText("Type name of player:");
             int startAmount = ui.promptNumeric("Type start amount:");
 
             Player p = new Player(name, startAmount);
             this.addPlayer(p);
-
-            continueDialog = ui.promptText("Do you wish to create another player? Y/N");
-
         }
+        Collections.shuffle(players);
     }
    public void setup(){
     ui.displayMsg("Velkommen til " + this.name);

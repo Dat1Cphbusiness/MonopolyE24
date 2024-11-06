@@ -33,6 +33,7 @@ class Main {
         game.setup();
 
         System.out.print(game);
+        game.runGameLoop();
 
         game.endSession();
     }
