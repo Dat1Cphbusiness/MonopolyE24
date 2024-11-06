@@ -23,23 +23,23 @@
  *
  */
 
+import java.util.ArrayList;
+
 
 class Main {
 
     public static void main(String[] args) {
 
+
         Game game = new Game("Sparekassen");
-        game.loadData();
+        game.setup();
 
-        Player player1 = new Player("Khoung", 40);
-
-        if (game.getPlayers().isEmpty()) {
-            game.registerPlayer();
-        }
+        
 
         System.out.print(game);
 
-        game.addPlayer(player1);
+        //Player player1 = new Player("Khoung", 40);
+        //game.addPlayer(player1);
 
         game.endSession();
 

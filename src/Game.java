@@ -13,11 +13,13 @@ import java.util.List;
             this.players = new ArrayList<>();
             this.ui = new TextUI();
             this.io = new FileIO();
-            this.playerDataPath="data/plasyerdata.csv";
+            this.playerDataPath="data/playerdata.csv";
         }
         public void addPlayer(Player p){
             this.players.add(p);
         }
+
+
         public String toString(){
             String s = "";
             for (Player p:players) {
@@ -36,7 +38,7 @@ import java.util.List;
             String continueDialog = "Y";
             while (continueDialog.equalsIgnoreCase("Y")) {
 
-                String name = ui.promptText("Type name of customer:");
+                String name = ui.promptText("Type name of player:");
                 int startAmount = ui.promptNumeric("Type start amount:");
 
                 Player p = new Player(name, startAmount);
@@ -46,19 +48,26 @@ import java.util.List;
 
             }
         }
-        public void loadData(){
+        public void setup() {
             ArrayList<String> data = io.readData(this.playerDataPath);
+            if (!data.isEmpty() && ui.promptText("Continue previously saved game= Y/N").equalsIgnoreCase("Y"))
+            {
+                ArrayList<String> playersAsText = new ArrayList<>();
 
-            if(!data.isEmpty()) {
-                for (String s:data) {
-                    String[] values= s.split(",");
+                for (String s : data) {
+                    String[] values = s.split(",");
                     String name = values[0];
                     int balance = Integer.parseInt(values[1].trim());
                     Player p = new Player(name, balance);
                     players.add(p);
+                    ui.promptText("Velkommen til Matador - make me proud");
                 }
             }
+            else{
+                registerPlayer();
+            }
         }
+
         public void endSession(){
 
             ArrayList<String> playersAsText = new ArrayList<>();
