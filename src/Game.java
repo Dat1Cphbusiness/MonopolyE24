@@ -49,8 +49,6 @@ public class Game {
         ArrayList<String> data = io.readData(this.playerDataPath);
 
         if(!data.isEmpty() && ui.promptText("Continue previously saved game? y/n").equalsIgnoreCase("y")) {
-            String savedGame = ui.promptText("You have a saved game. Do you wish to continue or start a new game? Y/N");
-            if(savedGame.equalsIgnoreCase("Y")) {
                 for (String s : data) {
                     String[] values = s.split(",");
                     String name = values[0];
@@ -58,11 +56,8 @@ public class Game {
                     Player p = new Player(name, balance);
                     players.add(p);
                 }
-            }
-            else if (savedGame.equalsIgnoreCase("N")) {
-                registerPlayer();
-            }
-
+        }else {
+            registerPlayer();
         }
     }
 
