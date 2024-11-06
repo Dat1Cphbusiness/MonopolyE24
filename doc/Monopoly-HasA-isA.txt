@@ -1,0 +1,52 @@
+Game Mechanics
+Start
+is a game mechanic.
+
+Tax
+is a game mechanic.
+
+Choice (under Field)
+is a game mechanic.
+
+Ruleset
+    is a game mechanic.
+
+Die
+is a game mechanic.
+
+Game Elements
+Field
+is a game element.
+has a Choice.
+
+Card
+is a game element.
+
+Chance
+is a game element.
+
+P-Parking
+is a game element.
+
+Board
+is a game element.
+
+Properties and Structures
+Deed
+is a property or structure.
+
+Brewery
+is a property or structure.
+
+Shipping Line
+is a property or structure.
+
+Property
+is a property or structure.
+
+Building
+is a property or structure.
+
+Players and Roles
+Bank
+is a player role.

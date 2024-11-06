@@ -1,0 +1,33 @@
+@startuml
+!pragma layout smetana
+
+class Game
+
+Game *-- Player : 2..6
+Player *-- Card : 0..10
+Board *-- Card : 100
+Game *-- Dice : 2
+Player *-- Deed
+Property *-- Deed
+Game *-- Board
+Board *-- Field : has-a 40
+Field <|-- Visit
+Field <|-- Tax
+Field <|-- Parking
+Field <|-- Start : is - a
+Field <|-- Chance
+Field <|-- Property : is - a
+Field <|-- Prison
+Property <|-- Plot : is - a
+Plot *-- Building : has - a
+Property <|-- Business
+Business <|-- ShippingLine
+Business <|-- Brewery : is - a
+
+
+
+
+
+
+
+@enduml

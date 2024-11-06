@@ -1,0 +1,21 @@
+@startuml
+    !pragma layout smetana
+'https://plantuml.com/use-case-diagram
+
+actor user
+usecase "ThrowAndMove"
+usecase "StartGame"
+usecase "EndGame"
+usecase "RegisterPlayer"
+usecase "LandAndAct"
+
+user --> StartGame
+ThrowAndMove --> "EndGame" :includes
+"StartGame" --> RegisterPlayer :includes
+"StartGame" --> ThrowAndMove :includes
+RegisterPlayer --> ThrowAndMove :includes
+ThrowAndMove --> LandAndAct :includes
+LandAndAct --> "EndGame" :includes
+LandAndAct -> ThrowAndMove
+"EndGame" --> RegisterPlayer
+@enduml

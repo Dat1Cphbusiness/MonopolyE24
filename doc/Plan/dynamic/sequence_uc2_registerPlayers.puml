@@ -1,4 +1,5 @@
 @startuml
+!pragma layout smetana
 Game -> Game:registerPlayers
 Game -> UI: playerNum = promptNumeric("Type number of players:")
 loop playerNum > players.size()

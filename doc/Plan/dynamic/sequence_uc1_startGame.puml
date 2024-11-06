@@ -1,5 +1,16 @@
 @startuml
-'https://plantuml.com/sequence-diagram
+!pragma layout smetana
+
+Main -> Game: new()
+Game -> TextUI: new()
+Game -> FileIO: new()
+Main -> Game: setup()
+Game -> FileIO: readData()
+FileIO --> Game: ArrayList<Data>
+Game -> TextUI: displayMSG
+TextUI --> Game: Greetings
+
+Main -> Game: endSession
 
 Main -> Game: new()
 'indsæt instansieringer i Game konstruktor
