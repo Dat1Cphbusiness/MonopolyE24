@@ -30,38 +30,41 @@ public class Game {
             return players;
     }
 
-    public void registerPlayers() {
+    public void registerPlayer() {
 
-        String continueDialog = "Y";
-        while (continueDialog.equalsIgnoreCase("Y")) {
+        String continueDialog = "";
+        continueDialog = ui.promptText("How many players do you wish to create");
 
+        for (int i = 0; i < Integer.parseInt(continueDialog); i++) {
             String name = ui.promptText("Type name of player:");
             int startAmount = ui.promptNumeric("Type start amount:");
 
             Player p = new Player(name, startAmount);
             this.addPlayer(p);
 
-            continueDialog = ui.promptText("Do you wish to create another player? Y/N");
+        }
+    }
+    public void setup(){
+        ArrayList<String> data = io.readData(this.playerDataPath);
+
+        if(!data.isEmpty()) {
+            String savedGame = ui.promptText("You have a saved game. Do you wish to continue or start a new game? Y/N");
+            if(savedGame.equalsIgnoreCase("Y")) {
+                for (String s : data) {
+                    String[] values = s.split(",");
+                    String name = values[0];
+                    int balance = Integer.parseInt(values[1].trim());
+                    Player p = new Player(name, balance);
+                    players.add(p);
+                }
+            }
+            else if (savedGame.equalsIgnoreCase("N")) {
+                registerPlayer();
+            }
 
         }
     }
-   public void setup(){
-    ui.displayMsg("Velkommen til " + this.name);
-     ArrayList<String> data = io.readData(this.playerDataPath);
 
-       if(!data.isEmpty() && ui.promptText("Continue previously saved game? y/n").equalsIgnoreCase("y")) {
-           for (String s:data) {
-               String[] values= s.split(",");
-               String name = values[0];
-               int balance = Integer.parseInt(values[1].trim());
-               Player p = new Player(name, balance);
-               players.add(p);
-           }
-       }
-       else{
-           registerPlayers();
-       }
-   }
     public void endSession(){
 
         ArrayList<String> playersAsText = new ArrayList<>();
