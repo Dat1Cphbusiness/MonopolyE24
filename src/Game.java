@@ -7,6 +7,7 @@ public class Game {
     private TextUI ui;
     private FileIO io;
     private String playerDataPath;
+
     public Game(String name) {
         this.name = name;
         this.players = new ArrayList<>();
@@ -30,7 +31,7 @@ public class Game {
             return players;
     }
 
-    public void registerPlayer() {
+    public void registerPlayers() {
 
         String continueDialog = "Y";
         while (continueDialog.equalsIgnoreCase("Y")) {
@@ -59,7 +60,7 @@ public class Game {
            }
        }
        else{
-           registerPlayer();
+           registerPlayers();
        }
    }
     public void endSession(){
