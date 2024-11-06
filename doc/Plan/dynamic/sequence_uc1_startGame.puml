@@ -5,11 +5,14 @@ Main -> Game: new()
 Main -> Game: setup()
 Game -> TextUI: new()
 Game -> FileIO: new()
-Game -> FileIO: readData()
-FileIO --> Game: ArrayList<String>
+
+Game -> TextUI: displayMsg()
+Game -> FileIO: readData(path)
+FileIO --> Game: ArrayList data
+
 alt data[] not empty && continue saved game
 loop for each s in data[]
-Game -> Player: new()
+Game -> Player: new(name, balance)
 end
 
 else
