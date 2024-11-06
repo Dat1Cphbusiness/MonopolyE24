@@ -55,8 +55,8 @@ public class Game {
                String[] values= s.split(",");
                String name = values[0];
                int balance = Integer.parseInt(values[1].trim());
-               Player c = new Player(name, balance);
-               players.add(c);
+               Player p = new Player(name, balance);
+               players.add(p);
            }
        }
        else{
