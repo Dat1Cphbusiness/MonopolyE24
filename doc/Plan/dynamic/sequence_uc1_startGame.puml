@@ -5,24 +5,21 @@ Main -> Game: new()
 Game -> TextUI: new()
 Game -> FileIO: new()
 Main -> Game: setup()
-Game -> FileIO: readData()
-FileIO --> Game: ArrayList<Data>
+Game -> FileIO: data = readData()
 Game -> TextUI: displayMSG
 TextUI --> Game: Greetings
 
-Main -> Game: endSession
 
-Main -> Game: new()
 'indsæt instansieringer i Game konstruktor
 'indsæt kaldet til setup()
 'indsæt hvad der sker i toppen af setup()
 alt data[] not empty && continue saved game
 loop for each s in data[]
-'indsæt hvad der sker i loopet
+Game -> Player: new(name, balance)
 end
 else
 'indsæt kaldet til registerPlayers()
-
+Game -> Game: registerPlayer()
 end
 
 @enduml
