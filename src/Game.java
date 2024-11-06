@@ -63,6 +63,7 @@ public class Game {
            registerPlayer();
        }
    }
+
     public void endSession(){
 
         ArrayList<String> playerAsText = new ArrayList<>();
