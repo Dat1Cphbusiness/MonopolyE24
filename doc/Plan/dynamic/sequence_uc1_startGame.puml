@@ -5,6 +5,7 @@ Main -> Game: new()
 Game -> ArrayList: new()
 Game -> TextUI: new()
 Game -> FileIO: new()
+
 Main -> Game: setup()
 Game -> TextUI: displayMsg()
 Game -> FileIO: readData(path)
