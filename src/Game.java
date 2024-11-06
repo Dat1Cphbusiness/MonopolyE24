@@ -62,7 +62,7 @@ public class Game {
                 Player p = new Player(name, balance);
                 players.add(p);
             }
-        } else if ((data.isEmpty() && ui.promptText("Continue previously saved game? Y/N").equalsIgnoreCase("N"))) {
+        } else if (data.isEmpty() && ui.promptText("Continue previously saved game? Y/N").equalsIgnoreCase("N")) {
             ui.displayMsg("No game found");
             registerPlayers();
 
