@@ -34,16 +34,20 @@ public class Game {
 
         int playerNum = ui.promptNumeric("Type number of players: ");
         //String continueDialog = "Y";
-        while (playerNum < players.size()) {
+        if(playerNum >=2 && playerNum <=6){
+            while (players.size() < playerNum) {
 
-            String name = ui.promptText("Type name of player:");
-            int balance = ui.promptNumeric("Type start balance:");
+                String name = ui.promptText("Type name of player:");
+                 int balance = ui.promptNumeric("Type start balance:");
 
-            Player player = new Player(name, balance);
-            this.addPlayer(player);
+                Player player = new Player(name, balance);
+                this.addPlayer(player);
 
             //continueDialog = ui.promptText("Do you wish to create another player? Y/N");
+                }
 
+            }else{
+            registerPlayers();
         }
     }
    public void setup(){
