@@ -32,16 +32,17 @@ public class Game {
 
     public void registerPlayers() {
 
-        String continueDialog = "Y";
-        while (continueDialog.equalsIgnoreCase("Y")) {
+        int playerNum = ui.promptNumeric("Type number of players: ");
+        //String continueDialog = "Y";
+        while (playerNum < players.size()) {
 
             String name = ui.promptText("Type name of player:");
-            int startAmount = ui.promptNumeric("Type start amount:");
+            int balance = ui.promptNumeric("Type start balance:");
 
-            Player p = new Player(name, startAmount);
-            this.addPlayer(p);
+            Player player = new Player(name, balance);
+            this.addPlayer(player);
 
-            continueDialog = ui.promptText("Do you wish to create another player? Y/N");
+            //continueDialog = ui.promptText("Do you wish to create another player? Y/N");
 
         }
     }
