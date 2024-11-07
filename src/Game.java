@@ -106,14 +106,35 @@ public class Game {
     }   // end endSession
 
     public void runGameLoop(){
+        int count = 0;
+        boolean continueGame = true;
+        while (continueGame) {
+            currentPlayer = players.get(count);
+            throwAndMove();
+            continueGame = ui.promptBinary("Would you like to play again? (y/n)");
+        }   // end while-loop
+
         players.set(0, this.currentPlayer);
         System.out.println(players.get(1));
     }   // end runGameLoop()
 
     public int throwAndMove(){
-        int result = new Dice().rollDie();
+        int dice1 = rollDice();                     // get a new random int
+        int dice2 = rollDice();                     // get a new random int
+        int totalDiceEyes = dice1 + dice2;
 
-        return result;
+        ui.displayMsg("You have rolled: " + dice1 +" + " + dice2 + " = " + totalDiceEyes);   // calling displayMsg from our TextUI class & typecasting totalDiceEyes
+        return totalDiceEyes;
     }   // end throwAndMove()
+
+    public int rollDice() {
+        int result = (int) (Math.random() * 6) + 1;
+
+        while (result > 6) {
+            result = (int) (Math.random() * 6) + 1;
+        }   // end while-loop
+
+        return result;  // returns a number between 1 and 6
+    }   // end rollDice()
 
 }   // End Game

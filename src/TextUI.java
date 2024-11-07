@@ -57,4 +57,18 @@ public class TextUI {
          */
         System.out.println(msg);
     }   // end displayMsg()
+
+    public boolean promptBinary(String msg){
+        displayMsg(msg);
+        String input = scan.nextLine();
+        if (input.equalsIgnoreCase("Y")){
+            return true;
+        } else if (input.equalsIgnoreCase("N")){
+            return false;
+        } else {
+            System.out.println("You miss clicked");
+            promptBinary(msg);  //recursion
+            return false;
+        }   // end if-esle statement
+    }   // end promptBinary()
 }   // end TextUI

@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Dice {
+public class Dice  {
     private int dice1 = rollDice();
     private int dice2 = rollDice();
     TextUI ui = new TextUI();
@@ -14,10 +14,10 @@ public class Dice {
     }   // end getDice2()
 
     public int rollDice() {
-        int result = (int) (Math.random() * 7) - 1;
+        int result = (int) (Math.random() * 6) + 1;
 
-        while (result > 7) {
-            result = (int) (Math.random() * 7) - 1;
+        while (result > 6) {
+            result = (int) (Math.random() * 6) + 1;
         }   // end while-loop
 
         return result;  // returns a number between 1 and 6

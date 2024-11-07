@@ -34,17 +34,16 @@ class Main {
 
         System.out.print(game + "\n");
 
-        pri.rollDie();
         System.out.println("*******");
         System.out.println("prison: " +pri.rollPrison());
         System.out.println("*******");
 
-        String name = game.getPlayerByIndex(1).getName();
-        System.out.println("+ " +name);
+        //String name = game.getPlayerByIndex(1).getName();
+        //System.out.println("+ " +name);
 
         game.throwAndMove();
         game.endSession();  // writes to playerdata.csv file
-        game.runGameLoop();
 
+        game.runGameLoop();
     }   // end  main()
 }   // end Main
