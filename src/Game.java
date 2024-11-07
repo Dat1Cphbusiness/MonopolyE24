@@ -31,17 +31,22 @@ public class Game {
     }
 
     public void registerPlayers() {
+        int i = 1;
+        int playerNum = ui.promptNumeric("Type Number Of Players");
+        if (playerNum < 2 || playerNum > 6){
+            ui.displayMsg("The Number Of Players Must Be 2, 3, 4, 5 Or 6");
+            registerPlayers();
+        }
+        int startAmount = ui.promptNumeric("Type start amount:");
+        //String continueDialog = "Y";
+        while (i <= playerNum) {
 
-        String continueDialog = "Y";
-        while (continueDialog.equalsIgnoreCase("Y")) {
-
-            String name = ui.promptText("Type name of player:");
-            int startAmount = ui.promptNumeric("Type start amount:");
+            String name = ui.promptText("Type name of player " + i + ": ");
 
             Player p = new Player(name, startAmount);
             this.addPlayer(p);
-
-            continueDialog = ui.promptText("Do you wish to create another player? Y/N");
+            i++;
+            //continueDialog = ui.promptText("Do you wish to create another player? Y/N");
 
         }
     }
