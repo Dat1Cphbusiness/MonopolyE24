@@ -37,15 +37,13 @@ public class Game {
             registerPlayers();
         }
         int startAmount = ui.promptNumeric("Type start amount:");
-        //String continueDialog = "Y";
+
         while (players.size() < playerNum) {
 
             String name = ui.promptText("Type name of player " + (players.size() + 1) + ": ");
 
             Player p = new Player(name, startAmount);
             this.addPlayer(p);
-            //continueDialog = ui.promptText("Do you wish to create another player? Y/N");
-
         }
     }
    public void setup(){
