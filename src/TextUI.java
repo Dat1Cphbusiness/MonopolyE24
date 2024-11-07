@@ -68,7 +68,7 @@ public class TextUI {
         } else {
             System.out.println("You miss clicked");
             promptBinary(msg);  //recursion
-            return false;
+            return promptBinary(msg);
         }   // end if-esle statement
     }   // end promptBinary()
 }   // end TextUI

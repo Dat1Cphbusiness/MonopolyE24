@@ -127,6 +127,10 @@ public class Game {
         return totalDiceEyes;
     }   // end throwAndMove()
 
+    public void landAndAct(){
+        int count = 0;
+    }   // end landAndAct
+
     public int rollDice() {
         int result = (int) (Math.random() * 6) + 1;
 
