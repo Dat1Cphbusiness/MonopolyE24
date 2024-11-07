@@ -34,6 +34,8 @@ class Main {
 
         System.out.print(game);
 
+        game.runGameLoop();
+
         game.endSession();
     }
 }

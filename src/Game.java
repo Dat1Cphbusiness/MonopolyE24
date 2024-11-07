@@ -32,7 +32,7 @@ public class Game {
 
 
     public List getPlayers() {
-            return players;
+        return players;
     }
 
     public void registerPlayers() {
@@ -54,23 +54,31 @@ public class Game {
         Collections.shuffle(this.players);
 
     }
-   public void setup(){
-    ui.displayMsg("Velkommen til " + this.name);
-     ArrayList<String> data = io.readData(this.playerDataPath);
+    public void setup(){
+        ui.displayMsg("Velkommen til " + this.name);
+        ArrayList<String> data = io.readData(this.playerDataPath);
 
-       if(!data.isEmpty() && ui.promptText("Continue previously saved game? y/n").equalsIgnoreCase("y")) {
-           for (String s:data) {
-               String[] values= s.split(",");
-               String name = values[0];
-               int balance = Integer.parseInt(values[1].trim());
-               Player p = new Player(name, balance);
-               players.add(p);
-           }
-       }
-       else{
-           registerPlayers();
-       }
-   }
+        if(!data.isEmpty() && ui.promptText("Continue previously saved game? y/n").equalsIgnoreCase("y")) {
+            for (String s:data) {
+                String[] values= s.split(",");
+                String name = values[0];
+                int balance = Integer.parseInt(values[1].trim());
+                Player p = new Player(name, balance);
+                players.add(p);
+            }
+        }
+        else{
+            registerPlayers();
+        }
+    }
+
+    public void runGameLoop(){
+        if(!players.isEmpty()) {
+            currentPlayer = players.get(0).getName();
+            ui.displayMsg("Det er " + currentPlayer + "'s tur.");
+        }
+    }
+
     public void endSession(){
 
         ArrayList<String> playersAsText = new ArrayList<>();
@@ -79,5 +87,4 @@ public class Game {
         }
         FileIO.saveData(playersAsText, this.playerDataPath, "name, balance");
     }
-
 }
