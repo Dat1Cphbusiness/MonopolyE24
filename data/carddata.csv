@@ -1,0 +1,41 @@
+Message, Income, Cost, Event
+Tag med den nærmeste færge (Passerer du START får du 4000 kr.), 0, 0, moveTo
+Deres præmieobligation er udtrukket (Du modtager 1000 kr.), 1000, 0, reward
+Ryk frem til Frederiksberg Allé (Passerer du START får du 4000 kr.), 0, 0, moveTo
+Ryk frem til Start, 0, 0, moveTo
+Ryk tre felter tilbage, 0, 0, moveTo
+Betal for vognvask og smøring, 0, 300, payment
+Ryk brikken frem til det nærmeste rederi og betal ejeren to gange den leje han ellers er berettiget til (Hvis selvskabet ikke ejet af nogle kan du købe det), 0, ID.income*2, payment
+Du møder Eren han stjæler 500 kr, 0, 500, payment
+Tag med den nærmeste færge (Passerer du START får du 4000 kr.), 0, 0, moveTo
+Deres præmieobligation er udtrukket (Du modtager 1000 kr.), 1000, 0, reward
+Ryk frem til Frederiksberg Allé (Passerer du START får du 4000 kr.), 0, 0, moveTo
+Ryk frem til Start, 0, 0, moveTo
+Ryk tre felter tilbage, 0, 0, moveTo
+Betal for vognvask og smøring, 0, 300, payment
+De har kørt frem for "fuldt stop" Betal 1000 kr. i bøde, 0, 1000, payment
+Betal deres bilforsikring, 0, 500, payment
+De har modtaget udbytte af Deres aktier - modtag 1000 kr., 1000, 0, reward
+Ejendomsskatterne er steget. Betal 800 kr. pr. hus og 2300 kr. pr. hotel, 0, 0, paymentPerProperty
+Oliepriserne er steget, betal 500 kr. pr. hus og 2000 kr. pr. hotel, 0, 0, paymentPerProperty
+De har solgt Deres gamle klude. Modtag 100 kr., 100, 0, reward
+De har vundet i Klasselotteriet. Modtag 500 kr., 500, 0, reward
+Grundet dyrtiden har De fået gageforhøjelse. Modtag 1000 kr., 1000, 0, reward
+De har fået en parkeringsbøde. Betal 200 kr., 0, 200, payment
+Vaskeriregning. Betal 200 kr., 0, 200, payment
+De har arvet en formue. Modtag 2000 kr., 2000, 0, reward
+Ryk frem til Nørreport, 0, 0, moveTo
+Betal for skadeserstatning, 0, 1500, payment
+Ryk frem til den nærmeste ejendom, 0, 0, moveTo
+Byg en ny fabrik, betal 2000 kr., 0, 2000, payment
+Du er blevet tilbudt et job i udlandet. Modtag 2000 kr., 2000, 0, reward
+Tag til udlandet, betal 3000 kr. for billetter, 0, 3000, payment
+De har fejret en stor succes. Modtag 1500 kr., 1500, 0, reward
+Køb en ny bil, betal 5000 kr., 0, 5000, payment
+Deres hus er blevet opkøbt. Modtag 5000 kr., 5000, 0, reward
+De har modtaget en skattelettelse. Modtag 1000 kr., 1000, 0, reward
+Ryk frem til Hotel København (Passerer du START får du 4000 kr.), 0, 0, moveTo
+De har fået en gave. Modtag 500 kr., 500, 0, reward
+Modtag 1000 kr. for at hjælpe med velgørenhed, 1000, 0, reward
+Byg en stor bolig, betal 2500 kr., 0, 2500, payment
+Modtag en præmie for sportspræstation, 1500, 0, reward
