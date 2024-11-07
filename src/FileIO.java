@@ -39,4 +39,13 @@ public class FileIO {
             System.out.println("something went wrong when writing to file");
         }
     }
+
+    public String[] readBoardData(String path, int length)
+    {
+        String[] data = new String[100];
+        File file = new (path);
+
+
+
+    }
 }
