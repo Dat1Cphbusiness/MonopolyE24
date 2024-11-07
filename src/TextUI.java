@@ -10,10 +10,18 @@ public class TextUI {
         System.out.println(msg);
     }
 
-    public int promptNumeric(String msg){
+    public int promptNumeric(String msg) {
         System.out.println(msg);              // Stille brugeren et spørgsmål
-        String input = scan.nextLine();       // Give brugere et sted at placere sit svar og vente på svaret
-        int number = Integer.parseInt(input); // Konvertere svaret til et tal
+        String input = scan.nextLine();
+        int number;
+        // Give brugere et sted at placere sit svar og vente på svaret
+        try {
+            number = Integer.parseInt(input);
+        }
+        catch(NumberFormatException e){
+            displayMsg("Please type a number");
+            number = promptNumeric(msg);
+        }
         return number;
     }
 
