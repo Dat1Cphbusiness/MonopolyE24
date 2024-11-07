@@ -21,18 +21,13 @@ public class FileIO {
                 String line = scan.nextLine(); // "tess, 40000"
                 data.add(line);
             }
-
         }catch(FileNotFoundException e){
             System.out.println("File was not found");
         }
         return data;
     }
 
-
-
-
     public static void saveData(List<String> items, String path, String header) {
-
         try {
             FileWriter writer = new FileWriter(path);
             writer.write(header+"\n"); //Giv csv filen en header

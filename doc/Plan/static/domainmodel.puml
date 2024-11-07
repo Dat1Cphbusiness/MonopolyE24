@@ -1,0 +1,56 @@
+@startuml
+'nyt: carddeck - card
+
+object Game
+object Player
+object Dice
+object CardDeck
+object Card
+object Board
+object Field
+object Property
+object Prison
+object Visit
+object Tax
+object Parking
+object Start
+object Chance
+object ShippingLine
+object Brewery
+object Building
+object Deed
+object Bank
+object Business
+object Plot
+
+Game *-- Board
+Game *-- "2..6" Player
+
+Game *-- "2" Dice
+Board *-- "40" Field : has-a
+
+Plot *-- Building: has-a
+Property *-- Deed
+Player *-- Deed
+Business <|-- ShippingLine
+Business <|-- Brewery : is - a
+
+Field <|-- Property : is - a
+Field <|-- Start : is - a
+Field <|-- Chance
+Field <|-- Parking
+Field <|-- Tax
+Field <|-- Prison
+Field <|-- Visit
+
+
+Property <|-- Business
+Property <|-- Plot: is - a
+Game  *-- "100" CardDeck
+Player *-- "0..10" Card
+CardDeck *-- Card
+
+
+
+
+@enduml
