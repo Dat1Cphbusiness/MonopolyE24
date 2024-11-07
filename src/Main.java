@@ -26,14 +26,25 @@
 class Main {
 
     public static void main(String[] args) {
+        Prison pri = new Prison();
 
         Game game = new Game("Matador");
         game.setup();    // reads the playerdata.csv file
 
-        System.out.print(game);
-        //new Dice().roll();
-//        System.out.println(new Dice().rollPrison());
-        System.out.println(new Prison().getOut());
-        game.endSession();
+
+        System.out.print(game + "\n");
+
+        pri.rollDie();
+        System.out.println("*******");
+        System.out.println("prison: " +pri.rollPrison());
+        System.out.println("*******");
+
+        String name = game.getPlayerByIndex(1).getName();
+        System.out.println("+ " +name);
+
+        game.throwAndMove();
+        game.endSession();  // writes to playerdata.csv file
+        game.runGameLoop();
+
     }   // end  main()
 }   // end Main

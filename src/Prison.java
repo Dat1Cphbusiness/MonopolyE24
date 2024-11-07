@@ -1,4 +1,4 @@
-public class Prison extends Player {
+public class Prison extends Dice {
     // Attributes
     private int prisonTimeCounter;
     private boolean inHotel = false;

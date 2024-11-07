@@ -18,6 +18,14 @@ public class Game {
         this.playerDataPath="data/playerdata.csv";
     }   // end Constructor
 
+    public Player getCurrentPlayer() {
+        return currentPlayer;
+    }   // end getCurrentPlayer()
+
+    public String getCurrentPlayerName() {
+        return getCurrentPlayer().getName();
+    }   // end getCurrentPlayerName()
+
     public void addPlayer(Player p){
         this.players.add(p);
     }   // end addPlayer()
@@ -29,6 +37,7 @@ public class Game {
         for (Player p: players) {
             str += p + "\n";
         }   // end for-each loop
+
         return str;
     }   // end toString()
 
@@ -36,11 +45,22 @@ public class Game {
             return this.players;
     }   // end getPlayers()
 
+    public Player getPlayerByIndex(int index) {
+        Player p;
+        try {
+            p = this.players.get(index);    // returns the player by the userInput
+
+        } catch  (IndexOutOfBoundsException e) {
+            p = this.players.get(0);        // if
+        }   // end try-catch statement
+        return p;
+    }   // end getPlayerByIndex()
+
     public void registerPlayers() {
-        int playerNum = ui.promptNumeric("Type number of players: ");
+        int playerNum = ui.promptNumeric("Enter number of players: ");
         if (playerNum > 2 && playerNum < 7) {
-            int i = 0;
-            while (i< playerNum) {
+            int i = 1;
+            while (i <= playerNum) {
 
                 String name = ui.promptText("Type name of player:");
                 int startAmount = ui.promptNumeric("Type start amount:");
@@ -49,12 +69,13 @@ public class Game {
                 this.addPlayer(p);
                 ++i;
                 }   // end while-loop
-             }  else {
-            System.out.println("Amount of players is out of range.\nRange is within 3-6 players\n************");
-            registerPlayers();  //
-        }
+             }  else    {
 
-        ui.promptText("Number of players: " + players.size());
+            System.out.println("Amount of players is out of range.\nRange is 3-6 players\n************");
+            registerPlayers();  //  recursion
+        }   // end if-else statement
+
+        ui.displayMsg("Number of players: " + players.size());      // prints amount of players registered based on the
     }   // end registerPlayer()
 
    public void setup(){
@@ -77,10 +98,22 @@ public class Game {
     public void endSession(){
         ArrayList<String> playerAsText = new ArrayList<>();
 
-        for (Player c: players) {
-            playerAsText.add(c.toString());
+        for (Player p: players) {
+            playerAsText.add(p.toString());
         }   // end for-each loop
 
         FileIO.saveData(playerAsText, this.playerDataPath, "name, balance");
-    }   // end endSession()
+    }   // end endSession
+
+    public void runGameLoop(){
+        players.set(0, this.currentPlayer);
+        System.out.println(players.get(1));
+    }   // end runGameLoop()
+
+    public int throwAndMove(){
+        int result = new Dice().rollDie();
+
+        return result;
+    }   // end throwAndMove()
+
 }   // End Game
