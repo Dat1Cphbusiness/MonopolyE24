@@ -83,8 +83,17 @@ public class Game {
     }
 
     public void runGameLoop(){
-        currentPlayer = players.getFirst();
-        System.out.println("Current player: " + currentPlayer);
+        int count = 0;
+        boolean continueGame = true;
+        while (continueGame) {
+            currentPlayer = players.get(count);
+            throwAndMove();
+            continueGame = ui.promptBinary("Continue game? (Y/N)");
+            count++;
+            if (count == players.size()){
+                count = 0;
+            }
+        }
     }
 
     public void endSession() {
@@ -96,4 +105,11 @@ public class Game {
         FileIO.saveData(playersAsText, this.playerDataPath, "name, balance");
     }
 
+    public void throwAndMove(){
+        System.out.println("Current player: " + this.currentPlayer);
+    }
+
+    public void landAndAct(){
+
+    }
 }

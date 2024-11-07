@@ -23,6 +23,20 @@ public class TextUI {
         return input;
     }
 
+    public boolean promptBinary(String msg){
+        String input = promptText(msg);
+        boolean choice = false;
+        if (input.equalsIgnoreCase("y")){
+            choice = true;
+        } else if (input.equalsIgnoreCase("n")) {
+            choice = false;
+        } else {
+            System.out.println("Please enter Y or N");
+            promptBinary(msg);
+        }
+        return choice;
+    }
+
     public ArrayList<String> promptChoice(ArrayList<String> options, int limit, String msg){
         ArrayList<String> choices = new ArrayList<String>();  //Lave en beholder til at gemme brugerens valg
         int count = 1;
