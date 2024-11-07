@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Game {
@@ -7,7 +8,8 @@ public class Game {
     private TextUI ui;
     private FileIO io;
     private String playerDataPath;
-    private String currentplayer;
+    private Player currentplayer;
+
     public Game(String name) {
         this.name = name;
         this.players = new ArrayList<>();
@@ -46,10 +48,10 @@ public class Game {
 
             //continueDialog = ui.promptText("Do you wish to create another player? Y/N");
                 }
-
             }else{
             registerPlayers();
         }
+        Collections.shuffle(players);
     }
    public void setup(){
     ui.displayMsg("Velkommen til " + this.name);
