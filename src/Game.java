@@ -28,7 +28,7 @@ public class Game {
 
 
     public List getPlayers() {
-            return players;
+        return players;
     }
 
     public void registerPlayer() {
@@ -46,25 +46,24 @@ public class Game {
 
         }
     }
-   public void setup(){
-     ArrayList<String> data = io.readData(this.playerDataPath);
+    public void setup(){
+        ArrayList<String> data = io.readData(this.playerDataPath);
 
-       if(!data.isEmpty()) {
-           for (String s:data) {
-               String[] values= s.split(",");
-               String name = values[0];
-               int balance = Integer.parseInt(values[1].trim());
-               Player c = new Player(name, balance);
-               players.add(c);
-           }
-       }
-       else{
-           registerPlayer();
+        if(!data.isEmpty()) {
+            for (String s:data) {
+                String[] values= s.split(",");
+                String name = values[0];
+                int balance = Integer.parseInt(values[1].trim());
+                Player c = new Player(name, balance);
+                players.add(c);
+            }
+        }
+        else{
+            registerPlayer();
 
-       }
+        }
 
-       }
-   }
+    }
     public void endSession(){
 
         ArrayList<String> playersAsText = new ArrayList<>();
@@ -73,3 +72,5 @@ public class Game {
         }
         FileIO.saveData(playersAsText, this.playerDataPath, "name, balance");
     }
+
+}
