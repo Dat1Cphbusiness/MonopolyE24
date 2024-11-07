@@ -31,20 +31,20 @@ public class Game {
     }
 
     public void registerPlayers() {
+        int minPlayerNum = 2;
+        int maxPlayerNum = 6;
         int playerNum = ui.promptNumeric("Type Number Of Players");
-        if (playerNum < 2 || playerNum > 6){
+        if (playerNum < minPlayerNum || playerNum > maxPlayerNum){
             ui.displayMsg("The Number Of Players Must Be 2, 3, 4, 5 Or 6");
             registerPlayers();
         }
         int startAmount = ui.promptNumeric("Type start amount:");
-        //String continueDialog = "Y";
         while (players.size() < playerNum) {
 
             String name = ui.promptText("Type name of player " + (players.size() + 1) + ": ");
 
             Player p = new Player(name, startAmount);
             this.addPlayer(p);
-            //continueDialog = ui.promptText("Do you wish to create another player? Y/N");
 
         }
     }
