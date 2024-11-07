@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class Game {
@@ -33,10 +35,11 @@ public class Game {
     public void registerPlayers() {
         int minPlayerNum = 2;
         int maxPlayerNum = 6;
-        int playerNum = ui.promptNumeric("Type Number Of Players");
+        int playerNum = ui.promptNumeric("Type Number Of Players (" + minPlayerNum + "-" + maxPlayerNum + ")");
         if (playerNum < minPlayerNum || playerNum > maxPlayerNum){
-            ui.displayMsg("The Number Of Players Must Be 2, 3, 4, 5 Or 6");
+            ui.displayMsg("The Number Of Players Must Be Or Be Between " + minPlayerNum + " and " + maxPlayerNum + ".");
             registerPlayers();
+            return;
         }
         int startAmount = ui.promptNumeric("Type start amount:");
         while (players.size() < playerNum) {
@@ -47,6 +50,7 @@ public class Game {
             this.addPlayer(p);
 
         }
+        Collections.shuffle(players);
     }
    public void setup(){
     ui.displayMsg("Velkommen til " + this.name);

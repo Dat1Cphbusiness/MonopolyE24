@@ -39,7 +39,14 @@ public class TextUI {
     public int promptNumeric(String msg){
         System.out.println(msg);              // Stille brugeren et spørgsmål
         String input = scan.nextLine();       // Give brugere et sted at placere sit svar og vente på svaret
-        int number = Integer.parseInt(input); // Konvertere svaret til et tal
+        int number
+        try {
+            number = Integer.parseInt(input); // Konvertere svaret til et tal
+        }
+        catch(NumberFormatException e){
+            displayMsg("please type a number");
+            number = promptNumeric("Type start amount:");
+        }
         return number;
     }
     public void displayMsg(String msg){
