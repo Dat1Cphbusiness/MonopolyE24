@@ -17,11 +17,11 @@ public class FileIO {
             Scanner scan = new Scanner(file);
             scan.nextLine();//skip header
 
-            while(scan.hasNextLine()){
+            while (scan.hasNextLine()) {
                 String line = scan.nextLine(); // "tess, 40000"
                 data.add(line);
             }
-        }catch(FileNotFoundException e){
+        } catch (FileNotFoundException e) {
             System.out.println("File was not found");
         }
         return data;
@@ -30,13 +30,35 @@ public class FileIO {
     public static void saveData(List<String> items, String path, String header) {
         try {
             FileWriter writer = new FileWriter(path);
-            writer.write(header+"\n"); //Giv csv filen en header
-            for (String s: items) {
-                writer.write(s+"\n"); //"Tess, 40000";
+            writer.write(header + "\n"); //Giv csv filen en header
+            for (String s : items) {
+                writer.write(s + "\n"); //"Tess, 40000";
             }
             writer.close();
-        }catch (IOException e){
+        } catch (IOException e) {
             System.out.println("something went wrong when writing to file");
         }
+    }
+
+    public String[] readBoardData(String path, int length) {
+        String[] data = new String[length];
+        File file = new File(path);
+        int counter = 0;
+
+        try {
+            Scanner scan = new Scanner(file);
+            scan.nextLine();
+
+            while (scan.hasNextLine()) {
+                String line = scan.nextLine();
+                data[counter] = line;
+                counter++;
+            }
+
+        } catch (FileNotFoundException e) {
+            System.out.println("File was not found");
+        }
+        return data;
+
     }
 }
