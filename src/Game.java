@@ -33,8 +33,9 @@ public class Game {
 
     public void registerPlayer() {
 
-        String continueDialog = "Y";
-        while (continueDialog.equalsIgnoreCase("Y")) {
+        //String continueDialog = "Y";
+        while (continueDialog.equalsIgnoreCase("Y") && ui.promptText("Continue previously saved game? Y/N").equalsIgnoreCase("Y")) {
+
 
             String name = ui.promptText("Type name of player:");
             int startAmount = ui.promptNumeric("Type start amount:");
@@ -42,7 +43,7 @@ public class Game {
             Player c = new Player(name, startAmount);
             this.addPlayer(c);
 
-            continueDialog = ui.promptText("Do you wish to create another player?Y/N");
+            //continueDialog = ui.promptText("Do you wish to create another player?Y/N");
 
         }
     }
