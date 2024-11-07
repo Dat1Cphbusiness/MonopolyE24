@@ -31,7 +31,6 @@ public class Game {
     }
 
     public void registerPlayers() {
-        int i = 1;
         int playerNum = ui.promptNumeric("Type Number Of Players");
         if (playerNum < 2 || playerNum > 6){
             ui.displayMsg("The Number Of Players Must Be 2, 3, 4, 5 Or 6");
@@ -39,13 +38,12 @@ public class Game {
         }
         int startAmount = ui.promptNumeric("Type start amount:");
         //String continueDialog = "Y";
-        while (i <= playerNum) {
+        while (players.size() < playerNum) {
 
-            String name = ui.promptText("Type name of player " + i + ": ");
+            String name = ui.promptText("Type name of player " + (players.size() + 1) + ": ");
 
             Player p = new Player(name, startAmount);
             this.addPlayer(p);
-            i++;
             //continueDialog = ui.promptText("Do you wish to create another player? Y/N");
 
         }
