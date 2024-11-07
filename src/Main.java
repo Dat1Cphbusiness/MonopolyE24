@@ -38,6 +38,6 @@ class Main {
 
         game.runGameLoop();
 
-        game.endSession();
+        game.endGame();
     }
 }
