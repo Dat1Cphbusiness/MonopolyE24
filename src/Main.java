@@ -30,8 +30,10 @@ class Main {
 
         Game game = new Game("Matador");
 
-        game.setup();
+        String[] data = {"40, Plot, Rådhuspladsen, 8000, 1000, 10", "39, Tax, Ekstra Skat, 2000, 0, 0"};
+        CardDeck cardDeck = new CardDeck(data);
 
+        game.setup();
 
         System.out.print(game);
         System.out.println("-------------Starting game------------------------");
