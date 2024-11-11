@@ -59,7 +59,6 @@ class Account{
 
 
 
-
 class Field{
 - String label
  - int ID
@@ -75,16 +74,18 @@ class Field{
 }
 class Board{
  - Field[] fields
+ - CardDeck carddeck
  + Board(String [] fielddata, String [] carddata])
  - void createFields(String [] data)
  + Field getField(int id)
+ + CardDeck getCardDexk()
 }
 
 class CardDeck {
 - ArrayList<Card> cards
 + CardDeck(String[] carddata)
 + Card getNext()
-+ void createCards(String data)
++ void createCards(String data[])
 }
 class Card{
 -String message

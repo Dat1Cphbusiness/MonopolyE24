@@ -49,10 +49,10 @@ public class Game {
         Collections.shuffle(players);
     }
    public void setup(){
-    ui.displayMsg("Velkommen til " + this.name);
+    ui.displayMsg("Welcome to " + this.name);
      ArrayList<String> data = io.readData(this.playerDataPath);
 
-       if(!data.isEmpty() && ui.promptText("Continue previously saved game? y/n").equalsIgnoreCase("y")) {
+       if(!data.isEmpty() && ui.promptBinary("Do you want to continue the game? y/n")) {
            for (String s:data) {
                String[] values= s.split(",");
                String name = values[0];
@@ -66,11 +66,31 @@ public class Game {
        }
    }
 
-   public void runGameLoop(){
-        currentPlayer = players.get(0);
-        ui.displayMsg("It's now " + currentPlayer.getName() + "'s turn");
+   public void throwAndMove(){
+       ui.displayMsg("It's now " + currentPlayer.getName() + "'s turn");
    }
-    public void endSession(){
+
+   public void landAndAct(){
+
+   }
+
+   public void runGameLoop(){
+        int count = 0;
+        boolean continueGame = true;
+        while(continueGame){
+            currentPlayer = players.get(count);
+            throwAndMove();
+            continueGame = ui.promptBinary("Continue game? Y/N");
+            if(count == players.size()-1) {
+                count = 0;
+            }
+            else {
+                count++;
+            }
+        }
+   }
+    public void endGame(){
+        ui.displayMsg("Game is ending");
 
         ArrayList<String> playersAsText = new ArrayList<>();
         for (Player p: players) {
