@@ -1,10 +1,10 @@
 public class Board {
+    public static CardDeck cardDeck;
     private Field[] fields;
-    private CardDeck cardDeck;
 
     public Board(String[] fielddata, String[] carddata){
         createFields(fielddata);
-        this.cardDeck = new CardDeck(carddata);
+        cardDeck = new CardDeck(carddata);
     }
 
     private void createFields(String[] data){

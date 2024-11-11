@@ -9,5 +9,22 @@ private String event;
         this.income = income;
         this.cost = cost;
         this.event = event;
+
+    }
+
+    public int getCost() {
+        return cost;
+    }
+
+    public int getIncome() {
+        return income;
+    }
+
+    public String getEvent() {
+        return event;
+    }
+
+    public String getMessage() {
+        return message;
     }
 }
