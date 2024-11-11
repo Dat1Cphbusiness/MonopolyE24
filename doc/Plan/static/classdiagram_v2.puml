@@ -1,0 +1,168 @@
+@startuml
+class Main{
++ static void main(String[] args)
+}
+
+
+
+
+class Game{
+ - String name
+ - ArrayList<Player> players
+ - Player currentPlayer
+ - CardDeck cardDeck
+ - Board board
+ - Dice dice
+ 'utilities
+  - ArrayList<String> listOfActions
+  - String playerDataPath
+  - TextUI ui
+  - FileIO io
+  'Contructor
+ + Game(String name)
+ 'Methods
+ - void setup()
+ + void runDialog()
+ - void createPlayer(String name, int balance)
+ - void displayPlayers()
+  - loadPlayerData()
+ - void registerPlayers()
+ + void runGameLoop()
+ - void throwAndMove()
+ - void landAndAct()
+ - void endGame()
+
+}
+
+class Player{
+- String name
+- Account account
+- ArrayList<Field> deeds
++ Player(String name, int startAmount)
++ int updatePosition(int value)
+- boolean startPassed()
++ boolean buyProperty(Field f)
++ boolean pay(int amount)
++ boolean pay(int amount, Player recipient)
++ void collect(int amount)
++ void recieve(int amount)
++ String toString()
++ String getName()
++ int getBalance()
+}
+class Account{
+- int balance
++ void deposit(int amount)
++ boolean withdraw(int amount)
++ int getBalance()
+}
+
+
+
+
+class Field{
+- String label
+ - int ID
+ - int cost
+ - int income
+ - String option
+ + Field(ID, label, cost, income)
+ + String toString()
+ + String onLand(Player p)
+ + String processResponse(Player p)
+ # String onAccept(Player p)
+ # String onReject(Player p)
+}
+Class Property{
+- int serieID
+Property(serieID, ID, label, cost, income)
++String onLand(Player P)
++String toString()
+#String onAccept(Player p)
+#String onReject(Player p)
+}
+class Board{
+ - Field[] fields
+ + Board(String [] fielddata, String [] carddata])
+ - void createFields(String [] data)
+ + Field getField(int id)
+}
+
+class CardDeck {
+- ArrayList<Card> cards
++ CardDeck(String[] carddata)
++ Card getNext()
++ void createCards(String data)
+}
+class Card{
+-String message
+-int income
+-int cost
+-String event
++Card(String message, int income, int cost, String event)
++String toString()
++ int getCost()
++ int getIncome()
++ String getEvent()
++ String getMessage()
+}
+
+class Dice{
+ - boolean isDouble
+ +int rollDiceSum()
+ +boolean getIsDouble()
+ }
+ class Visit
+ class Tax
+ class Parking
+ class Start
+ class Chance
+ class ShippingLine
+ class Brewery
+ class Building
+ class Deed
+ class Plot
+
+package "util" {
+class TextUI{
+- Scanner scanner
++ void displayMsg(String s)
++ int promptNumeric(String msg)
++ String promptText(String msg)
++ int promptChoice(String msg, ArrayList<String> list)
++ boolean promptBinary(String msg )
+}
+class FileIO{
++ ArrayList<String> readPlayerData(String path)
++ void saveData(ArrayList<Player> players, String path)
++ String[] readBoardData(String path, int length).
+}
+}
+
+Game *-- TextUI
+Main *-- Game
+Game *-- Player: 2-6
+Game *-- FileIO
+Player *-- Account:1
+Game *-- Board:1
+Board *-- Field:40
+Game *-- CardDeck:1
+CardDeck *-- Card:100
+Game *-- Dice
+Player *-- Card
+Player *-- Field
+Field <|-- Property
+Field <|-- Visit
+Field <|-- Tax
+Field <|-- Chance
+Field <|-- Parking
+Field <|-- Start
+Field <|-- Prison
+Property <|-- ShippingLine
+Property <|-- Brewery
+Property <|-- Plot
+Plot *-- Building
+
+
+
+@enduml
