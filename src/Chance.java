@@ -1,11 +1,11 @@
 public class Chance extends Field {
     private String event;
-    CardDeck carddeck;
+    CardDeck cardDeck;
 
-    public Chance(int id, String label, int cost, int income, String event, CardDeck carddeck) {
+    public Chance(int id, String label, int cost, int income, String event, CardDeck cardDeck) {
         super(id, label, cost, income);
         this.event = event;
-        this.carddeck = carddeck;
+        this.cardDeck = cardDeck;
     }
 
     @Override
