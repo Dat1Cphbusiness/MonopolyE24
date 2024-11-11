@@ -1,8 +1,8 @@
 public class Field {
     private String label;
     private int id;
-    private int cost;
-    private int income;
+    protected int cost;
+    protected int income;
     private String option;
 
     public Field(int id, String label, int cost, int income) {

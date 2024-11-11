@@ -49,7 +49,7 @@ public class Game {
         Collections.shuffle(players);
     }
    public void setup(){
-    ui.displayMsg("Welcome to " + this.name);
+    ui.displayMsg("Welcome to " + this.name); 
      ArrayList<String> data = io.readPlayerData(this.playerDataPath);
 
        if(!data.isEmpty() && ui.promptBinary("Do you want to continue the game? y/n")) {
