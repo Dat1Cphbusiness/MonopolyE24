@@ -1,8 +1,6 @@
-public class Brewery extends Property{
-
-    public Brewery(String label, int id, int income, int cost, int serieID){
-
-        super(label, id, income, cost, serieID);
+public class Tax extends Field {
+    public Tax(int id, String label, int cost, int income) {
+        super(id, label, cost, income);
     }
     @Override
     public String onLand(Player p) {

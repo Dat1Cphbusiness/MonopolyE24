@@ -6,8 +6,17 @@ public class Plot extends Property{
 
 
     @Override
-    public String onLand(Player p){
+    public String onLand(Player p) {
         return super.onLand(p);
     }
 
+    @Override
+    protected String onAccept(Player p) {
+        return super.onAccept(p);
+    }
+
+    @Override
+    protected String onReject(Player p) {
+        return super.onReject(p);
+    }
 }
