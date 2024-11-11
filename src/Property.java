@@ -1,11 +1,12 @@
 
 public class Property extends Field {
 
-    private int serieID;
+    private int seriesID;
+    private Player owner;
 
-    public Property(String label, int id, int income, int cost, int serieID){
+    public Property(String label, int id, int income, int cost, int seriesID) {
         super(id, label, income, cost);
-        this.serieID = serieID;
+        this.seriesID = seriesID;
     }
 
     @Override
