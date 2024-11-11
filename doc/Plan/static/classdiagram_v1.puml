@@ -73,6 +73,30 @@ class Field{
  # String onAccept(Player p)
  # String onReject(Player p)
 }
+
+class Property{
++ Property(label, id, cost, income)
+# String onAccept(Player p)
+# String onReject(Player p)
++ String toString()
++ String onLand((Player p)
+}
+
+class Plot{
++ Plot(label, id, cost, income)
++ String onLand((Player p)
+}
+
+class Brewery{
++ Brewery(label, id, cost, income)
++ String onLand((Player p)
+}
+
+class ShippingLine{
++ ShippingLine(label, id, cost, income)
++ String onLand((Player p)
+}
+
 class Board{
  - Field[] fields
  + Board(String [] fielddata, String [] carddata])
@@ -132,5 +156,9 @@ CardDeck *-- Card:100
 Game *-- Dice
 Player *-- Card
 Player *-- Field
+Field <-- Property
+Property <-- Plot
+Property <-- Brewery
+Property <-- ShippingLine
 
 @enduml
