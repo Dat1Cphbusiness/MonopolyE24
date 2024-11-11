@@ -9,6 +9,7 @@ public class Field {
         this.label = label;
         this.id = id;
         this.cost = cost;
+        this.income = income;
     }
 
     public String processResponse (Player p){
