@@ -32,7 +32,11 @@
 
 - **cost**: det beløb der skal betales
 
-- **event**: en hændelse skal kategorieseres som en af følgende typer: reward, rewardFromPlayers, payment, paymentPerProperty, joker, moveTo
+- **event**: en hændelse skal kategorieseres som en af følgende typer: reward, rewardFromPlayers, payment, doublePaymentToPlayer, paymentPerProperty, joker, moveTo
+- **paymentPerProperty**: Her skal der laves en metode hvor der scannes antal huse og hoteller ejet af en Player, og derefter skal playeren betale et beløb pr. hus og et andet beløb pr. hotel.
 
 
 ## Noter vedrørende "mangler"
+
+## Noter vedrørende cardata.csv
+* På linje **8**,**19** og **20** har data'en et format vi ikke håndterer endnu.
