@@ -28,15 +28,15 @@ class Main {
 
     public static void main(String[] args) {
 
-        Game game = new Game("Matador");
+        System.out.println("Hello world!");
+
+        Game game = new Game("Monopoly");
 
         game.setup();
 
+        game.runGameLoop();
 
         System.out.print(game);
-        System.out.println("-------------Starting game------------------------");
-
-        game.runGameLoop();
 
         game.endGame();
     }
