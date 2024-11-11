@@ -30,6 +30,7 @@ class Main {
 
         Game game = new Game("Matador");
 
+
         game.setup();
 
         System.out.print(game);
