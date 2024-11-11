@@ -64,6 +64,8 @@ public class Game {
        else{
            registerPlayers();
        }
+       String [] carddata = io.readBoardData("data/carddata.csv", 100);
+       String [] fielddata = io.readBoardData("data/carddata.csv", 40);
    }
 
    public void runGameLoop(){
