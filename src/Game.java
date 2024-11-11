@@ -1,3 +1,4 @@
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -8,6 +9,9 @@ public class Game {
     private TextUI ui;
     private FileIO io;
     private String playerDataPath;
+    private String cardDataPath;
+    private String boardDataPath;
+
     private Player currentPlayer;
 
     public Game(String name) {
@@ -16,6 +20,8 @@ public class Game {
         this.ui = new TextUI();
         this.io = new FileIO();
         this.playerDataPath ="data/playerdata.csv";
+        this.boardDataPath ="data/boarddata.csv";
+        this.cardDataPath ="data/carddata.csv";
     }
     public void addPlayer(Player p){
         this.players.add(p);
@@ -50,7 +56,7 @@ public class Game {
     }
    public void setup(){
     ui.displayMsg("Welcome to " + this.name);
-     ArrayList<String> data = io.readData(this.playerDataPath);
+     ArrayList<String> data = io.readPlayerData(this.playerDataPath);
 
        if(!data.isEmpty() && ui.promptBinary("Do you want to continue the game? y/n")) {
            for (String s:data) {
@@ -64,6 +70,12 @@ public class Game {
        else{
            registerPlayers();
        }
+       String[] cardData = io.readBoardData(cardDataPath,100);
+       String[] fieldData = io.readBoardData(boardDataPath,40);
+
+       System.out.println("tester field data: "+fieldData[0]);
+       System.out.println("tester card data: "+cardData[0]);
+
    }
 
    public void throwAndMove(){

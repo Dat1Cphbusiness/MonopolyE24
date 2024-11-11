@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class FileIO {
 
-    public static ArrayList<String> readData(String path) {
+    public static ArrayList<String> readPlayerData(String path) {
         ArrayList<String> data = new ArrayList();
         File file = new File(path);
         try {
@@ -38,5 +38,24 @@ public class FileIO {
         }catch (IOException e){
             System.out.println("something went wrong when writing to file");
         }
+    }
+
+    public static String[] readBoardData(String path, int length) {
+        String[] data = new String[length];
+        File file = new File(path);
+
+        try {
+            Scanner scan = new Scanner(file);
+            scan.nextLine();//skip header
+            int index = 0;
+            while(scan.hasNextLine()){
+                String line = scan.nextLine(); // "tess, 40000"
+                data[index] = line;
+                index++;
+            }
+        }catch(FileNotFoundException e){
+            System.out.println("File was not found");
+        }
+        return data;
     }
 }
