@@ -5,7 +5,7 @@ Ryk frem til Frederiksberg Allé (Passerer du START får du 4000 kr.), 0, 0, mov
 Ryk frem til Start, 0, 0, moveTo
 Ryk tre felter tilbage, 0, 0, moveTo
 Betal for vognvask og smøring, 0, 300, payment
------------Ryk brikken frem til det nærmeste rederi og betal ejeren to gange den leje han ellers er berettiget til (Hvis selvskabet ikke ejet af nogle kan du købe det), 0, 0, doublePaymentToPlayer
+-----------Ryk brikken frem til det nærmeste rederi og betal ejeren to gange den leje han ellers er berettiget til (Hvis selvskabet ikke ejet af nogle kan du købe det), 0, 0, doubleRentPaymentToPlayer
 Du møder Eren han stjæler 500 kr, 0, 500, payment
 Tag med den nærmeste færge (Passerer du START får du 4000 kr.), 0, 0, moveTo
 Deres præmieobligation er udtrukket (Du modtager 1000 kr.), 1000, 0, reward
