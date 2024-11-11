@@ -33,7 +33,7 @@ public class Player {
     }
 
     public String toString(){
-        return this.name + ", "+ this.account;
+        return this.name + ", " + account.getBalance();
     }
 
     public String getName() {
