@@ -2,8 +2,8 @@ public class Field {
     private String label;
     private int id;
     private int cost;
-    private int income;
-    private String option;
+    protected int income;
+    protected String option;
 
     public Field(int id, String label, int cost, int income) {
         this.label = label;

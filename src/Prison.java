@@ -1,11 +1,9 @@
+public class Prison extends Field{
 
-public class ShippingLine extends Property{
+    public Prison(int ID, String label, int cost, int income){
+        super(ID, label, cost, income);
+    }
 
-        public ShippingLine(int seriesID, int ID, String label, int cost, int income){
-
-            super(seriesID, ID, label, income, cost);
-
-        }
     public String onLand(Player p){
         return super.onLand(p);
 
