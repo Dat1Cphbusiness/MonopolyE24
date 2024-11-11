@@ -39,7 +39,5 @@ class Main {
 
         game.endGame();
 
-        Dice dice = new Dice();
-        dice.rollDiceSum();
     }
 }
