@@ -70,6 +70,7 @@ class Field{
  # String onAccept(Player p)
  # String onReject(Player p)
 }
+
 class Board{
  - Field[] fields
  + Board(String [] fielddata, String [] carddata])
@@ -115,6 +116,16 @@ class FileIO{
 + void saveData(ArrayList<Player> players, String path)
 + String[] readBoardData(String path, int length).
 }
+}
+
+class Property extends Field {
+    - int serieID
+
+    Property(int ID, String label, int cost, int income)
+    override String toString()
+    override String onLand(Player p)
+    override protected String onAccept(Player p)
+    override protected String onReject(Player p)
 }
 
 Game *-- TextUI

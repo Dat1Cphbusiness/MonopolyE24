@@ -30,7 +30,7 @@ public class Game {
 
 
     public List getPlayers() {
-            return players;
+        return players;
     }
 
     public void registerPlayers() {
@@ -67,11 +67,10 @@ public class Game {
    }
 
    public void throwAndMove(){
-       ui.displayMsg("It's now " + currentPlayer.getName() + "'s turn");
+        ui.displayMsg("It's now " + currentPlayer.getName() + "'s turn");
    }
 
    public void landAndAct(){
-
    }
 
    public void runGameLoop(){
