@@ -10,6 +10,8 @@
 
 - **Cost**: prisen ved af en property eller ved betaling af skat
   Felter som ikke er forbundet med en omkostning har 0 som værdi.
+  - Vi skal have en metode til Bryggerierne som gør at hvis virksomheden ejes skal der betales 100 gange så meget som øjnene viser. Hvis begge bryggerier ejes, betales der 200 gange så meget som øjnene viser.
+  
 
 - **Income**: det beløb der inkasseres af ejeren når nogen lander på en property.
   Ved start feltet noteres passér start beløbet.
@@ -22,6 +24,7 @@
   _Redderierne har serieID 2_
 
   _Rådhuspladsen har serieID10_
+
 
 
 ## Card data
