@@ -3,15 +3,19 @@ public class Player {
     private String name;
     private int balance;
     private final static int startBalance = 30000;
+    private int position;
+    Account account;
 
     public Player (String name){
         this.name = name;
-        this.balance = startBalance;
+        account = new Account();
+        this.startAmount = startAmount;
+
+
     }
 
-    public Player(String name, int balance) {
-        this.name = name;
-        this.balance = balance;
+    public void receive(int amount) {
+        account.deposit(amount);
     }
 
     public void deposit(int amount) {
@@ -23,10 +27,18 @@ public class Player {
     }
 
     public String toString(){
-        return this.name + ", "+ this.balance;
+        return this.name + ", "+ account.getBalance();
     }
 
     public String getName() {
         return name;
+    }
+
+    public int updatePosition(int value) {
+        if(position > 0) {
+           receive(startAmount);
+        }
+        this.position = value;
+        return value;
     }
 }
