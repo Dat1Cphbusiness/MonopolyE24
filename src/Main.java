@@ -38,5 +38,8 @@ class Main {
         game.runGameLoop();
 
         game.endGame();
+
+        Dice dice = new Dice();
+        dice.rollDiceSum();
     }
 }
