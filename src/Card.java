@@ -13,7 +13,7 @@ public class Card {
 
     @Override
     public String toString() {
-        return null;
+        return "Message: " + message + " Income: " + income + " Cost: " + cost + " Event: " + event;
     }
 
     public int getCost() {

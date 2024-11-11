@@ -2,16 +2,17 @@ import java.util.ArrayList;
 
 public class CardDeck {
     private ArrayList<Card> cards;
+    private int counter;
 
     CardDeck(String[] carddata) {
         cards = new ArrayList<>(100);
         createCards(carddata);
+        this.counter = 0;
     }
 
     public Card getNext() {
-        int count = 0;
-        Card nextCard = cards.get(count);
-        count++;
+        Card nextCard = cards.get(counter);
+        counter++;
         return nextCard;
     }
 
