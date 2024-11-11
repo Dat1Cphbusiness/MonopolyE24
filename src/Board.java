@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class Board {
     private Field[] fields;
     private CardDeck cardDeck;
@@ -17,13 +19,35 @@ public class Board {
             int income = Integer.parseInt(values[4].trim());
             fields[i] = null;
 
-            switch (fieldtype) {
+            switch (fieldType) {
                 case "Start":
                     break;
                 case "Plot":
                     break;
-                case
-
+                case "Chance":
+                    fields[i] = new Chance(id, label, income, cost, seriesID, cardDeck);
+                    break;
+                case "Tax":
+                    fields[i] = new Tax(id, label, income, cost, seriesID);
+                    break;
+                case "ShippingLine":
+                    fields[i] = new ShippingLine(id, label, income, cost, seriesID);
+                    propertyFields.add(fields[i]);
+                    break;
+                case "Visit":
+                    fields[i] = new Visit(id, label, income, cost, seriesID);
+                    break;
+                case "Brewery":
+                    fields[i] = new Brewery(id, label, income, cost, seriesID);
+                    propertyFields.add(fields[i]);
+                    break;
+                case "Parking":
+                    fields[i] = new Parking(id, label, income, cost, seriesID);
+                    break;
+                case "Prison":
+                    fields[i] = new Prison(id, label, income, cost, seriesID);
+                    break;
+                default: System.out.println("No such type is available");
             }
         }
     }

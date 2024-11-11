@@ -1,6 +1,6 @@
 public class Brewery extends Property{
 
-    public Brewery(String label, int id, int income, int cost, int serieID){
+    public Brewery(int id, String label, int income, int cost, int serieID){
 
         super(label, id, income, cost, serieID);
     }
