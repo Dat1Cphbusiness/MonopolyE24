@@ -50,7 +50,7 @@ public class Game {
     }
    public void setup(){
     ui.displayMsg("Welcome to " + this.name);
-     ArrayList<String> data = io.readData(this.playerDataPath);
+     ArrayList<String> data = io.readPlayerData(this.playerDataPath);
 
        if(!data.isEmpty() && ui.promptBinary("Do you want to continue the game? y/n")) {
            for (String s:data) {
@@ -64,6 +64,11 @@ public class Game {
        else{
            registerPlayers();
        }
+
+       String[] carddata =  io.readBoardData("data/carddata.csv", 100);
+       String[] fielddata = io.readBoardData("data/fielddata.csv", 40);
+       Board board = new Board(fielddata, carddata);
+       System.out.println(board.getField(40));
    }
 
    public void throwAndMove(){

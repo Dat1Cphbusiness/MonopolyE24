@@ -32,7 +32,6 @@ class Main {
 
         game.setup();
 
-
         System.out.print(game);
         System.out.println("-------------Starting game------------------------");
 

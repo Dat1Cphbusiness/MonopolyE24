@@ -1,4 +1,6 @@
 @startuml
+!pragma layout smetana
+
 'nyt: carddeck - card
 
 object Game
