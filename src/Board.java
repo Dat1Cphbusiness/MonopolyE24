@@ -15,7 +15,16 @@ public class Board {
             String label = values[2].trim();
             int cost = Integer.parseInt(values[3].trim());
             int income = Integer.parseInt(values[4].trim());
-            fields[i] = new Field(id,label,cost,income);
+            fields[i] = null;
+
+            switch (fieldtype) {
+                case "Start":
+                    break;
+                case "Plot":
+                    break;
+                case
+
+            }
         }
     }
 
