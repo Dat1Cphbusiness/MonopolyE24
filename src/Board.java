@@ -12,14 +12,14 @@ public class Board {
         for (int i = 0; i < data.length; i++){
             String[] values = data[i].split(",");
             int id = Integer.parseInt(values[0].trim());
-            String label = values[1].trim();
-            int cost = Integer.parseInt(values[2].trim());
-            int income = Integer.parseInt(values[3].trim());
+            String label = values[2].trim();
+            int cost = Integer.parseInt(values[3].trim());
+            int income = Integer.parseInt(values[4].trim());
             fields[i] = new Field(id,label,cost,income);
         }
     }
 
     public Field getField(int id){
-        return fields[id];
+        return fields[id-1];
     }
 }

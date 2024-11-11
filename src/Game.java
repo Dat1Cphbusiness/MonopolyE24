@@ -68,6 +68,7 @@ public class Game {
        String[] carddata =  io.readBoardData("data/carddata.csv", 100);
        String[] fielddata = io.readBoardData("data/fielddata.csv", 40);
        Board board = new Board(fielddata, carddata);
+       System.out.println(board.getField(40));
    }
 
    public void throwAndMove(){
