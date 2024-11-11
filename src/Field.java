@@ -25,7 +25,7 @@ public class Field {
     }
 
     protected String onReject(Player p){
-        return null;
+    return null;
     }
 
     @Override
