@@ -3,14 +3,29 @@ public class Property extends Field{
 
     private int serieID;
 
-    public Property(String label, int id, int income, int cost, int serieID){
+    public Property(int id, String label, int income, int cost, int serieID){
         super(id, label, income, cost);
         this.serieID = serieID;
     }
 
     @Override
     public String onLand(Player p){
-        return super.onLand(p);
+
+        String msg = super.onLand(p);
+        if(owner == null){
+            super.option = "buy";
+            msg += "Vil du købe? (Y/N):";
+        }
+        else{
+            if(p != owner){
+                super.option = "payRent";
+                msg += "Du skal betale "+super.income+". tast Y for at acceptere:";
+            }
+
+
+        }
+
+        return msg;
     }
 
     @Override
