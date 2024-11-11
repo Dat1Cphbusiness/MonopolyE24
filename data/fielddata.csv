@@ -1,0 +1,11 @@
+ID, Field, Label, Cost, Income, SeriesID
+1, Start, Start, 0, 4000, 0, 0
+2, Rødovrevej, Grønt, 1200, 400, 1, 0
+3, Prøv Lykken, Prøv Lykken, 0, 0, 0, 0
+4, Hvidovrevej, Grønt, 1200, 400, 1, 0
+5, Betal Indkomstskat, Betal Skat, 0, -2000, 0, 0
+6, Øresund, Rederi, 4000, 500, 2, 0
+7, Roskildevej, Blåt, 2000, 600, 3, 0
+8, Prøv Lykken, Prøv Lykken, 0, 0, 0, 0
+9, Valby Langgade, Blåt, 2000, 600, 3, 0
+10, Allégade, Blåt, 2400, 800, 3, 0,
