@@ -1,6 +1,7 @@
 public class Board {
     private Field[] fields;
     private CardDeck cardDeck;
+    static public int fieldSize;
 
     public Board(String[] fielddata, String[] carddata){
         createFields(fielddata);
@@ -17,13 +18,10 @@ public class Board {
             int income = Integer.parseInt(values[4].trim());
             fields[i] = new Field(id,label,cost,income);
         }
+        fieldSize = fields.length;
     }
 
     public Field getField(int id){
         return fields[id-1];
-    }
-
-    public int getFieldSize(){
-        return fields.length;
     }
 }

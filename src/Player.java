@@ -4,29 +4,32 @@ public class Player {
     private Account account;
     private int position;
     private final static int startBalance = 30000;
+    private final static int passBonus = 4000;
 
 
-    public Player (String name){
+    public Player (String name, Account account){
         this.name = name;
         this.account = account;
+        account.deposit(startBalance);
     }
 
-    public Player(String name,Account account) {
+    public Player (String name, Account account, int value) {
         this.name = name;
         this.account = account;
+        account.deposit(value);
     }
 
-    public int updatePosition(int value, Board board) {
+    public int updatePosition(int value) {
         this.position += value;
-        if (position > board.getFieldSize()) {
-            receive(4000);
-            position -= board.getFieldSize();
+        if (position > Board.fieldSize) {
+            receive(passBonus);
+            position -= Board.fieldSize;
         }
         return position;
     }
 
-    public int getBalance() {
-        return balance;
+    public void receive(int value) {
+        account.deposit(value);
     }
 
     public String toString(){

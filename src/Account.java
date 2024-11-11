@@ -12,10 +12,10 @@ public class Account {
     public boolean withdraw(int amount) {
         if (amount < this.balance) {
             this.balance -= amount;
+            return true;
         }
         else {
             return false;
         }
-        return true;
     }
 }
