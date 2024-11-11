@@ -28,13 +28,16 @@ class Main {
 
     public static void main(String[] args) {
 
-        Game game = new Game("Sparekassen");
+        Game game = new Game("Matador");
+
         game.setup();
 
 
-
         System.out.print(game);
+        System.out.println("-------------Starting game------------------------");
 
-        game.endSession();
+        game.runGameLoop();
+
+        game.endGame();
     }
 }

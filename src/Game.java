@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Game {
@@ -7,69 +8,93 @@ public class Game {
     private TextUI ui;
     private FileIO io;
     private String playerDataPath;
+    private Player currentPlayer;
 
     public Game(String name) {
         this.name = name;
         this.players = new ArrayList<>();
         this.ui = new TextUI();
         this.io = new FileIO();
-        this.playerDataPath="data/playerdata.csv";
+        this.playerDataPath ="data/playerdata.csv";
     }
-    public void addPlayer(Player c){
-        this.players.add(c);
+    public void addPlayer(Player p){
+        this.players.add(p);
     }
     public String toString(){
         String s = "";
-        for (Player c:players) {
-            s+=c+"\n";
+        for (Player p: players) {
+            s+=p+"\n";
         }
         return s;
     }
 
 
     public List getPlayers() {
-        return players;
+            return players;
     }
 
-    public void registerPlayer() {
-
-        //String continueDialog = "Y";
-        while (continueDialog.equalsIgnoreCase("Y") && ui.promptText("Continue previously saved game? Y/N").equalsIgnoreCase("Y")) {
-
-
-            String name = ui.promptText("Type name of player:");
-            int startAmount = ui.promptNumeric("Type start amount:");
-
-            Player c = new Player(name, startAmount);
-            this.addPlayer(c);
-
-            //continueDialog = ui.promptText("Do you wish to create another player?Y/N");
-
+    public void registerPlayers() {
+        int playerNum = ui.promptNumeric("Type number of players.");
+        if (playerNum < 2 || playerNum > 6){
+            ui.displayMsg("The number must be between 2 and 6 incl.");
+            registerPlayers();
+            return;
         }
+        while (players.size() < playerNum) {
+            String name = ui.promptText("Type name of player " + (players.size()+1) + ":");
+            int startAmount = ui.promptNumeric("Type start amount:");
+            Player p = new Player(name, startAmount);
+            this.addPlayer(p);
+        }
+        Collections.shuffle(players);
     }
-    public void setup(){
-        ArrayList<String> data = io.readData(this.playerDataPath);
+   public void setup(){
+    ui.displayMsg("Welcome to " + this.name);
+     ArrayList<String> data = io.readData(this.playerDataPath);
 
-        if(!data.isEmpty()) {
-            for (String s:data) {
-                String[] values= s.split(",");
-                String name = values[0];
-                int balance = Integer.parseInt(values[1].trim());
-                Player c = new Player(name, balance);
-                players.add(c);
+       if(!data.isEmpty() && ui.promptBinary("Do you want to continue the game? y/n")) {
+           for (String s:data) {
+               String[] values= s.split(",");
+               String name = values[0];
+               int balance = Integer.parseInt(values[1].trim());
+               Player p = new Player(name, balance);
+               players.add(p);
+           }
+       }
+       else{
+           registerPlayers();
+       }
+   }
+
+   public void throwAndMove(){
+       ui.displayMsg("It's now " + currentPlayer.getName() + "'s turn");
+   }
+
+   public void landAndAct(){
+
+   }
+
+   public void runGameLoop(){
+        int count = 0;
+        boolean continueGame = true;
+        while(continueGame){
+            currentPlayer = players.get(count);
+            throwAndMove();
+            continueGame = ui.promptBinary("Continue game? Y/N");
+            if(count == players.size()-1) {
+                count = 0;
+            }
+            else {
+                count++;
             }
         }
-        else{
-            registerPlayer();
-
-        }
-
-    }
-    public void endSession(){
+   }
+    public void endGame(){
+        ui.displayMsg("Game is ending");
 
         ArrayList<String> playersAsText = new ArrayList<>();
-        for (Player c:players) {
-            playersAsText.add(c.toString());
+        for (Player p: players) {
+            playersAsText.add(p.toString());
         }
         FileIO.saveData(playersAsText, this.playerDataPath, "name, balance");
     }

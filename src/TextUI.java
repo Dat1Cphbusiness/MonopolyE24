@@ -4,7 +4,43 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class TextUI {
-    Scanner scan = new Scanner(System.in);
+    private Scanner scan = new Scanner(System.in);
+
+    public void displayMsg(String msg){
+        System.out.println(msg);
+    }
+
+    public boolean promptBinary(String msg){
+        String input = promptText(msg);
+        if(input.equalsIgnoreCase("Y")){
+            return true;
+        }
+        else if(input.equalsIgnoreCase("N")){
+            return false;
+        }
+        return promptBinary(msg);
+    }
+
+    public int promptNumeric(String msg) {
+        System.out.println(msg);              // Stille brugeren et spørgsmål
+        String input = scan.nextLine();
+        int number;
+        // Give brugere et sted at placere sit svar og vente på svaret
+        try {
+            number = Integer.parseInt(input);
+        }
+        catch(NumberFormatException e){
+            displayMsg("Please type a number");
+            number = promptNumeric(msg);
+        }
+        return number;
+    }
+
+    public String promptText(String msg){
+        System.out.println(msg);//Stille brugeren et spørgsmål
+        String input = scan.nextLine();
+        return input;
+    }
 
     public ArrayList<String> promptChoice(ArrayList<String> options, int limit, String msg){
         ArrayList<String> choices = new ArrayList<String>();  //Lave en beholder til at gemme brugerens valg
@@ -29,20 +65,4 @@ public class TextUI {
             i++;
         }
     }
-
-    public String promptText(String msg){
-        System.out.println(msg);//Stille brugeren et spørgsmål
-        String input = scan.nextLine();
-        return input;
-    }
-    public int promptNumeric(String msg){
-        System.out.println(msg);              // Stille brugeren et spørgsmål
-        String input = scan.nextLine();       // Give brugere et sted at placere sit svar og vente på svaret
-        int number = Integer.parseInt(input); // Konvertere svaret til et tal
-        return number;
-    }
-    public void displayMsg(String msg){
-        System.out.println(msg);
-    }
-
 }
