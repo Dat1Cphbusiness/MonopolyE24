@@ -1,12 +1,12 @@
 public class Player {
 
     private String name;
-    private int balance;
+    private int startAmount;
     private final static int startBalance = 30000;
     private int position;
     Account account;
 
-    public Player (String name){
+    public Player (String name, int startAmount){
         this.name = name;
         account = new Account();
         this.startAmount = startAmount;
@@ -18,13 +18,6 @@ public class Player {
         account.deposit(amount);
     }
 
-    public void deposit(int amount) {
-        this.balance += amount;
-    }
-
-    public int getBalance() {
-        return balance;
-    }
 
     public String toString(){
         return this.name + ", "+ account.getBalance();
