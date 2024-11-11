@@ -81,7 +81,7 @@ public class Game {
             currentPlayer = players.get(count);
             throwAndMove();
             continueGame = ui.promptBinary("Continue game? Y/N");
-            if(count == players.size()) {
+            if(count == players.size()-1) {
                 count = 0;
             }
             else {
