@@ -50,7 +50,7 @@ public class Game {
     }
    public void setup(){
     ui.displayMsg("Velkommen til " + this.name);
-     ArrayList<String> data = io.readData(this.playerDataPath);
+     ArrayList<String> data = io.readPlayerData(this.playerDataPath);
 
        if(!data.isEmpty() && ui.promptText("Continue previously saved game? y/n").equalsIgnoreCase("y")) {
            for (String s:data) {
@@ -66,6 +66,9 @@ public class Game {
        }
        String [] carddata = io.readBoardData("data/carddata.csv", 100);
        String [] fielddata = io.readBoardData("data/carddata.csv", 40);
+
+       System.out.println("test af fielddata" + fielddata);
+       System.out.println("test af carddata" + carddata);
    }
 
    public void runGameLoop(){
