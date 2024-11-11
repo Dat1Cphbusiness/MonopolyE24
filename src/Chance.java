@@ -25,14 +25,14 @@ public class Chance extends Field {
     }
 
     public String processResponse(Player p) {
-        return "Behandle svar for player " + p.getName();
+        return "Behandle svar for spiller " + p.getName();
     }
 
     protected String onAccept(Player p) {
-        return "Player " + p.getName() + " har accepteret tilbuddet.";
+        return "Spiller " + p.getName() + " har accepteret tilbuddet.";
     }
 
     protected String onReject(Player p) {
-        return "Player " + p.getName() + " afviste tilbuddet.";
+        return "Spiller " + p.getName() + " afviste tilbuddet.";
     }
 }
