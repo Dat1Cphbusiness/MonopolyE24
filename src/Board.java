@@ -22,4 +22,8 @@ public class Board {
     public Field getField(int id){
         return fields[id-1];
     }
+
+    public int getFieldSize(){
+        return fields.length;
+    }
 }

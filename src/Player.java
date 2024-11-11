@@ -1,21 +1,28 @@
 public class Player {
 
     private String name;
-    private int balance;
+    private Account account;
+    private int position;
     private final static int startBalance = 30000;
+
 
     public Player (String name){
         this.name = name;
-        this.balance = startBalance;
+        this.account = account;
     }
 
-    public Player(String name, int balance) {
+    public Player(String name,Account account) {
         this.name = name;
-        this.balance = balance;
+        this.account = account;
     }
 
-    public void deposit(int amount) {
-        this.balance += amount;
+    public int updatePosition(int value, Board board) {
+        this.position += value;
+        if (position > board.getFieldSize()) {
+            receive(4000);
+            position -= board.getFieldSize();
+        }
+        return position;
     }
 
     public int getBalance() {
@@ -23,7 +30,7 @@ public class Player {
     }
 
     public String toString(){
-        return this.name + ", "+ this.balance;
+        return this.name + ", "+ this.account;
     }
 
     public String getName() {
