@@ -9,6 +9,8 @@ public class Game {
     private FileIO io;
     private String playerDataPath;
     private Player currentPlayer;
+    private Dice dice;
+    Board board;
 
     public Game(String name) {
         this.name = name;
@@ -16,6 +18,7 @@ public class Game {
         this.ui = new TextUI();
         this.io = new FileIO();
         this.playerDataPath ="data/playerdata.csv";
+        this.dice = new Dice();
     }
     public void addPlayer(Player p){
         this.players.add(p);
@@ -49,7 +52,7 @@ public class Game {
         Collections.shuffle(players);
     }
    public void setup(){
-    ui.displayMsg("Welcome to " + this.name);
+    ui.displayMsg("Welcome to " + this.name); 
      ArrayList<String> data = io.readPlayerData(this.playerDataPath);
 
        if(!data.isEmpty() && ui.promptBinary("Do you want to continue the game? y/n")) {
@@ -67,16 +70,23 @@ public class Game {
 
        String[] carddata =  io.readBoardData("data/carddata.csv", 100);
        String[] fielddata = io.readBoardData("data/fielddata.csv", 40);
-       Board board = new Board(fielddata, carddata);
+       board = new Board(fielddata, carddata);
        System.out.println(board.getField(40));
    }
 
    public void throwAndMove(){
        ui.displayMsg("It's now " + currentPlayer.getName() + "'s turn");
+        int result = dice.rollDiceSum();
+        ui.displayMsg(currentPlayer.getName() + " slog " + result);
+        int newPosition = currentPlayer.updatePosition(result);
+        Field f = board.getField(newPosition);
+        landAndAct(f);
+
    }
 
-   public void landAndAct(){
-
+   public void landAndAct(Field f){
+        String msg = f.onLand(currentPlayer);
+        ui.displayMsg(msg);
    }
 
    public void runGameLoop(){

@@ -1,20 +1,30 @@
 
-public class Property extends Field{
+public class Property extends Field {
 
-    private int serieID;
+    private int seriesID;
+    private Player owner;
 
-    public Property(String label, int id, int income, int cost, int serieID){
+    public Property(int id, String label, int income, int cost, int seriesID) {
         super(id, label, income, cost);
-        this.serieID = serieID;
+        this.seriesID = seriesID;
     }
 
     @Override
-    public String onLand(Player p){
-        return super.onLand(p);
+    public String onLand(Player p) {
+
+        String msg = super.onLand(p);
+        if (owner == null) {
+            option = "buy";
+            msg += "Vil du købe? (Y/N): ";
+        } else if (owner != null && owner != p) {
+            msg += "Du skal betale " + income + ". Tast Y for at acceptere";
+        }
+        return msg;
     }
 
+
     @Override
-    protected String onAccept(Player p){
+    protected String onAccept(Player p) {
         return null;
     }
 
@@ -25,6 +35,6 @@ public class Property extends Field{
 
     @Override
     public String toString() {
-        return super.toString() + serieID;
+        return super.toString() + seriesID;
     }
 }
