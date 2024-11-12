@@ -70,7 +70,7 @@ class Field{
  + Field(ID, label, cost, income)
  + String toString()
  + String onLand(Player p)
- + String processResponse(Player p)
+ + String processResponse(Player p, boolean r)
  + String getOption()
  + void setOption()
  + int getIncome()
