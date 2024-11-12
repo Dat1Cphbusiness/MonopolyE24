@@ -6,18 +6,18 @@ public class Player {
     private Account account;
 
     public Player (String name){
+        this.account = new Account();
         this.name = name;
-        this.balance = startBalance;
+        this.balance = account.getBalance();
     }
 
     public Player(String name, int balance) {
+        this.account = new Account();
         this.name = name;
         this.balance = balance;
     }
 
-    public void deposit(int amount) {
-        this.balance += amount;
-    }
+
 
     public int getBalance() {
         return balance;
