@@ -25,12 +25,25 @@ public class Property extends Field {
 
     @Override
     protected String onAccept(Player p) {
-        return null;
+        if("buy".equalsIgnoreCase(option)) {
+            Player.buyProperty(p);
+            owner = p;
+            return p.getName() + " købte " + this.label ;
+        } else if ("build".equalsIgnoreCase(option)){
+            Player.buildHouse();
+            return p.getName() + " byggede på " + this.label ;
+        }
+        return "-1";
     }
 
     @Override
     protected String onReject(Player p) {
-        return null;
+        if ("buy".equalsIgnoreCase(option))  {
+            return p.getName() + " afviste købstilbud. Auktion?";
+        }else if ("build".equalsIgnoreCase(option)){
+            return p.getName() + " afviste at bygge";
+        }
+        return "-1";
     }
 
     @Override
