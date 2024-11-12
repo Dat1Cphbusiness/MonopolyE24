@@ -15,10 +15,10 @@ public class Player {
 
     public int updatePosition(int value) {
         if (position + value > 40) {
-            position = position + value - 40;
             recieve(4000);
+            position = (position + value) - 40;
         } else {
-            position = position + value;
+            position += value;
         }
         return position;
     }
@@ -39,7 +39,6 @@ public class Player {
 
 
     public void recieve(int amount) {
-        amount = 4000;
         account.deposit(amount);
     }
 }
