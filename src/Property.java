@@ -28,11 +28,11 @@ public class Property extends Field {
         if("buy".equalsIgnoreCase(option)) {
             Player.buyProperty(p);
             owner = p;
-            return p.getName() + " købte " + this.label ;
-        } else if ("build".equalsIgnoreCase(option)){
-            Player.buildHouse();
-            return p.getName() + " byggede på " + this.label ;
-        }
+            return p.getName() + " købte " + this.label ;}
+//            else if ("build".equalsIgnoreCase(option)){
+//            Player.buildHouse();
+//            return p.getName() + " byggede på " + this.label ;
+//        }
         return "-1";
     }
 
