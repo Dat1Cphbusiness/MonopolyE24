@@ -9,6 +9,7 @@ public class Game {
     private FileIO io;
     private String playerDataPath;
     private Player currentPlayer;
+    private Dice dice;
 
     public Game(String name) {
         this.name = name;
@@ -16,6 +17,7 @@ public class Game {
         this.ui = new TextUI();
         this.io = new FileIO();
         this.playerDataPath ="data/playerdata.csv";
+        this.dice = new Dice();
     }
     public void addPlayer(Player p){
         this.players.add(p);
@@ -73,6 +75,9 @@ public class Game {
 
    public void throwAndMove(){
        ui.displayMsg("It's now " + currentPlayer.getName() + "'s turn");
+        int result = dice.rollDiceSum();
+        ui.displayMsg(currentPlayer.getName() + " slog " + result);
+        int newPosition = currentPlayer.updatePosition(result);
    }
 
    public void landAndAct(){
