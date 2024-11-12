@@ -22,15 +22,29 @@ public class Property extends Field {
         return msg;
     }
 
-
-    @Override
-    protected String onAccept(Player p) {
-        return null;
+    protected String onAccept(Player p){
+        if(option.equals("buy")){
+            p.buyProperty();
+            p = owner;
+        }
+        String msg = p.getName() + " has bought " + label;
+        return msg;
     }
 
     @Override
     protected String onReject(Player p) {
-        return null;
+
+        if(option.equals("buy")){
+            String msg = p.getName() + " afviste købstilbude. Auktion? " + label;
+            return msg;
+        }
+        else if (option.equals("build")){
+            String msg = p.getName() + " afviste at bygge" + label;
+            return msg;
+        }
+        else{
+            return null;
+        }
     }
 
     @Override

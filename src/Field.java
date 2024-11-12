@@ -17,12 +17,16 @@ public class Field {
         return p.getName() + "has landed on" + label;
     }
 
-    public String processResponse(Player p){
-        return null;
+    public String processResponse(Player p, boolean response){
+        if(response){ //True
+           return onAccept(p);
+        }
+        else
+            return onReject(p);
     }
 
     protected String onAccept(Player p){
-        return null;
+      return null;
     }
 
     protected String onReject(Player p){
