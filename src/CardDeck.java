@@ -2,10 +2,12 @@ import java.util.ArrayList;
 
 public class CardDeck {
     private ArrayList<Card> cards;
+    private ArrayList<Card> usedCards;
     private int counter;
 
     public CardDeck(String[] carddata) {
         this.cards = new ArrayList<>(100);
+        this.usedCards = new ArrayList<>(100);
        /* for (String data : carddata) {
             createCards((data).strip());
         }*/
@@ -26,6 +28,16 @@ public class CardDeck {
     }
 
     public Card getNext(){
-        return cards.get(counter++);
-    }
-}
+        Card result = null;
+        if(!cards.isEmpty()){
+            result = cards.get(0);
+            usedCards.add(result);
+            cards.removeFirst();
+        } else {
+            cards.addAll(usedCards);
+            usedCards.removeAll(usedCards);
+            getNext();
+        }   // end if-else statement
+        return result;
+    }   // end getNext()
+}   // end CardDeck

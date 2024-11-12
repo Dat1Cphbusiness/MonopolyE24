@@ -15,7 +15,30 @@ public class Property extends Field{
 
     @Override
     protected String onAccept(Player p){
-        return null;
+        switch (event){
+            case "payment":
+                currentPlayer.pay(msg, income, cost, event);
+                System.out.println("You've lost" + cost + "\n");
+                break;
+
+            case "reward":
+                currentPlayer.receive(msg, income, player);
+                System.out.println(" has gained "+ income + "\n");
+                break;
+
+            case "prison":
+                currentPlayer.mveToPrison(player);
+                System.out.println( currentPlayer +" is going to prison\n");
+                break;
+
+            case "moveTo":
+                currentPlayer(msg, income, cost)
+                break;
+
+            case "paymentPerProperty":
+                currentPLayer
+                break;
+        }
     }
 
     @Override

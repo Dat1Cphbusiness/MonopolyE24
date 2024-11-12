@@ -10,6 +10,7 @@ public class Field {
         this.id = id;
         this.cost = cost;
         this.income = income;
+
     }
 
     public String onLand(Player p){
@@ -21,7 +22,7 @@ public class Field {
     }
 
     protected String onAccept(Player p){
-        return null;
+
     }
 
     protected String onReject(Player p){
