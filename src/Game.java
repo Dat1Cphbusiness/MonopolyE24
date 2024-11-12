@@ -10,6 +10,7 @@ public class Game {
     private String playerDataPath;
     private Player currentPlayer;
     private Dice dice;
+    Board board;
 
     public Game(String name) {
         this.name = name;
@@ -69,7 +70,7 @@ public class Game {
 
        String[] carddata =  io.readBoardData("data/carddata.csv", 100);
        String[] fielddata = io.readBoardData("data/fielddata.csv", 40);
-       Board board = new Board(fielddata, carddata);
+       board = new Board(fielddata, carddata);
        System.out.println(board.getField(40));
    }
 
@@ -78,10 +79,14 @@ public class Game {
         int result = dice.rollDiceSum();
         ui.displayMsg(currentPlayer.getName() + " slog " + result);
         int newPosition = currentPlayer.updatePosition(result);
+        Field f = board.getField(newPosition);
+        landAndAct(f);
+
    }
 
-   public void landAndAct(){
-
+   public void landAndAct(Field f){
+        String msg = f.onLand(currentPlayer);
+        ui.displayMsg(msg);
    }
 
    public void runGameLoop(){

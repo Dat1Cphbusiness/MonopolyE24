@@ -10,4 +10,20 @@ private String event;
         this.cost = cost;
         this.event = event;
     }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public int getIncome() {
+        return income;
+    }
+
+    public int getCost() {
+        return cost;
+    }
+
+    public String getEvent() {
+        return event;
+    }
 }

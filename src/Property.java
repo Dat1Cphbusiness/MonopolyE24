@@ -4,7 +4,7 @@ public class Property extends Field {
     private int seriesID;
     private Player owner;
 
-    public Property(String label, int id, int income, int cost, int seriesID) {
+    public Property(int id, String label, int income, int cost, int seriesID) {
         super(id, label, income, cost);
         this.seriesID = seriesID;
     }

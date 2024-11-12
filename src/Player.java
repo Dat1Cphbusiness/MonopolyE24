@@ -5,13 +5,18 @@ public class Player {
     Account account;
 
     public Player (String name){
+       this(name, 0);
+    }
+
+    public Player (String name, int startAmount){
         this.name = name;
-        this.position = 0;
+        this.position = 1;
         this.account = new Account();
+        account.deposit(startAmount);
     }
 
     public String toString(){
-        return this.name + ", "+ this.balance;
+        return this.name + ", "+ this.account.getBalance();
     }
 
     public String getName() {
@@ -19,12 +24,15 @@ public class Player {
     }
 
     public int updatePosition(int value) {
-
-        if (position < 40 && position+value > 40){
+        // if we pass Start
+        if (position+value > 40){
             receive(4000);
+            position = (position + value) - 40;
         }
-
-        return position += value;
+        else{
+            position += value;
+        }
+        return position;
     }
 
     public void receive(int amount){

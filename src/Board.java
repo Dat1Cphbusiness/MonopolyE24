@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Board {
     private Field[] fields;
-    private CardDeck cardDeck;
+    public static CardDeck cardDeck;
     private ArrayList<Field> propertyfields  = new ArrayList<>();
 
     public Board(String[] fielddata, String[] carddata) {
@@ -24,32 +24,38 @@ public class Board {
 
             switch (fieldtype) {
                 case "Chance":
-                    f = new Chance(label, id, income, cost,cardDeck); // cardDeck skal måske fjernes
+                    f = new Chance(id, label, income, cost); // cardDeck skal måske fjernes
                     break;
-                case " Start":
-                    f = new Start(label, id, income, cost);
+                case "Start":
+                    f = new Start( id, label, income, cost);
                     break;
                 case "Plot":
-                    f = new Plot(label, id, income, cost, serieID);
+                    f = new Plot(id, label, income, cost, serieID);
                     propertyfields.add(f);
                     break;
                 case "Brewery":
-                    f = new Brewery(label, id, income, cost, serieID);
+                    f = new Brewery(id, label, income, cost, serieID);
                     propertyfields.add(f);
                     break;
-                case "Shipping line":
-                    f = new ShippingLine(label, id, income, cost, serieID);
+                case "ShippingLine":
+                    f = new ShippingLine(id, label, income, cost, serieID);
                     propertyfields.add(f);
                     break;
                 case "Tax":
-                    f = new Tax(label, id, income, cost);
+                    f = new Tax(id, label, income, cost);
                     break;
                 case "Prison":
-                    f = new Prison(label, id, income, cost);
+                    f = new Prison(id, label, income, cost);
+                    break;
+                case "Visit":
+                    f = new Visit(id, label, income, cost);
+                    break;
+                case "Parking":
+                    f = new Parking(id, label, income, cost);
                     break;
 
                 default:
-                    System.out.println("Invalid field type");
+                    System.out.println("Invalid field type" + id);
                     break;
             }
             fields[i] = f;

@@ -1,16 +1,15 @@
 public class Chance extends Field {
     private String event;
-    private CardDeck cardDeck;
 
-    public Chance(int id, String label, int cost, int income, String event, CardDeck cardDeck) {
+
+    public Chance(int id, String label, int cost, int income) {
         super(id, label, cost, income);
-        this.event = event;
-        this.cardDeck = cardDeck;
+      
     }
 
     @Override
     public String onLand(Player p) {
-        Card card = Game.cardDeck.getNext();
+        Card card = Board.cardDeck.getNext();
         String s = super.onLand(p);
         this.cost = card.getCost();
         this.income = card.getIncome();
