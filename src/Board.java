@@ -20,38 +20,38 @@ public class Board {
             int cost = Integer.parseInt(values[3].trim());
             int income = Integer.parseInt(values[4].trim());
             int seriesID = Integer.parseInt(values[5].trim());
-            fields[i] = null;
+            Field f = null;
 
             switch (fieldType) {
                 case "Start":
-                    fields[i] = new Start(id, label, income, cost, seriesID);
+                    f = new Start(id, label, income, cost, seriesID);
                     break;
                 case "Plot":
-                    fields[i] = new Plot(id, label, income, cost, seriesID);
-                    propertyFields.add(fields[i]);
+                    f = new Plot(id, label, income, cost, seriesID);
+                    propertyFields.add(f);
                     break;
                 case "Chance":
-                    fields[i] = new Chance(id, label, income, cost, seriesID, cardDeck);
+                    f = new Chance(id, label, income, cost, seriesID, cardDeck);
                     break;
                 case "Tax":
-                    fields[i] = new Tax(id, label, income, cost, seriesID);
+                    f = new Tax(id, label, income, cost, seriesID);
                     break;
                 case "ShippingLine":
-                    fields[i] = new ShippingLine(id, label, income, cost, seriesID);
-                    propertyFields.add(fields[i]);
+                    f = new ShippingLine(id, label, income, cost, seriesID);
+                    propertyFields.add(f);
                     break;
                 case "Visit":
-                    fields[i] = new Visit(id, label, income, cost, seriesID);
+                    f = new Visit(id, label, income, cost, seriesID);
                     break;
                 case "Brewery":
-                    fields[i] = new Brewery(id, label, income, cost, seriesID);
-                    propertyFields.add(fields[i]);
+                    f = new Brewery(id, label, income, cost, seriesID);
+                    propertyFields.add(f);
                     break;
                 case "Parking":
-                    fields[i] = new Parking(id, label, income, cost, seriesID);
+                    f = new Parking(id, label, income, cost, seriesID);
                     break;
                 case "Prison":
-                    fields[i] = new Prison(id, label, income, cost, seriesID);
+                    f = new Prison(id, label, income, cost, seriesID);
                     break;
                 default: System.out.println("No such type is available");
             }
