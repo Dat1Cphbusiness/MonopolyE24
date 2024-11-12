@@ -38,4 +38,8 @@ public class Player {
     public void receive(int amount){
         account.deposit(amount);
     }
+
+    public void pay(int amount){
+        account.withdraw(amount);
+    }
 }
