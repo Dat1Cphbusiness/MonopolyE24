@@ -1,7 +1,7 @@
 public class Plot extends Property{
 
-    public Plot(String label, int id, int income, int cost, int serieID){
-        super(label, id, income, cost, serieID);
+    public Plot(int id, String label, int income, int cost, int serieID){
+        super(id, label, income, cost, serieID);
     }
 
 

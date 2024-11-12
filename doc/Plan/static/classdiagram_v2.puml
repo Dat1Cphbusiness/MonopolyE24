@@ -62,21 +62,25 @@ class Account{
 
 
 class Field{
-- String label
- - int ID
- - int cost
- - int income
- - String option
+ # String label
+ # int ID
+ # int cost
+ # int income
+ #String option
  + Field(ID, label, cost, income)
  + String toString()
  + String onLand(Player p)
  + String processResponse(Player p)
+ + String getOption()
+ + void setOption()
+ + int getIncome()
  # String onAccept(Player p)
  # String onReject(Player p)
 }
-Class Property{
+class Property{
 - int serieID
-Property(serieID, ID, label, cost, income)
+- Player owner
+Property(ID, label, cost, income, serieID)
 +String onLand(Player P)
 +String toString()
 #String onAccept(Player p)
@@ -100,7 +104,7 @@ class Card{
 -int income
 -int cost
 -String event
-+Card(String message, int income, int cost, String event)
++Card(String message, int income, int cost, String event, int serieID)
 +String toString()
 + int getCost()
 + int getIncome()
