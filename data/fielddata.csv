@@ -13,7 +13,7 @@ ID, FieldType, Label, Cost, Income, SeriesID
 12, Plot, Frederiksberg Allé, 2800, 200, 4
 13, Brewery, Tuborg Squash, 3000, 0, 0
 14, Plot, Bülowsvej, 2800, 200, 4
-15, plot, Gl. Kongevej, 3200, 150, 4
+15, Plot, Gl. Kongevej, 3200, 150, 4
 16, ShippingLine, D.F.D.S., 4000, 500, 2
 17, Plot, Bernstorffsvej, 3600, 300, 5
 18, Chance, Prøv Lykken, 0, 0, 0
