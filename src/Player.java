@@ -20,7 +20,7 @@ public class Player {
 
     public int updatePosition(int value) {
 
-        if (position < 40 && position+value > 40){
+        if (position+value > 40){
             receive(4000);
             return position+value-40;
         } else {
