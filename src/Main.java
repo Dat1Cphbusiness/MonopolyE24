@@ -28,6 +28,7 @@ class Main {
 
     public static void main(String[] args) {
 
+/*
         Game game = new Game("Matador");
 
         game.setup();
@@ -38,5 +39,12 @@ class Main {
         game.runGameLoop();
 
         game.endGame();
+*/
+
+        Dice dice = new Dice();
+        int sum = dice.rollDiceSum();
+        System.out.println(sum);
+        boolean getDouble = dice.getIsDouble();
+        System.out.println(getDouble);
     }
 }
