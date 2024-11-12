@@ -1,9 +1,7 @@
-
-public class Visit extends Field{
-
-
-    public Visit(int id, String label, int income, int cost){
-        super(id, label, income, cost);
-
+public class Visit extends Field {
+    public Visit(int id, String label, int cost, int income) {
+        super(id, label, cost, income);
     }
+
+
 }

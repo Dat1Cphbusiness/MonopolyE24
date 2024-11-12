@@ -1,7 +1,19 @@
+public class Prison extends Field {
+    public Prison(int id, String label, int cost, int income) {
+        super(id, label, cost, income);
+    }
+    @Override
+    public String onLand(Player p) {
+        return super.onLand(p);
+    }
 
-public class Prison extends Field{
+    @Override
+    protected String onAccept(Player p) {
+        return super.onAccept(p);
+    }
 
-    public Prison(int id, String label, int income, int cost){
-        super(id, label, income, cost);
+    @Override
+    protected String onReject(Player p) {
+        return super.onReject(p);
     }
 }
