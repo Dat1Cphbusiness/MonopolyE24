@@ -3,23 +3,26 @@ public class Player {
     private String name;
     private int balance;
     private final static int startBalance = 30000;
-    private int postion;
+    private int position;
     private Account account;
 
-    public Player (String name){
+    public Player(String name) {
         this.name = name;
         this.balance = startBalance;
         this.account = null;
     }
 
 
-    public int updatePosition(int value){
-        postion = value;
-        return postion;
-        if(postion == field.value[1]){
-
+    public int updatePosition(int value) {
+        if (position + value > 40) {
+            position = position + value - 40;
+            recieve(4000);
+        } else {
+            position = position + value;
         }
+        return position;
     }
+
 
     public Player(String name, int balance) {
         this.name = name;
@@ -36,6 +39,7 @@ public class Player {
 
 
     public void recieve(int amount) {
+        amount = 4000;
         account.deposit(amount);
     }
 }
