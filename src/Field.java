@@ -28,6 +28,10 @@ public class Field {
     return null;
     }
 
+    public int getId(){
+        return id;
+    }
+
     @Override
     public String toString() {
         return "Field{" +

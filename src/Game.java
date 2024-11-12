@@ -6,9 +6,13 @@ public class Game {
     private String name;
     private List<Player> players;
     private TextUI ui;
-    private FileIO io;
+    private FileIO io = new FileIO();
     private String playerDataPath;
     private Player currentPlayer;
+    private Dice dice = new Dice();
+    String[] carddata =  io.readBoardData("data/carddata.csv", 100);
+    String[] fielddata = io.readBoardData("data/fielddata.csv", 40);
+    Board board = new Board(fielddata, carddata);
 
     public Game(String name) {
         this.name = name;
@@ -65,15 +69,21 @@ public class Game {
            registerPlayers();
        }
 
-       String[] carddata =  io.readBoardData("data/carddata.csv", 100);
-       String[] fielddata = io.readBoardData("data/fielddata.csv", 40);
-       Board board = new Board(fielddata, carddata);
+       //String[] carddata =  io.readBoardData("data/carddata.csv", 100);
+       //String[] fielddata = io.readBoardData("data/fielddata.csv", 40);
+       //Board board = new Board(fielddata, carddata);
        System.out.println(board.getField(40));
    }
 
    public void throwAndMove(){
        ui.displayMsg("It's now " + currentPlayer.getName() + "'s turn");
-   }
+      int nextPos = currentPlayer.updatePosition(dice.getDieSum());
+      ui.displayMsg(currentPlayer.getName() + " rolled a " + dice.getDice1() + " and " + dice.getDice2());
+      ui.displayMsg(currentPlayer.getName()+ " started on the " + currentPlayer.getPrevPosition() + "th field and landed on " + nextPos );
+
+      Field f = board.getField(currentPlayer.getPrevPosition());
+
+    }
 
    public void landAndAct(){
 
