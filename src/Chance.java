@@ -17,4 +17,37 @@ public class Chance extends Field {
         s += "\n Du har trukket et kort fra bunken: "+card.getMessage();
         return s;
     }
+
+    public String onAccept(Player p) {
+        switch(event) {
+            case "reward":
+                p.receive(income);
+                break;
+            case "payment":
+                p.pay(cost);
+                break;
+            case "paymentPerProperty":
+                p.pay(cost*);  //betal pr hus/hotel. skal bruge metode til at hente antal huse/hoteller
+                break;
+            case "moveTo":
+                p.updatePosition(/* value */);
+                if(startPassed()) {
+                    p.receive(4000);
+                }
+                break;
+            case "doubleRentPaymentToPlayer":
+                p.updatePosition(3);
+                p.pay(cost*2, /*other player*/
+
+                break;
+            case "prison":
+
+                break;
+
+            case "joker":
+                //get out of jail card
+                break;
+
+        }
+    }
 }
