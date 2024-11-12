@@ -4,16 +4,23 @@ public class Tax extends Field {
     }
     @Override
     public String onLand(Player p) {
-        return super.onLand(p);
+        String s = super.onLand(p);
+        s+="\n Vil du betale fast beløb på "+this.cost+"kr? Tast J for ja \n (Ellers trækker vi et beløb der svarer til 10% af dine aktiver)";
+        return s;
     }
 
     @Override
     protected String onAccept(Player p) {
-        return super.onAccept(p);
+       int amountPaid = p.pay(this.cost);
+
+       return "Player" + p.getName() + " har valgt at betale et fast beløb og har betalt " + amountPaid + " kr." + super.onAccept(p);
+
     }
 
     @Override
     protected String onReject(Player p) {
-        return super.onReject(p);
+        int amountToPay = (p.getWorthInCash()*0.1);
+        int amountPaid = p.pay(amountToPay);
+        return p.getName()+ " har valgt at betale med 10% af sine aktiver som svarer til " + amountPaid + " kr." + super.onReject(p);
     }
 }
