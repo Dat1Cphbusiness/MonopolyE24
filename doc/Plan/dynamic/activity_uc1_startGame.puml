@@ -1,0 +1,21 @@
+@startuml
+left to right direction
+(*)  --> "setup"
+--> "hent spillerdata"
+
+if "succes?" then
+--> [No] "registrer spillere"
+
+
+
+    else
+
+   [Yes] if Fortsæt spil? then
+    --> [Yes] "display players"
+    else
+    --> [No] "registrer spillere"
+     --> "display players"
+     endif
+endif
+
+@enduml

@@ -1,17 +1,23 @@
 @startuml
 !pragma layout smetana
+
 class Main{
 + static void main(String[] args)
 }
 
+class Property
+{
+    - int seriesID
+    - Player owner
+    + Property(ID, label, cost, income, serieID)
 
+}
 
 
 class Game{
  - String name
  - ArrayList<Player> players
  - Player currentPlayer
- - CardDeck cardDeck
  - Board board
  - Dice dice
  'utilities
@@ -26,13 +32,16 @@ class Game{
  + void runDialog()
  - void createPlayer(String name, int balance)
  - void displayPlayers()
-  - loadPlayerData()
  - void registerPlayers()
- + void runGameLoop()
- - void throwAndMove()
+ - void runGameLoop()
+ + void throwAndMove()
  - void landAndAct()
  - void endGame()
-
+ + void collect(int amount)
+ 'collect(int amount): gennemløber listen af spillere:
+   'for (Player p:players)
+   'I loop’et, træk beløbet fra alle andre spillere end currentPlayer:
+   'p.pay(amount, this);
 }
 
 class Player{
@@ -45,11 +54,11 @@ class Player{
 + boolean buyProperty(Field f)
 + boolean pay(int amount)
 + boolean pay(int amount, Player recipient)
-+ void collect(int amount)
 + void recieve(int amount)
 + String toString()
 + String getName()
 + int getBalance()
++ int getPosition()
 }
 class Account{
 - int balance
@@ -57,78 +66,13 @@ class Account{
 + boolean withdraw(int amount)
 + int getBalance()
 }
-
-
-
-
-class Field{
- # String label
- # int ID
- # int cost
- # int income
- #String option
- + Field(ID, label, cost, income)
- + String toString()
- + String onLand(Player p)
- + String processResponse(Player p, boolean response)
- + String getOption()
- + void setOption()
- + int getIncome()
- # String onAccept(Player p)
- # String onReject(Player p)
-}
-class Property{
-- int serieID
-- Player owner
-Property(ID, label, cost, income, serieID)
-+String onLand(Player P)
-+String toString()
-#String onAccept(Player p)
-#String onReject(Player p)
-}
-class Board{
- - Field[] fields
- + Board(String [] fielddata, String [] carddata])
- - void createFields(String [] data)
- + Field getField(int id)
-}
-
-class CardDeck {
-- ArrayList<Card> cards
-+ CardDeck(String[] carddata)
-+ Card getNext()
-+ void createCards(String data)
-}
-class Card{
--String message
--int income
--int cost
--String event
-+Card(String message, int income, int cost, String event, int serieID)
-+String toString()
-+ int getCost()
-+ int getIncome()
-+ String getEvent()
-+ String getMessage()
-}
-
-class Dice{
- - boolean isDouble
- +int rollDiceSum()
- +boolean getIsDouble()
- }
- class Visit
- class Tax
- class Parking
- class Start
- class Chance
- class ShippingLine
- class Brewery
- class Building
- class Deed
- class Plot
-
 package "util" {
+class FileIO{
++ ArrayList<String> readPlayerData(String path)
++ void saveData(ArrayList<Player> players, String path)
++ String[] readBoardData(String path, int length).
+}
+
 class TextUI{
 - Scanner scanner
 + void displayMsg(String s)
@@ -137,36 +81,77 @@ class TextUI{
 + int promptChoice(String msg, ArrayList<String> list)
 + boolean promptBinary(String msg )
 }
-class FileIO{
-+ ArrayList<String> readPlayerData(String path)
-+ void saveData(ArrayList<Player> players, String path)
-+ String[] readBoardData(String path, int length).
 }
+abstract class Field{
+- String label
+ - int ID
+ - int cost
+ - int income
+ - String option
+ + Field(ID, label, cost, income)
+ + String toString()
+ + String onLand(Player p)
+ + String processResponse(Player p, boolean response)
+ # String onAccept(Player p)
+ # String onReject(Player p)
+ # setOption(String option)
+ + String getOption()
 }
+class Board{
+ - Field[] fields
+ - {static} CardDeck cardDeck
+ + Board(String [] fields, String [] cards])
+ - void createFields(String [] data)
+ + Field getField(int id)
+}
+
+class CardDeck {
+- String[] carddata
+- Card[] cards
++ CardDeck(String[] carddata)
++ Card getNext()
++ void createCards()
+}
+class Card{
+-String message
+-int income
+-int cost
+-String event
++Card(String message, int income, int cost, String event)
++String toString()
++ int getCost()
++ int getIncome()
++ String getEvent()
++ String getMessage()
+}
+
+class Dice{
+ +boolean isDouble
+ +int rollDiceSum()
+ }
 
 Game *-- TextUI
 Main *-- Game
-Game *-- Player: 2-6
+Game *-- Player
 Game *-- FileIO
-Player *-- Account:1
-Game *-- Board:1
-Board *-- Field:40
-Game *-- CardDeck:1
-CardDeck *-- Card:100
+Player *-- Account
+Game *-- Board
+Board *-- Field
+Game *-- CardDeck
+CardDeck *-- Card
 Game *-- Dice
 Player *-- Card
 Player *-- Field
 Field <|-- Property
-Field <|-- Visit
-Field <|-- Tax
-Field <|-- Chance
-Field <|-- Parking
-Field <|-- Start
-Field <|-- Prison
-Property <|-- ShippingLine
 Property <|-- Brewery
+Property <|-- ShippingLine
 Property <|-- Plot
-Plot *-- Building
+Field <|-- Prison
+Field <|-- Tax
+Field <|-- Parking
+Field <|-- Visit
+Field <|-- Start
+Field <|-- Chance
 
 
 

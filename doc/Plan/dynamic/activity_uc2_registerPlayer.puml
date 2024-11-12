@@ -1,0 +1,18 @@
+@startuml
+left to right direction
+
+(*)  --> "indtast antal spillere"
+
+if "gyldigt antal?" then
+--> [Yes] "tilføj spiller"
+if korrekt antal spillere tilføjet?
+--> [No] "tilføj spiller"
+else
+--> [Yes] "randomiser spillere"
+endif
+ else
+--> [No] "indtast antal spillere"
+
+endif
+
+@enduml

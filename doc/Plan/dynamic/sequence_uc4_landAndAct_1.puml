@@ -1,0 +1,33 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+participant TextUI as ui
+participant Game as game
+
+participant Property as subField
+participant Field  as field
+
+
+game -> game : landAndAct(f)
+game -> subField : msg = onLand(player)
+subField -> field : msg = super.onLand(player);
+field --> subField: "Egon er landet på Valbylanggade"
+
+alt owner == null
+subField --> game: "Egon er landet på Valbylanggade.\n Vil du købe? Y/N"
+subField -> subField: setOption("buy")
+else if owner != player
+ subField --> game: "Egon er landet på Valbylanggade.\n Du skal betale 800kr i husleje"
+ subField -> Player :payRent(this.income, this.owner)
+
+
+end
+game -> field: option = f.getOption()
+
+alt option != null
+game -> ui : response = promptBinary( msg )
+else
+game -> ui: displayMessage(msg)
+end
+
+
+@enduml

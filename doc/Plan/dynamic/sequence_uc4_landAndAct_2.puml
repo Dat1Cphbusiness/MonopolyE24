@@ -1,0 +1,42 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+participant TextUI as ui
+participant Game as game
+participant Property  as subField
+participant Field  as field
+
+game -> ui:promptBinary("Egon er landet på Valbylanggade.\n Vil du købe? Y/N")
+ui --> game: true
+
+game -> field : msg = processResponse(player, response )
+
+alt response true
+    field  -> subField : onAccept(player)
+
+    alt option == "buy"
+        subField  -> Player: buyProperty(this)
+        Player -> Account : withdraw(costOfField)
+        subField --> game : "Egon købte Valbylanggade"
+
+    else option == "build"
+             subField -> Player: buildHouse()
+             Player -> Account : withdraw(houseCost)
+
+    end
+
+else response false
+    field -> subField : onReject(player)
+        alt option == "buy"
+            subField --> game: "Egon afviste købstilbud. Auktion?"
+
+        else option == "build"
+              subField --> game: "Egon afviste at bygge"
+
+        end
+
+    end
+
+
+game -> ui : displayMessage( msg )
+
+@enduml

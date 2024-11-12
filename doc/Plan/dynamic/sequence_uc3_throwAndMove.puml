@@ -8,10 +8,11 @@ participant Board as board
 
 game -> game : throwAndMove()
 
-
 game -> TextUI : displayMessage ("Det er "+currentPlayer.getName+"'s tur")
 game -> dice : int result = rollDiceSum()
 dice --> game : 8
+game -> ui : displayMsg(currentPlayer.getName+" slog "+ result )
+
 game -> player: int newPosition = updatePosition( result )
 player --> game : 9
 game -> board : Field f = getField( newPosition )
