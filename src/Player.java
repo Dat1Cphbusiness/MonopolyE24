@@ -22,9 +22,10 @@ public class Player {
 
         if (position < 40 && position+value > 40){
             receive(4000);
+            return position+value-40;
+        } else {
+            return position += value;
         }
-
-        return position += value;
     }
 
     public void receive(int amount){
