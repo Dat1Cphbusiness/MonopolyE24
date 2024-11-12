@@ -6,7 +6,4 @@ public class ShippingLine extends Property{
             super(id, label, income, cost, serieID);
 
         }
-    public String onLand(Player p){
-        return super.onLand(p);
-    }
 }

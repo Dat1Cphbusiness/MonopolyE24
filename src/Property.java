@@ -2,6 +2,7 @@
 public class Property extends Field{
 
     private int serieID;
+    private Player owner;
 
     public Property(int id, String label, int income, int cost, int serieID){
         super(id, label, income, cost);
@@ -26,20 +27,5 @@ public class Property extends Field{
         }
 
         return msg;
-    }
-
-    @Override
-    protected String onAccept(Player p){
-        return null;
-    }
-
-    @Override
-    protected String onReject(Player p) {
-        return null;
-    }
-
-    @Override
-    public String toString() {
-        return super.toString() + serieID;
     }
 }

@@ -1,11 +1,11 @@
 public class Field {
-    private String label;
-    private int id;
-    private int cost;
-    private int income;
-    private String option;
+    protected String label;
+    protected int id;
+    protected int cost;
+    protected int income;
+    protected String option;
 
-    public Field(int id, String label, int cost, int income) {
+    public Field(int id, String label, int income, int cost) {
         this.label = label;
         this.id = id;
         this.cost = cost;
