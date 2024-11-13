@@ -18,7 +18,7 @@ public class Tax extends Field {
     @Override
     protected String onReject(Player p) {
        double percentage = p.getWorhInCash(p) * 0.10;
-       p.pay(percentage);
+       p.pay((int)percentage);
        return super.onReject(p) + " Du har betalt " + percentage +"af dine aktiver i skat";
     }
 }
