@@ -72,6 +72,8 @@ public class Game {
        String[] fielddata = io.readBoardData("data/fielddata.csv", 40);
        board = new Board(fielddata, carddata);
        System.out.println(board.getField(40));
+       System.out.println(Board.cardDeck.getNext());
+
    }
 
    public void throwAndMove(){
@@ -85,8 +87,11 @@ public class Game {
    }
 
    public void landAndAct(Field f){
-        String msg = f.onLand(currentPlayer);
+        String msg = f.onLand(currentPlayer); //Egon er landet på valbylanggade
+        boolean response = ui.promptBinary(msg);
+        msg = f.processResponse(currentPlayer, response);//Egon har købt valbylangggade
         ui.displayMsg(msg);
+
    }
 
    public void runGameLoop(){

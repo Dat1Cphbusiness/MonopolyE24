@@ -84,12 +84,11 @@ class Board{
 }
 
 class CardDeck {
-    - Card[] cards
-    + CardDeck(String[] carddata)
-    + Card getNext()
-    + void createCards(String[] data)
+- Card[] cards
++ CardDeck(String[] carddata)
++ Card getNext()
++ void createCards(String[] data)
 }
-
 class Card{
 -String message
 -int income
