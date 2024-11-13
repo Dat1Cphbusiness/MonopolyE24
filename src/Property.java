@@ -20,6 +20,7 @@ public class Property extends Field {
             msg += "Du skal betale " + income + ". Tast Y for at acceptere";
         }
         return msg;
+
     }
 
     protected String onAccept(Player p){
