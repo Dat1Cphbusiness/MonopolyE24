@@ -32,10 +32,10 @@ class Main {
 
         game.setup();
 
-     //   System.out.print(game);
+      //   System.out.print(game);
         System.out.println("-------------Starting game------------------------");
 
-      //  game.runGameLoop();
+       game.runGameLoop();
 
         game.endGame();
     }
