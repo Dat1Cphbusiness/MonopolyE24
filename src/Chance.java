@@ -24,9 +24,9 @@ public class Chance extends Field {
         return "Chance{" + "event='" + event + '\'' + '}';
     }
 
-    public String processResponse(Player p) {
+  /*  public String processResponse(Player p) {
         return "Behandle svar for spiller " + p.getName();
-    }
+    }*/
 
     protected String onAccept(Player p) {
         switch (event) {
