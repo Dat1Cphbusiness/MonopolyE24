@@ -5,12 +5,12 @@ private int cost;
 private String event;
 private int moveToPosition;
 
-    public Card(String message, int income, int cost, String event, int moveToPostion) {
+    public Card(String message, int income, int cost, String event) {
         this.message = message;
         this.income = income;
         this.cost = cost;
         this.event = event;
-        this.moveToPosition = moveToPostion;
+     //   this.moveToPosition = moveToPostion;
     }
 
     public String getMessage() {
