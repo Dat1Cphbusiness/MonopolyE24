@@ -19,8 +19,8 @@ public class Tax extends Field {
 
     @Override
     protected String onReject(Player p) {
-        int amountToPay = (p.getWorthInCash()*0.1);
-        int amountPaid = p.pay(amountToPay);
+        double amountToPay = (p.getWorthInCash()*0.1);
+        int amountPaid = p.pay((int)amountToPay);
         return p.getName()+ " har valgt at betale med 10% af sine aktiver som svarer til " + amountPaid + " kr." + super.onReject(p);
     }
 }
