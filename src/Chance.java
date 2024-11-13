@@ -50,7 +50,7 @@ public class Chance extends Field {
         } return "Spiller " + p.getName() + " har accepteret tilbuddet.";
     }
 
-    protected String onReject(Player p) {
-        return "Spiller " + p.getName() + " afviste tilbuddet.";
+        protected String onReject (Player p){
+            return "Spiller " + p.getName() + " afviste tilbuddet.";
+        }
     }
-}
