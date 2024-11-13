@@ -1,8 +1,11 @@
+import java.util.ArrayList;
+
 public class Player {
 
     private String name;
     private int position;
     Account account;
+    ArrayList<Field> deeds;
 
     public Player (String name){
        this(name, 0);
@@ -13,6 +16,7 @@ public class Player {
         this.position = 1;
         this.account = new Account();
         account.deposit(startAmount);
+        this.deeds = deeds;
     }
 
     public String toString(){
@@ -35,11 +39,36 @@ public class Player {
         return position;
     }
 
-    public void receive(int amount){
+    public void recieve(int amount){
         account.deposit(amount);
     }
 
-    public void pay(int amount, String name){
+    public void pay(int amount){
         account.withdraw(amount);
+    }
+
+    public void buyProperty(Field f){
+        pay(f.cost);
+        deeds.add(f);
+    }
+
+    public int getWorthInCash(){
+        return account.getBalance();
+    }
+
+    public int getTotalWorth(){
+        int total = 0;
+        for (Field f : deeds){
+            total += f.cost;
+        }
+        return total += getWorthInCash();
+    }
+    public void pay(int amount, Player recipient){
+        pay(amount);
+        recipient.recieve(amount);
+    }
+
+    public int moveToPrison(){
+        return updatePosition(11 - position);
     }
 }
