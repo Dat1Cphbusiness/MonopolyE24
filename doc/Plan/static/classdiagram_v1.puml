@@ -84,11 +84,12 @@ class Board{
 }
 
 class CardDeck {
-- ArrayList<Card> cards
-+ CardDeck(String[] carddata)
-+ Card getNext()
-+ void createCards(String data[])
+    - Card[] cards
+    + CardDeck(String[] carddata)
+    + Card getNext()
+    + void createCards(String[] data)
 }
+
 class Card{
 -String message
 -int income
