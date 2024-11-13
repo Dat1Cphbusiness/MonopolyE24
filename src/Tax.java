@@ -14,6 +14,7 @@ public class Tax extends Field {
         return super.onAccept(p);
     }
 
+
     @Override
     protected String onReject(Player p) {
        double percentage = p.getWorhInCash(p) * 0.10;
