@@ -2,6 +2,7 @@ public class Chance extends Field {
     private String event;
 
 
+
     public Chance(int id, String label, int cost, int income) {
         super(id, label, cost, income);
 
