@@ -11,6 +11,7 @@ public class Chance extends Field {
     public String onLand(Player p) {
         Card card = Board.cardDeck.getNext();
         String s = super.onLand(p);
+        this.label = card.getMessage();
         this.cost = card.getCost();
         this.income = card.getIncome();
         this.event = card.getEvent();
@@ -60,5 +61,6 @@ public class Chance extends Field {
                 break;
 
         }
+        return label;
     }
 }
