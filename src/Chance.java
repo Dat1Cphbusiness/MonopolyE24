@@ -38,10 +38,10 @@ public class Chance extends Field {
                 break;
             case "moveTo":
                 if(income > p.getPosition()) {
-                    p.updatePosition(income - p.getPosition());
+                    p.setPosition(income);
                 }
                 if (income < p.getPosition()) {
-                    p.setPosition(1);
+                    p.setPosition(income);
                     p.receive(4000);
                     p.updatePosition(income- p.getPosition());
                 }
