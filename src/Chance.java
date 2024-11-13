@@ -30,19 +30,23 @@ public class Chance extends Field {
     protected String onAccept(Player p) {
         switch (event) {
             case "pay":
-                p.pay(card.getCost());
+                p.pay(Card.getCost());
                 break;
             case "reward":
-                p.receive(card.getIncome());
+                p.receive(Card.getIncome());
                 break;
             case "rewardFromPlayer":
-                p.pay(card.getIncome(), p.getName());
+                p.pay(Card.getIncome(), p.getName());
                 break;
             case "prison":
                 p.updatePosition(31);
                 break;
-            case "":
-                p.
+          /* case "moveTo":
+               int m = position - moveToPosition;
+                p.updatePosition(moveToPosition);
+
+
+           */
         } return "Spiller " + p.getName() + " har accepteret tilbuddet.";
     }
 
