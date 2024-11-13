@@ -41,14 +41,18 @@ public class Chance extends Field {
             case "prison":
                 p.updatePosition(31);
                 break;
-          /* case "moveTo":
-               int m = position - moveToPosition;
-                p.updatePosition(moveToPosition);
-
-
-           */
-        } return "Spiller " + p.getName() + " har accepteret tilbuddet.";
-    }
+            case "moveTo":
+                if (p.getPosition() > Card.getMoveToPosition()) {
+                    int m = Card.getMoveToPosition() - p.getPosition();
+                    p.updatePosition(m);
+                } else {
+                    int m = Math.abs(p.getPosition() - 40) + Card.getMoveToPosition();
+                    p.updatePosition(m);
+                }
+                    break;
+                }
+                return "Spiller " + p.getName() + " har accepteret tilbuddet.";
+        }
 
         protected String onReject (Player p){
             return "Spiller " + p.getName() + " afviste tilbuddet.";

@@ -42,4 +42,6 @@ public class Player {
     public void pay(int amount, String name){
         account.withdraw(amount);
     }
+
+    public int getPosition() {return position;}
 }

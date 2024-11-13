@@ -28,4 +28,8 @@ private int moveToPosition;
     public String getEvent() {
         return event;
     }
+
+    public static int getMoveToPosition() {
+        return moveToPosition;
+    }
 }
