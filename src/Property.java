@@ -4,6 +4,7 @@ public class Property extends Field {
     private int seriesID;
     private Player owner;
 
+
     public Property(int id, String label, int income, int cost, int seriesID) {
         super(id, label, income, cost);
         this.seriesID = seriesID;
@@ -26,7 +27,7 @@ public class Property extends Field {
     @Override
     protected String onAccept(Player p) {
         if("buy".equalsIgnoreCase(option)) {
-            Player.buyProperty(p);
+            this.buyProperty(p);
             owner = p;
             return p.getName() + " købte " + this.label ;}
 //            else if ("build".equalsIgnoreCase(option)){

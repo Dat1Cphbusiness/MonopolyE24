@@ -17,11 +17,11 @@ public class Field {
         return p.getName() + "has landed on" + label;
     }
 
-    public String processResponse(Player p,String response){
-       if("Y".equalsIgnoreCase(response)){
-           return onAccept(p);
-       } else if ("N".equalsIgnoreCase(response)) {
-           return onReject(p);
+    public String processResponse(Player p,Boolean response){
+       if(response == true){
+           return this.onAccept(p);
+       } else if (response == false) {
+           return this.onReject(p);
        }
        return "";
     }
