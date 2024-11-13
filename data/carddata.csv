@@ -1,17 +1,17 @@
 Message, Income, Cost, Event
-Tag med den nærmeste færge (Passerer du START får du 4000 kr.), 0, 0, moveTo
+Tag med den nærmeste færge (Passerer du START får du 4000 kr.), 0, 0, moveToNearest
 Deres præmieobligation er udtrukket. Modtag 1000 kr., 1000, 0, reward
-Ryk frem til Frederiksberg Allé (Passerer du START får du 4000 kr.), 0, 0, moveTo
-Ryk frem til Start, 0, 0, moveTo
-Ryk tre felter tilbage, 0, 0, moveTo
+Ryk frem til Frederiksberg Allé (Passerer du START får du 4000 kr.), 12, 0, moveTo
+Ryk frem til Start, 1, 0, moveTo
+Ryk tre felter tilbage, 0, 0, moveNumberOfFields
 Betal for vognvask og smøring, 0, 300, payment
 -----------Ryk brikken frem til det nærmeste rederi og betal ejeren to gange den leje han ellers er berettiget til (Hvis selvskabet ikke ejet af nogle kan du købe det), 0, 0, doubleRentPaymentToPlayer
 Du møder Eren han stjæler 500 kr, 0, 500, payment
-Tag med den nærmeste færge (Passerer du START får du 4000 kr.), 0, 0, moveTo
+Tag med den nærmeste færge (Passerer du START får du 4000 kr.), 0, 0, moveToNearest
 Deres præmieobligation er udtrukket (Du modtager 1000 kr.), 1000, 0, reward
-Ryk frem til Frederiksberg Allé (Passerer du START får du 4000 kr.), 0, 0, moveTo
-Ryk frem til Start, 0, 0, moveTo
-Ryk tre felter tilbage, 0, 0, moveTo
+Ryk frem til Frederiksberg Allé (Passerer du START får du 4000 kr.), 12, 0, moveTo
+Ryk frem til Start, 1, 0, moveTo
+Ryk tre felter tilbage, 0, 0, moveNumberOfFields
 Betal for vognvask og smøring, 0, 300, payment
 De har kørt frem for "fuldt stop" Betal 1000 kr. i bøde, 0, 1000, payment
 Betal deres bilforsikring, 0, 500, payment
@@ -26,7 +26,7 @@ Vaskeriregning. Betal 200 kr., 0, 200, payment
 De har arvet en formue. Modtag 2000 kr., 2000, 0, reward
 Ryk frem til Nørreport, 0, 0, moveTo
 Betal for skadeserstatning. Betal 1500 kr., 0, 1500, payment
-Ryk frem til den nærmeste ejendom, 0, 0, moveTo
+Ryk frem til den nærmeste ejendom, 0, 0, moveToNearest
 Byg en ny fabrik betal 2000 kr., 0, 2000, payment
 Du er blevet tilbudt et job i udlandet. Modtag 2000 kr., 2000, 0, reward
 Tag til udlandet betal 1000 kr. for billetter, 0, 1000, payment

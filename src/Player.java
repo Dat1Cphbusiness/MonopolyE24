@@ -23,6 +23,14 @@ public class Player {
         return name;
     }
 
+    public int getPosition() {
+        return position;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
+    }
+
     public int updatePosition(int value) {
         // if we pass Start
         if (position+value > 40){

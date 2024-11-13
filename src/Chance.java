@@ -29,11 +29,23 @@ public class Chance extends Field {
             case "paymentPerProperty":
                 p.pay(cost*);  //betal pr hus/hotel. skal bruge metode til at hente antal huse/hoteller
                 break;
-            case "moveTo":
+            case "moveNumberOfFields":
                 p.updatePosition(/* value */);
                 if(startPassed()) {
                     p.receive(4000);
                 }
+                break;
+            case "moveTo":
+                if(income > p.getPosition()) {
+                    p.updatePosition(income - p.getPosition());
+                }
+                if (income < p.getPosition()) {
+                    p.setPosition(1);
+                    p.receive(4000);
+                    p.updatePosition(income- p.getPosition());
+                }
+                break;
+            case "moveToNearest":
                 break;
             case "doubleRentPaymentToPlayer":
                 p.updatePosition(3);
