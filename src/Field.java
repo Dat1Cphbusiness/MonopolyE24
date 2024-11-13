@@ -17,16 +17,21 @@ public class Field {
         return p.getName() + "has landed on" + label;
     }
 
-    public String processResponse(Player p){
-        return null;
+    public String processResponse(Player p,Boolean response){
+       if(response == true){
+           return this.onAccept(p);
+       } else if (response == false) {
+           return this.onReject(p);
+       }
+       return "";
     }
 
     protected String onAccept(Player p){
-        return null;
+    return "";
     }
 
     protected String onReject(Player p){
-    return null;
+    return "";
     }
 
     @Override

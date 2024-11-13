@@ -4,6 +4,7 @@ public class Property extends Field {
     private int seriesID;
     private Player owner;
 
+
     public Property(int id, String label, int income, int cost, int seriesID) {
         super(id, label, income, cost);
         this.seriesID = seriesID;
@@ -25,12 +26,25 @@ public class Property extends Field {
 
     @Override
     protected String onAccept(Player p) {
-        return null;
+        if("buy".equalsIgnoreCase(option)) {
+            this.buyProperty(p);
+            owner = p;
+            return p.getName() + " købte " + this.label ;}
+//            else if ("build".equalsIgnoreCase(option)){
+//            Player.buildHouse();
+//            return p.getName() + " byggede på " + this.label ;
+//        }
+        return "-1";
     }
 
     @Override
     protected String onReject(Player p) {
-        return null;
+        if ("buy".equalsIgnoreCase(option))  {
+            return p.getName() + " afviste købstilbud. Auktion?";
+        }else if ("build".equalsIgnoreCase(option)){
+            return p.getName() + " afviste at bygge";
+        }
+        return "-1";
     }
 
     @Override
