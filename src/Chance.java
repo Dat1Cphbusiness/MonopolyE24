@@ -49,11 +49,10 @@ public class Chance extends Field {
                 break;
             case "doubleRentPaymentToPlayer":
                 p.updatePosition(3);
-                p.pay(cost*2, /*other player*/
-
+                p.pay(cost*2,  /*other player*/
                 break;
             case "prison":
-
+                p.updatePosition();  //prison er på felt 31
                 break;
 
             case "joker":

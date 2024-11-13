@@ -24,7 +24,7 @@ Grundet dyrtiden har De fået gageforhøjelse. Modtag 1000 kr., 1000, 0, reward
 De har fået en parkeringsbøde. Betal 200 kr., 0, 200, payment
 Vaskeriregning. Betal 200 kr., 0, 200, payment
 De har arvet en formue. Modtag 2000 kr., 2000, 0, reward
-Ryk frem til Nørreport, 0, 0, moveTo
+Ryk frem til Nygade, 35, 0, moveTo
 Betal for skadeserstatning. Betal 1500 kr., 0, 1500, payment
 Ryk frem til den nærmeste ejendom, 0, 0, moveToNearest
 Byg en ny fabrik betal 2000 kr., 0, 2000, payment
@@ -32,7 +32,7 @@ Du er blevet tilbudt et job i udlandet. Modtag 2000 kr., 2000, 0, reward
 Tag til udlandet betal 1000 kr. for billetter, 0, 1000, payment
 De har fejret en stor succes. Modtag 1500 kr., 1500, 0, reward
 De har modtaget en skattelettelse. Modtag 1000 kr., 1000, 0, reward
-Ryk frem til Hotel København (Passerer du START får du 4000 kr.), 0, 0, moveTo
+Ryk frem til Hotel København (Passerer du START får du 4000 kr.), 25, 0, moveTo
 De har fået en gave. Modtag 500 kr., 500, 0, reward
 Modtag 1000 kr. for at hjælpe med velgørenhed, 1000, 0, reward
 Modtag en præmie for sportspræstation, 1500, 0, reward
