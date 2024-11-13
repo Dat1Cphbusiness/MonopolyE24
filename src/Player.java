@@ -39,7 +39,7 @@ public class Player {
         return position;
     }
 
-    public void recieve(int amount){
+    public void receive(int amount){
         account.deposit(amount);
     }
 
@@ -47,12 +47,14 @@ public class Player {
         account.withdraw(amount);
     }
 
-    public void buyProperty(Field f){
+    public boolean buyProperty(Field f){
         pay(f.cost);
         deeds.add(f);
+        return true;
     }
 
     public int getWorthInCash(){
+
         return account.getBalance();
     }
 
@@ -65,10 +67,14 @@ public class Player {
     }
     public void pay(int amount, Player recipient){
         pay(amount);
-        recipient.recieve(amount);
+        recipient.receive(amount);
     }
 
     public int moveToPrison(){
         return updatePosition(11 - position);
+    }
+
+    public int getPosition(){
+        return this.position;
     }
 }

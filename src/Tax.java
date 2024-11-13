@@ -18,7 +18,7 @@ public class Tax extends Field {
 
     @Override
     protected String onReject(Player p) {
-        double value = (p.getWorthInCash(p) * 0.1);
+        double value = (p.getWorthInCash() * 0.1);
         p.pay((int)value);
     return p.getName() + " har afvist, og vi trækker derfor 10% af aktiverne, som i alt bliver " + value +"kr.";
     }

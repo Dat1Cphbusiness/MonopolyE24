@@ -78,7 +78,7 @@ public class Game {
 
    public void throwAndMove(){
        ui.displayMsg("It's now " + currentPlayer.getName() + "'s turn");
-        int result = 2;//dice.rollDiceSum();
+        int result = dice.rollDiceSum();
         ui.displayMsg(currentPlayer.getName() + " slog " + result);
         int newPosition = currentPlayer.updatePosition(result);
         Field f = board.getField(newPosition);

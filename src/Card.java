@@ -17,15 +17,20 @@ private int moveToPosition;
         return message;
     }
 
-    public static int getIncome() {
+    public int getIncome() {
         return income;
     }
 
-    public static int getCost() {
+    public int getCost() {
         return cost;
     }
 
     public String getEvent() {
         return event;
     }
+    public int getMoveToPosition(){
+     return this.moveToPosition;
+    }
+
+
 }

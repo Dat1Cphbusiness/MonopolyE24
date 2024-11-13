@@ -1,6 +1,6 @@
 public class Chance extends Field {
     private String event;
-
+    Card card;
 
 
     public Chance(int id, String label, int cost, int income) {
@@ -10,7 +10,7 @@ public class Chance extends Field {
 
     @Override
     public String onLand(Player p) {
-        Card card = Board.cardDeck.getNext();
+        card = Board.cardDeck.getNext();
         String s = super.onLand(p);
         this.cost = card.getCost();
         this.income = card.getIncome();
@@ -31,13 +31,16 @@ public class Chance extends Field {
     protected String onAccept(Player p) {
         switch (event) {
             case "pay":
-                p.pay(Card.getCost(), p.getName());
+                p.pay(card.getCost());
                 break;
             case "reward":
-                p.receive(Card.getIncome());
+                p.receive(card.getIncome());
                 break;
-            case "rewardFromPlayer":
-                p.pay(Card.getIncome(), p.getName());
+            case "rewardFromPlayers":
+                //todo: ennemløber playerlisten
+                // Hvis player ikker er p
+                // betale p:  p.pay(card.getIncome(), p);
+
                 break;
             case "prison":
                 p.updatePosition(31);
@@ -45,8 +48,6 @@ public class Chance extends Field {
           /* case "moveTo":
                int m = position - moveToPosition;
                 p.updatePosition(moveToPosition);
-
-
            */
         } return "Spiller " + p.getName() + " har accepteret tilbuddet.";
     }

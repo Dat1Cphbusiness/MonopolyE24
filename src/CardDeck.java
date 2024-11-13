@@ -18,9 +18,11 @@ public class CardDeck {
             String message = values[0];                         //Mismatch datatype med Card klassen  "int message = Integer.parseInt(values[0]);             //Skal muligvis ændres til en ny type kaldet "Field"
             int income = Integer.parseInt(values[1].trim());//"100"
             int cost = Integer.parseInt(values[2].trim());
-            String event = values[3];
 
-            Card c = new Card(message, income, cost, event);
+            String event = values[3];
+            int moveToPosition = Integer.parseInt(values[4].trim());
+
+            Card c = new Card(message, income, cost, event, moveToPosition);
 
             cards[i] = c;
         }
