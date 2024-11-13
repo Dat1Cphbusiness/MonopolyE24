@@ -30,7 +30,7 @@ public class Chance extends Field {
     protected String onAccept(Player p) {
         switch (event) {
             case "pay":
-                p.pay(Card.getCost());
+                p.pay(Card.getCost(), p.getName());
                 break;
             case "reward":
                 p.receive(Card.getIncome());

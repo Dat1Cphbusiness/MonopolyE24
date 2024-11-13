@@ -39,7 +39,7 @@ public class Player {
         account.deposit(amount);
     }
 
-    public void pay(int amount){
+    public void pay(int amount, String name){
         account.withdraw(amount);
     }
 }
