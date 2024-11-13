@@ -23,7 +23,6 @@ public class CardDeck {
     }
 
     public Card getNext() {
-
         Card c = cards[counter];
         counter++;
         return c;
