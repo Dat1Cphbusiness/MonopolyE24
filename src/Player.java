@@ -16,7 +16,8 @@ public class Player {
         this.position = 1;
         this.account = new Account();
         account.deposit(startAmount);
-        this.deeds = deeds;
+
+        this.deeds = new ArrayList<>();
     }
 
     public String toString(){
