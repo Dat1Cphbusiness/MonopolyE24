@@ -32,7 +32,7 @@ public class Game {
     }
 
 
-    public List getPlayers() {
+    public List<Player> getPlayers() {
             return players;
     }
 
@@ -51,7 +51,15 @@ public class Game {
         }
         Collections.shuffle(players);
     }
-   public void setup(){
+
+    public void setupBoard() {
+        String[] carddata =  io.readBoardData("data/carddata.csv", 38);
+        String[] fielddata = io.readBoardData("data/fielddata.csv", 40);
+        board = new Board(fielddata, carddata);
+        System.out.println(board.getField(40));
+        System.out.println(Board.cardDeck.getNext());
+    }
+   public void setupPlayers(){
     ui.displayMsg("Welcome to " + this.name); 
      ArrayList<String> data = io.readPlayerData(this.playerDataPath);
 
@@ -68,11 +76,7 @@ public class Game {
            registerPlayers();
        }
 
-       String[] carddata =  io.readBoardData("data/carddata.csv", 38);
-       String[] fielddata = io.readBoardData("data/fielddata.csv", 40);
-       board = new Board(fielddata, carddata);
-       System.out.println(board.getField(40));
-       System.out.println(Board.cardDeck.getNext());
+     setupBoard();
 
    }
 
@@ -124,5 +128,6 @@ public class Game {
         }
         FileIO.saveData(playersAsText, this.playerDataPath, "name, balance");
     }
+
 
 }
