@@ -21,4 +21,8 @@ public class Account {
             return true;
         }
     }
+
+    public void setBalance(int amount){
+        balance = amount;
+    }
 }

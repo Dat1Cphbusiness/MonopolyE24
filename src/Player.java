@@ -8,14 +8,17 @@ public class Player {
     ArrayList<Field> deeds;
 
     public Player (String name){
-       this(name, 0);
+       this.name = name;
+       this.position = 1;
+       this.account = new Account();
+       this.deeds = new ArrayList<>();
     }
 
-    public Player (String name, int startAmount){
+    public Player (String name, int amount){
         this.name = name;
         this.position = 1;
         this.account = new Account();
-        account.deposit(startAmount);
+        account.setBalance(amount);
 
         this.deeds = new ArrayList<>();
     }
