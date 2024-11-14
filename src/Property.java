@@ -24,7 +24,8 @@ public class Property extends Field {
             msg += "Vil du købe? (Y/N): ";
         } else if (owner != null && owner != p) {
             msg += "Du skal betale " + income + ". Tast Y for at acceptere";
-        }//todo: her kan vi tjekke om spilleren både ejer feltet OG de andre felter i serien (har monopol). Se også todo ovenfor om tilføjelse af en hasMonopoly metode
+        }//todo: her kan vi tjekke om spilleren både ejer feltet OG de andre felter i serien (har monopol)
+         // Se ovenfor om tilføjelse af en hasMonopoly metode
         return msg;
     }
 
