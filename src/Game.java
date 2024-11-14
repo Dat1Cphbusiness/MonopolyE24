@@ -79,6 +79,23 @@ public class Game {
      setupBoard();
 
    }
+    // todo: Får man et slag mere hvis det var det et dobbelslag?
+    // todo: Tjek om den samme spiller har fået et 3. dobbeltslag - 3 dobbelslag sender spilleren i fængsel.
+    public void runGameLoop(){
+        int count = 0;
+        boolean continueGame = true;
+        while(continueGame){
+            currentPlayer = players.get(count);
+            throwAndMove();
+            continueGame = ui.promptBinary("Continue game? Y/N");
+            if(count == players.size()-1) {
+                count = 0;
+            }
+            else {
+                count++;
+            }
+        }
+    }
 
    public void throwAndMove(){
        ui.displayMsg("It's now " + currentPlayer.getName() + "'s turn");
@@ -94,9 +111,12 @@ public class Game {
         String msg = f.onLand(currentPlayer); //Egon er landet på valbylanggade
         boolean response = ui.promptBinary(msg);
 
+        //todo: visse felter giver ingen valgmulighed når man lander.
+        // Vi må tilføje en getter til option på Field og sørg for at den default er sat til null - og igen sættes til null når spillerens tur er slut
 
-        msg = f.processResponse(currentPlayer, response);//Egon har købt valbylangggade
-
+        //if(f.getOption() != null) {
+           msg = f.processResponse(currentPlayer, response);//Egon har købt valbylangggade
+       // }
 
 
        ui.displayMsg(msg);
@@ -104,21 +124,7 @@ public class Game {
 
    }
 
-   public void runGameLoop(){
-        int count = 0;
-        boolean continueGame = true;
-        while(continueGame){
-            currentPlayer = players.get(count);
-            throwAndMove();
-            continueGame = ui.promptBinary("Continue game? Y/N");
-            if(count == players.size()-1) {
-                count = 0;
-            }
-            else {
-                count++;
-            }
-        }
-   }
+
     public void endGame(){
         ui.displayMsg("Game is ending");
 

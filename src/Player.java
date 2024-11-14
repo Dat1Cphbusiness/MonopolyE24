@@ -49,6 +49,7 @@ public class Player {
     public void pay(int amount){
         account.withdraw(amount);
     }
+    //todo: træf beslutning: skal modtageren have pengene selvom betaleren går i minus?
     public void pay(int amount, Player recipient){
         pay(amount);
         recipient.receive(amount);
