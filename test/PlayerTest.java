@@ -27,8 +27,28 @@ class PlayerTest {
         int actual = p.updatePosition(42);
         int expected = 3;
         //assert
+        assertEquals(expected, actual);//tjekker at positionen er korrekt
+        assertEquals(34000, p.getWorthInCash()); //tjekker at pengene er trukket
+
+    }
+
+    @Test
+    public void buyProperty() {
+        //arrange
+
+        // Til denne test skal vi bruge et propertyfelt, derfor instantierer vi Game så vi kan bruge setup metoden
+        // til at få bygget hele spillepladen og player instanser
+        Game game = new Game("Matador");
+        game.setupBoard();
+        Player p = new Player("Egon", 30000);
+        Field f = game.board.getField(40); // rådhuspladsen koster 8000
+        //act
+        p.buyProperty(f);
+        int actual = p.getWorthInCash();
+        int expected = 22000;
+
+        //assert
         assertEquals(expected, actual);
-        assertEquals(34000, p.getWorthInCash());
 
     }
 }
