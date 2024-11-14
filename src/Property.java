@@ -4,10 +4,15 @@ public class Property extends Field {
     private int seriesID;
     private Player owner;
 
+    //todo: tilføj en metode hasMonopoly(), der gennemløber alle propertyfields i boardklassen (kræver at vi gør propertyfields static)
+    // for hvert Property felt, tjekkes om det har samme serieID som this
+    // og om det er currentPlayer (p) der ejer det.
+
 
     public Property(int id, String label, int income, int cost, int seriesID) {
         super(id, label, income, cost);
         this.seriesID = seriesID;
+
     }
 
     @Override
@@ -19,7 +24,7 @@ public class Property extends Field {
             msg += "Vil du købe? (Y/N): ";
         } else if (owner != null && owner != p) {
             msg += "Du skal betale " + income + ". Tast Y for at acceptere";
-        }
+        }//todo: her kan vi tjekke om spilleren både ejer feltet OG de andre felter i serien (har monopol). Se også todo ovenfor om tilføjelse af en hasMonopoly metode
         return msg;
     }
 

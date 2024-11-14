@@ -18,8 +18,8 @@ public class Chance extends Field {
         s += "\n Du har trukket et kort fra bunken: " + card.getMessage();
 
 
-        //todo: findes der kort som giver spilleren en valgmulighed? I så fald skal option sættes til noget som
-        //todo: hvis der aldrig gives en valgmulighed skal vi måske bare kalde onAccept herfra?
+        //todo: findes der kort som giver spilleren en valgmulighed? I så fald skal option sættes til noget som kan tjekkes i onAccept og onReject
+        // hvis der derimod aldrig gives en valgmulighed, bør vi bare kalde onAccept herfra.
 
         return s;
     }
@@ -59,6 +59,8 @@ public class Chance extends Field {
                 int m = position - moveToPosition;
                 p.updatePosition(moveToPosition);
             */
+            // todo: hvordan kan vi håndtere at der er trukket et kort der giver imunitet overfor fængsling?
+            //  Skal Player klassen have boolean attribut (et flag) der viser om man har et wildcard? Hvor skal dette flag tjekkes henne, så man ikke ryger i fængsel hvis man har wildcard?
         }
         //todo: kan vi gøre beskeden mere specifik så den afspejler den event der lige er sket?
         return "Spiller " + p.getName() + " har accepteret tilbuddet.";
