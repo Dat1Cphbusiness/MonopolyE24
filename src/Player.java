@@ -44,10 +44,16 @@ public class Player {
         account.deposit(amount);
     }
 
+   //todo: begge pay metoder skal returnere en boolean.
+   // Værdien der skal returneres, kommer fra kald til withdraw og vil være false hvis der ikke var penge nok på kontoen til at trække bekøbet
     public void pay(int amount){
         account.withdraw(amount);
     }
-
+    public void pay(int amount, Player recipient){
+        pay(amount);
+        recipient.receive(amount);
+    }
+    //todo: tilføj kun f til deeds hvis betalingen gik godt
     public boolean buyProperty(Field f){
         pay(f.cost);
         deeds.add(f);
@@ -66,10 +72,7 @@ public class Player {
         }
         return total += getWorthInCash();
     }
-    public void pay(int amount, Player recipient){
-        pay(amount);
-        recipient.receive(amount);
-    }
+
 
     public int moveToPrison(){
         return updatePosition(11 - position);
