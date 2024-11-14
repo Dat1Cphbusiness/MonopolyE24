@@ -124,12 +124,12 @@ public class Game {
 
    }
 
-    //todo: tilføj en metode til at fjerne en spiller fra listen ved konkurs, void removePlayer(Player p)
-    // Man kan bruge ArrayLists splice metode til at fjerne et element: players.splice(i,1);       (  i er det index spilleren ligger på )
-    // removePlayer kunne passende kaldes fra Player klassens pay() metode (hvis withdraw() har returneret false), men det kræver at vi derfra har adgang til en instans af Game.
-    // alternativt kunne vi i denne klasse (Game), tjekke om currentPlayer er gået konkurs/har nogen penge, før vi kalder throwAndMove()
-    // Hvis der ikke er nogen penge kaldes removePlayer
-    // removePlayer() kunne vi også være stedet hvor vi tjekker om vi har en vinder
+    /* todo: tilføj en metode til at fjerne en spiller fra listen ved konkurs, void removePlayer(Player p)
+        Man kan bruge ArrayLists splice metode til at fjerne et element: players.splice(i,1);       (  i er det index spilleren ligger på )
+        removePlayer kunne passende kaldes fra Player klassens pay() metode (hvis withdraw() har returneret false), men det kræver at vi derfra har adgang til en instans af Game.
+        alternativt kunne vi i denne klasse (Game), tjekke om currentPlayer er gået konkurs/har nogen penge, før vi kalder throwAndMove()
+        Hvis der ikke er nogen penge kaldes removePlayer
+        removePlayer() kunne vi også være stedet hvor vi tjekker om vi har en vinder */
      
 
     public void endGame(){
