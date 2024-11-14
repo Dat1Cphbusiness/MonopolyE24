@@ -31,7 +31,7 @@ class PropertyTest {
         String result = property.onLand(p1);
 
 
-        //assert: check if the message contains the offer to buy
+        //assert: check if the message tells you to pay
         assertTrue(result.contains("Du skal betale "));
         assertTrue(result.contains(". Tast Y for at acceptere"));
     }
