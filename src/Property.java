@@ -5,7 +5,7 @@ public class Property extends Field {
     private Player owner;
 
 
-    public Property(int id, String label, int income, int cost, int seriesID) {
+    public Property(int id, String label, int cost, int income, int seriesID) { // income og cost skal bytte plads så det passer med rækkefølgen i data
         super(id, label, income, cost);
         this.seriesID = seriesID;
     }
