@@ -52,4 +52,8 @@ public class Property extends Field {
     public String toString() {
         return super.toString() + seriesID;
     }
+
+    public void setOwner(Player owner) {
+        this.owner = owner;
+    }
 }
