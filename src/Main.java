@@ -30,8 +30,8 @@ class Main {
 
         Game game = new Game("Matador");
 
-        game.setup();
-
+        game.setupPlayers();
+        game.setupBoard();
       //   System.out.print(game);
         System.out.println("-------------Starting game------------------------");
 
