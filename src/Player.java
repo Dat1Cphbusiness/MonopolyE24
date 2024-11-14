@@ -46,19 +46,33 @@ public class Player {
 
    //todo: begge pay metoder skal returnere en boolean.
    // Værdien der skal returneres, kommer fra kald til withdraw og vil være false hvis der ikke var penge nok på kontoen til at trække bekøbet
-    public void pay(int amount){
-        account.withdraw(amount);
+    public boolean pay(int amount){
+        if (getWorthInCash() < amount){
+            return false;
+        } else {
+            account.withdraw(amount);
+            return true;
+        }
     }
     //todo: træf beslutning: skal modtageren have pengene selvom betaleren går i minus?
-    public void pay(int amount, Player recipient){
-        pay(amount);
-        recipient.receive(amount);
+    public boolean pay(int amount, Player recipient){
+        if (getWorthInCash() < amount){
+            return false;
+        } else {
+            pay(amount);
+            recipient.receive(amount);
+            return true;
+        }
     }
     //todo: tilføj kun f til deeds hvis betalingen gik godt
     public boolean buyProperty(Field f){
-        pay(f.cost);
-        deeds.add(f);
-        return true;
+        if (pay(f.cost)) {
+            pay(f.cost);
+            deeds.add(f);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public int getWorthInCash(){
