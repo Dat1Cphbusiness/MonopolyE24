@@ -13,7 +13,6 @@ class PropertyTest {
     public void testOnLand_NotOwned() {
         //arrange: instant the property and the player (Owner==null)
 
-
         //act: the player lands on plot not owned
         String result = property.onLand(p1);
 
@@ -25,7 +24,6 @@ class PropertyTest {
 
     @Test
     public void testOnLand_AnotherPlayerOwns(){
-        //arrange: instant the property and the player
         // har lavet en setOwner i Property(setting the owner to be p2)
         property.setOwner(p2);
 
