@@ -7,6 +7,11 @@ public class Player {
     Account account;
     ArrayList<Field> deeds;
 
+
+
+    private boolean isBankrupt = false;
+    private boolean inPrison = false;
+
     public Player (String name){
        this(name, 0);
     }
@@ -47,7 +52,13 @@ public class Player {
    //todo: begge pay metoder skal returnere en boolean.
    // Værdien der skal returneres, kommer fra kald til withdraw og vil være false hvis der ikke var penge nok på kontoen til at trække bekøbet
     public boolean pay(int amount){
-        return account.withdraw(amount);
+        if(account.withdraw(amount)){
+            return true;
+        }else {
+            isBankrupt = true;
+
+        }
+        return false;
     }
     //todo: træf beslutning: skal modtageren have pengene selvom betaleren går i minus?
     public boolean pay(int amount, Player recipient){
@@ -84,10 +95,15 @@ public class Player {
     public int moveToPrison(){
         //hen på 11
         //set flag boolean inPrison
-        return updatePosition(11 - position);
+        this.inPrison = true;
+        return position = 11;
     }
 
     public int getPosition(){
         return this.position;
+    }
+
+    public boolean isBankrupt() {
+        return isBankrupt;
     }
 }

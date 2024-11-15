@@ -85,9 +85,14 @@ public class Game {
     public void runGameLoop(){
         int count = 0;
         boolean continueGame = true;
-        while(continueGame){
+        while(continueGame && players.size()>1){
+
             currentPlayer = players.get(count);
             throwAndMove();
+            if( currentPlayer.isBankrupt()){
+                this.removePlayer(currentPlayer);
+                //fjern fra listen
+            }
             continueGame = ui.promptBinary("Continue game? Y/N");
             if(count == players.size()-1) {
                 count = 0;
@@ -95,12 +100,13 @@ public class Game {
             else {
                 count++;
             }
+
         }
     }
 
    public void throwAndMove(){
        ui.displayMsg("It's now " + currentPlayer.getName() + "'s turn");
-        int result = 38;//dice.rollDiceSum();
+        int result = 39;//dice.rollDiceSum();
         ui.displayMsg(currentPlayer.getName() + " slog " + result);
         int newPosition = currentPlayer.updatePosition(result);
         Field f = board.getField(newPosition);
@@ -140,6 +146,8 @@ public class Game {
         }
         FileIO.saveData(playersAsText, this.playerDataPath, "name, balance");
     }
-
+    public void removePlayer(Player p) {
+        players.remove(p);
+    }
 
 }
