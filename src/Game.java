@@ -57,8 +57,7 @@ public class Game {
         String[] carddata =  io.readBoardData("data/carddata.csv", 38);
         String[] fielddata = io.readBoardData("data/fielddata.csv", 40);
         board = new Board(fielddata, carddata);
-        System.out.println(board.getField(40));
-        System.out.println(Board.cardDeck.getNext());
+
     }
    public void setupPlayers(){
     ui.displayMsg("Welcome to " + this.name); 
@@ -109,7 +108,7 @@ public class Game {
        if (currentPlayer.getDestination() > 0){
            result = currentPlayer.getDestination();
        } else {
-           result = 2;//dice.rollDiceSum();
+           result = dice.rollDiceSum(); //sæt denne til 2 for at teste hvad der sker på Chance feltet
 
        }
         ui.displayMsg(currentPlayer.getName() + " slog " + result);
