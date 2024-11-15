@@ -44,21 +44,26 @@ public class Player {
         account.deposit(amount);
     }
 
-   //todo: begge pay metoder skal returnere en boolean.
-   // Værdien der skal returneres, kommer fra kald til withdraw og vil være false hvis der ikke var penge nok på kontoen til at trække bekøbet
-    public void pay(int amount){
-        account.withdraw(amount);
+    public boolean pay(int amount){
+        return account.withdraw(amount);
     }
-    //todo: træf beslutning: skal modtageren have pengene selvom betaleren går i minus?
-    public void pay(int amount, Player recipient){
-        pay(amount);
-        recipient.receive(amount);
+
+    public boolean pay(int amount, Player recipient){
+        boolean hasMoney = pay(amount);
+        if (hasMoney) {
+            recipient.receive(amount);
+            return true;
+        }
+        return false;
     }
-    //todo: tilføj kun f til deeds hvis betalingen gik godt
+
     public boolean buyProperty(Field f){
-        pay(f.cost);
-        deeds.add(f);
-        return true;
+        boolean transactionSucceeded = pay(f.cost);
+        if (transactionSucceeded) {
+            deeds.add(f);
+            return true;
+        }
+        return false;
     }
 
     public int getWorthInCash(){
@@ -74,9 +79,8 @@ public class Player {
         return total += getWorthInCash();
     }
 
-   //todo: Denne metode kommer vist ikke til at virke. Man kan ryge i fængsel fra et hvilket som helst felt. Hvordan kan vi løse denne?
     public int moveToPrison(){
-        return updatePosition(11 - position);
+        return position = 31;
     }
 
     public int getPosition(){
