@@ -10,7 +10,7 @@ public class Property extends Field {
 
 
     public Property(int id, String label, int income, int cost, int seriesID) {
-        super(id, label, income, cost);
+        super(id, label, cost, income);
         this.seriesID = seriesID;
 
     }

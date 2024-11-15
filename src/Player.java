@@ -14,8 +14,7 @@ public class Player {
     public Player (String name, int startAmount){
         this.name = name;
         this.position = 1;
-        this.account = new Account();
-        account.deposit(startAmount);
+        this.account = new Account(startAmount);
 
         this.deeds = new ArrayList<>();
     }
