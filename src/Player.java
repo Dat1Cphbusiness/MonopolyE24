@@ -70,7 +70,6 @@ public class Player {
     //todo: tilføj kun f til deeds hvis betalingen gik godt
     public boolean buyProperty(Field f){
         if (pay(f.cost)) {
-            pay(f.cost);
             deeds.add(f);
             return true;
         } else {

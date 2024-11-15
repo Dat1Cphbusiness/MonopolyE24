@@ -5,7 +5,7 @@ public class Field {
     protected int income;
     protected String option;
 
-    public Field(int id, String label, int cost, int income) {
+    public Field(int id, String label, int income, int cost) {
         this.label = label;
         this.id = id;
         this.cost = cost;
