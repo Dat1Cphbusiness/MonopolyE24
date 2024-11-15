@@ -110,7 +110,8 @@ public class Game {
        if (currentPlayer.getDestination() > 0){
            result = currentPlayer.getDestination();
        } else {
-           result = dice.rollDiceSum();
+           result = 2;//dice.rollDiceSum();
+
        }
         ui.displayMsg(currentPlayer.getName() + " slog " + result);
         int newPosition = currentPlayer.updatePosition(result);
@@ -122,7 +123,8 @@ public class Game {
             if(counter != 3){
 
                 landAndAct(f);
-                throwAndMove();
+                count--;//samme spiller vil blive sat til currentPlayer igen, når vi rammer runGameLoop
+                //throwAndMove();//udkommenteret fordi vi skal have runGameLoop med, hvor der er et tjek på om spilleren stadig er "levende"
 
             }
             else {

@@ -18,15 +18,14 @@ public class Chance extends Field {
         s += "\n Du har trukket et kort fra bunken: " + card.getMessage();
 
 
-        //todo: findes der kort som giver spilleren en valgmulighed? I så fald skal option sættes til noget som kan tjekkes i onAccept og onReject
-        // hvis der derimod aldrig gives en valgmulighed, bør vi bare kalde onAccept herfra.
-
+        //Da der ikke findes der kort som giver spilleren en valgmulighed, bør vi bare kalde onAccept herfra.
+       onAccept(p);
         return s;
     }
 
     @Override
     public String toString() {
-        return "Chance{" + "event='" + event + '\'' + '}';
+        return card.getMessage()+"," + event ;
     }
 
   /*  public String processResponse(Player p) {
@@ -66,12 +65,9 @@ public class Chance extends Field {
                 p.setPaymentTimes(2);
                 p.setDestination(a);
                 Main.games.get(0).throwAndMove();
-
                 p.setDestination(0);
                 p.setPaymentTimes(1);
                 break;
-
-
 
             case "moveTo":
                 if (p.getPosition() < card.getMoveToPosition()) {
@@ -87,12 +83,11 @@ public class Chance extends Field {
                 }
                 break;
             }
-
+        //todo: kan vi gøre beskeden mere specifik så den afspejler den event der lige er sket?
         return "Spiller " + p.getName() + " har accepteret tilbuddet.";
             // todo: hvordan kan vi håndtere at der er trukket et kort der giver imunitet overfor fængsling?
             //  Skal Player klassen have boolean attribut (et flag) der viser om man har et wildcard? Hvor skal dette flag tjekkes henne, så man ikke ryger i fængsel hvis man har wildcard?
         }
-        //todo: kan vi gøre beskeden mere specifik så den afspejler den event der lige er sket?
 
 
 

@@ -19,7 +19,7 @@ public class CardDeck {
             int income = Integer.parseInt(values[1].trim());//"100"
             int cost = Integer.parseInt(values[2].trim());
 
-            String event = values[3];
+            String event = values[3].trim();
             int moveToPosition = Integer.parseInt(values[4].trim());
 
             Card c = new Card(message, income, cost, event, moveToPosition);

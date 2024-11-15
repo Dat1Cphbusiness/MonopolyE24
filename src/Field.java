@@ -18,7 +18,7 @@ public class Field {
     }
 
     public String onLand(Player p){
-        return p.getName() + "has landed on" + label;
+        return p.getName() + " has landed on " + label;
     }
 
     public String processResponse(Player p,Boolean response){
@@ -40,10 +40,7 @@ public class Field {
 
     @Override
     public String toString() {
-        return "Field{" +
-                "id=" + id +
-                ", label='" + label + '\'' +
-                '}';
+        return  id +", " + label;
     }
 
 
