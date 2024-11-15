@@ -19,6 +19,7 @@ public class Game {
         this.ui = new TextUI();
         this.io = new FileIO();
         this.playerDataPath ="data/playerdata.csv";
+        //this.dice = new Dice();
         this.dice = new Dice();
     }
     public void addPlayer(Player p){
@@ -103,14 +104,30 @@ public class Game {
 
         }
     }
-
+    static int counter = 0;
    public void throwAndMove(){
        ui.displayMsg("It's now " + currentPlayer.getName() + "'s turn");
         int result = 39;//dice.rollDiceSum();
         ui.displayMsg(currentPlayer.getName() + " slog " + result);
         int newPosition = currentPlayer.updatePosition(result);
         Field f = board.getField(newPosition);
-        landAndAct(f);
+
+        if(dice.isDouble){
+            counter++;
+            ui.displayMsg("You get another turn, thank double dice");
+            if(counter != 3){
+                landAndAct(f);
+                throwAndMove();
+
+            }
+            else {
+                currentPlayer.moveToPrison();
+                counter = 0;
+                ui.displayMsg(currentPlayer.getName() + " has been sent to prison");
+            }
+        }
+        else{ landAndAct(f);}
+
 
    }
 

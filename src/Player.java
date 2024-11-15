@@ -92,11 +92,12 @@ public class Player {
     }
 
    //todo: Denne metode kommer vist ikke til at virke. Man kan ryge i fængsel fra et hvilket som helst felt. Hvordan kan vi løse denne?
-    public int moveToPrison(){
+    public void moveToPrison(){
+        this.position = 11;
         //hen på 11
         //set flag boolean inPrison
         this.inPrison = true;
-        return position = 11;
+
     }
 
     public int getPosition(){

@@ -3,15 +3,19 @@ public class Field {
     protected int id;
     protected int cost;
     protected int income;
-    protected String option;
+    protected String option = null;
 
     public Field(int id, String label, int cost, int income) {
         this.label = label;
         this.id = id;
         this.cost = cost;
         this.income = income;
+
     }
 
+    public String getOption(){
+        return option;
+    }
 
     public String onLand(Player p){
         return p.getName() + "has landed on" + label;
