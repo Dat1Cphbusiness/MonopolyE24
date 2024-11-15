@@ -19,7 +19,7 @@ public class Chance extends Field {
 
 
         //Da der ikke findes der kort som giver spilleren en valgmulighed, bør vi bare kalde onAccept herfra. Evt. omnavngiv til 'executeEvent()'
-       onAccept(p);
+         s=s+ "\n"+onAccept(p);
         return s;
     }
 
@@ -35,17 +35,17 @@ public class Chance extends Field {
         switch (event) {
             case "pay":
                 p.pay(card.getCost());
-                eventSpecificMsg = "har betalt "+card.getCost()+"kr";
+                eventSpecificMsg = " har betalt "+card.getCost()+"kr";
                 break;
             case "reward":
                 p.receive(card.getIncome());
-                eventSpecificMsg = "har modtaget "+card.getIncome()+"kr";
+                eventSpecificMsg = " har modtaget "+card.getIncome()+"kr";
                 break;
             case "rewardFromPlayers":
                 // todo: få fat i listen af spillere fra Game.
                 //  Gennemløb listen og send penge fra alle spillere (som ikke er p) til p
                 //  otherplayer.pay(card.getIncome(), p);
-                eventSpecificMsg = "Har modtaget betaling fra alle de andre";
+                eventSpecificMsg = " har modtaget betaling fra alle de andre";
                 break;
             case "prison":
                 p.moveToPrison();
@@ -89,7 +89,7 @@ public class Chance extends Field {
                 break;
             }
         // vi gør beskeden mere specifik så den afspejler den event der lige er sket
-        return "Spiller " + p.getName() + eventSpecificMsg;
+        return " " + p.getName() + eventSpecificMsg;
             // todo: hvordan kan vi håndtere at der er trukket et kort der giver imunitet overfor fængsling?
             //  Skal Player klassen have boolean attribut (et flag) der viser om man har et wildcard? Hvor skal dette flag tjekkes henne, så man ikke ryger i fængsel hvis man har wildcard?
         }
