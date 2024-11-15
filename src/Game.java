@@ -100,7 +100,7 @@ public class Game {
 
    public void throwAndMove(){
        ui.displayMsg("It's now " + currentPlayer.getName() + "'s turn");
-        int result = dice.rollDiceSum();
+        int result = 38;//dice.rollDiceSum();
         ui.displayMsg(currentPlayer.getName() + " slog " + result);
         int newPosition = currentPlayer.updatePosition(result);
         Field f = board.getField(newPosition);
@@ -110,19 +110,17 @@ public class Game {
 
    public void landAndAct(Field f){
         String msg = f.onLand(currentPlayer); //Egon er landet på valbylanggade
-        boolean response = ui.promptBinary(msg);
+
 
         //todo: visse felter giver ingen valgmulighed når man lander.
         // Vi må tilføje en getter til option på Field og sørg for at den default er sat til null - og igen sættes til null når spillerens tur er slut
 
         if(f.getOption() != null) {
+            boolean response = ui.promptBinary(msg);
            msg = f.processResponse(currentPlayer, response);//Egon har købt valbylangggade
         }
 
-
        ui.displayMsg(msg);
-
-
    }
 
     /* todo: tilføj en metode til at fjerne en spiller fra listen ved konkurs, void removePlayer(Player p)

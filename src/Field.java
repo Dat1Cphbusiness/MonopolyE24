@@ -41,4 +41,8 @@ public class Field {
                 ", label='" + label + '\'' +
                 '}';
     }
+
+    public String getOption() {
+        return option;
+    }
 }
