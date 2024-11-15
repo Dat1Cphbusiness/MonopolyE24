@@ -6,6 +6,8 @@ public class Player {
     private int position;
     Account account;
     ArrayList<Field> deeds;
+    private int destination;
+    private int paymentTimes = 1;
 
     public Player (String name){
        this(name, 0);
@@ -51,6 +53,7 @@ public class Player {
     }
     //todo: træf beslutning: skal modtageren have pengene selvom betaleren går i minus?
     public void pay(int amount, Player recipient){
+        amount = amount * getPaymentTimes();
         pay(amount);
         recipient.receive(amount);
     }
@@ -81,5 +84,20 @@ public class Player {
 
     public int getPosition(){
         return this.position;
+    }
+
+    public void setDestination(int destination) {
+        this.destination = destination;
+    }
+    public int getDestination() {
+        return destination;
+    }
+
+    public void setPaymentTimes(int paymentTimes) {
+        this.paymentTimes = paymentTimes;
+    }
+
+    public int getPaymentTimes() {
+        return paymentTimes;
     }
 }

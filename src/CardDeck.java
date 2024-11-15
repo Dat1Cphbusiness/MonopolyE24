@@ -20,9 +20,9 @@ public class CardDeck {
             int cost = Integer.parseInt(values[2].trim());
 
             String event = values[3];
-           // int moveToPosition = Integer.parseInt(values[4].trim());
+            int moveToPosition = Integer.parseInt(values[4].trim());
 
-            Card c = new Card(message, income, cost, event);
+            Card c = new Card(message, income, cost, event, moveToPosition);
 
             cards[i] = c;
         }

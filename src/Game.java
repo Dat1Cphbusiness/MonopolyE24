@@ -99,8 +99,13 @@ public class Game {
     }
 
    public void throwAndMove(){
+       int result;
        ui.displayMsg("It's now " + currentPlayer.getName() + "'s turn");
-        int result = dice.rollDiceSum();
+       if (currentPlayer.getDestination() > 0){
+           result = currentPlayer.getDestination();
+       } else {
+           result = dice.rollDiceSum();
+       }
         ui.displayMsg(currentPlayer.getName() + " slog " + result);
         int newPosition = currentPlayer.updatePosition(result);
         Field f = board.getField(newPosition);
