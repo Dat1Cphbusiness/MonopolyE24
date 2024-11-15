@@ -1,4 +1,4 @@
-
+import java.util.ArrayList;
 
 /** This example demonstrates the foundations of building an object-oriented system in Java.
  *  It uses the domain of a bank
@@ -25,11 +25,11 @@
 
 
 class Main {
-
+    public static ArrayList<Game> games = new ArrayList<>();
     public static void main(String[] args) {
 
         Game game = new Game("Matador");
-
+        games.add(game);
         game.setupPlayers();
         game.setupBoard();
       //   System.out.print(game);
