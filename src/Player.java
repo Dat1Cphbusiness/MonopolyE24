@@ -51,8 +51,12 @@ public class Player {
     }
     //todo: træf beslutning: skal modtageren have pengene selvom betaleren går i minus?
     public boolean pay(int amount, Player recipient){
-       // venter på removeplayer fra game klasse
-        return true;
+      boolean succes = pay(amount);
+      if (succes){
+          recipient.receive(amount);
+          return true;
+      }
+        return false;
     }
     //todo: tilføj kun f til deeds hvis betalingen gik godt
     public boolean buyProperty(Field f){

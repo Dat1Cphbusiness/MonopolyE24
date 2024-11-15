@@ -40,12 +40,12 @@ class PlayerTest {
         // til at få bygget hele spillepladen og player instanser
         Game game = new Game("Matador");
         game.setupBoard();
-        Player p = new Player("Egon", 9000);
+        Player p = new Player("Egon", 1000);
         Field f = game.board.getField(40); // rådhuspladsen koster 8000
         //act
         p.buyProperty(f);
-        int actual = p.getWorthInCash();
-        int expected = 1000;
+        boolean actual = p.pay(8000);
+        boolean expected = false;
 
         //assert
         assertEquals(expected, actual);
