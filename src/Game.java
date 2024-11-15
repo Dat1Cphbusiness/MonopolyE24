@@ -115,9 +115,9 @@ public class Game {
         //todo: visse felter giver ingen valgmulighed når man lander.
         // Vi må tilføje en getter til option på Field og sørg for at den default er sat til null - og igen sættes til null når spillerens tur er slut
 
-        //if(f.getOption() != null) {
+        if(f.getOption() != null) {
            msg = f.processResponse(currentPlayer, response);//Egon har købt valbylangggade
-       // }
+        }
 
 
        ui.displayMsg(msg);
