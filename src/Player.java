@@ -76,7 +76,7 @@ public class Player {
 
    //todo: Denne metode kommer vist ikke til at virke. Man kan ryge i fængsel fra et hvilket som helst felt. Hvordan kan vi løse denne?
     public int moveToPrison(){
-        return updatePosition(11 - position);
+        return updatePosition(11);
     }
 
     public int getPosition(){
