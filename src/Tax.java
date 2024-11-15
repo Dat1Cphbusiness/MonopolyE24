@@ -28,7 +28,6 @@ public class Tax extends Field {
         p.pay(cost);
         return p.getName() + " har accepteret og betalt et fast beløb på " + this.cost+  "kr.";
     }
-//todo: brug Player klassens getWorthInTotal() til at beregne skatten
     @Override
     protected String onReject(Player p) {
         double value = (p.getWorthInCash() * 0.1);

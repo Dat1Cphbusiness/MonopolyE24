@@ -5,9 +5,6 @@ public class Property extends Field {
     private int seriesID;
     private Player owner;
 
-    //todo: tilføj en metode hasMonopoly(), der gennemløber alle propertyfields i boardklassen (kræver at vi gør propertyfields static)
-    // for hvert Property felt, tjekkes om det har samme serieID som this
-    // og om det er currentPlayer (p) der ejer det.
 
     public boolean hasMonopoly(Player CurrentPlayer){
 
@@ -64,9 +61,9 @@ public class Property extends Field {
         } else if (owner != null && owner != p) {
             msg += "Du skal betale " + income + ". Tast Y for at acceptere";
         }
-        //todo: implementer logik for de funktioner man kan gøre i tilfælde af monopol
         else if (hasMonopoly(p)){
-            msg += p.getName() + "har monopol!";
+            option = "build";
+            msg += p.getName() + "har monopol! Vil du bygge?";
         }
         return msg;
     }
@@ -79,10 +76,11 @@ public class Property extends Field {
             owner = p;
             return p.getName() + " købte " + this.label ;
         }
-//            else if ("build".equalsIgnoreCase(option)){
-//            Player.buildHouse();
-//            return p.getName() + " byggede på " + this.label ;
-//        }
+        else if ("build".equalsIgnoreCase(option)){
+            //todo: tilføj metoden i Playerklassen og indkommenter linjen:
+//            p.buildHouse();
+           return p.getName() + " byggede på " + this.label ;
+        }
         return "-1";
     }
 

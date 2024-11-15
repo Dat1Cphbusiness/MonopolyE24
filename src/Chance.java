@@ -49,18 +49,19 @@ public class Chance extends Field {
             case "prison":
                 p.moveToPrison();
                 break;
-                // todo: hvordan kan vi rykke spilleren til et bestemt felt, og samtidig aktivere det felt der landes på
-                //  - Find feltet spilleren skal hen på.
-                //  - kald til landAndAct med feltet som argument.
+
 
             case "moveToFerry":
+                //todo skal testes
                 int b = nearestFarry(p);
                 p.setDestination(b);
-                Main.games.get(0).throwAndMove();
+                Main.games.get(0).throwAndMove();//
                 p.setDestination(0);
                 break;
 
             case "doubleRentPaymentToPlayer":
+                //todo skal testes - virker dobbelt. Kunne man fjerne denne case og sætte paymentTimes i den forrige case
+
                 int a = nearestFarry(p);
                 p.setPaymentTimes(2);
                 p.setDestination(a);
