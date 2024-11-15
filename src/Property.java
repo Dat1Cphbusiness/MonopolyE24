@@ -58,4 +58,20 @@ public class Property extends Field {
     public String toString() {
         return super.toString() + seriesID;
     }
+
+    public boolean hasMonopoly(Player currentPlayer){
+        boolean hasMonopoly = false;
+            for (Property other: Board.propertyfields) {
+            if(this.seriesID == other.seriesID) {
+                if(currentPlayer.equals(other.owner)){
+                    hasMonopoly = true;
+                }else{
+                    return false;
+                }
+            }
+            // else do nothing
+            }
+        return hasMonopoly;
+    }
+
 }

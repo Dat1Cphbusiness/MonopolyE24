@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Board {
     private Field[] fields;
     public static CardDeck cardDeck;
-    private ArrayList<Field> propertyfields  = new ArrayList<>();
+    public static ArrayList<Property> propertyfields = new ArrayList<>();
 
     public Board(String[] fielddata, String[] carddata) {
         createFields(fielddata);
@@ -31,15 +31,15 @@ public class Board {
                     break;
                 case "Plot":
                     f = new Plot(id, label, cost, income, serieID);
-                    propertyfields.add(f);
+                    propertyfields.add((Property) f);
                     break;
                 case "Brewery":
                     f = new Brewery(id, label, cost, income, serieID);
-                    propertyfields.add(f);
+                    propertyfields.add((Property) f);
                     break;
                 case "ShippingLine":
                     f = new ShippingLine(id, label, cost, income, serieID);
-                    propertyfields.add(f);
+                    propertyfields.add((Property) f);
                     break;
                 case "Tax":
                     f = new Tax(id, label, cost, income);

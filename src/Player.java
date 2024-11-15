@@ -82,4 +82,9 @@ public class Player {
     public int getPosition(){
         return this.position;
     }
+
+    public ArrayList<Field> getDeeds(){
+        return this.deeds;
+    }
+
 }
