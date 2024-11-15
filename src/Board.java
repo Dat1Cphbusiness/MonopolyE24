@@ -24,34 +24,34 @@ public class Board {
 
             switch (fieldtype) {
                 case "Chance":
-                    f = new Chance(id, label, income, cost); // cardDeck skal måske fjernes
+                    f = new Chance(id, label, cost, income); // cardDeck skal måske fjernes
                     break;
                 case "Start":
-                    f = new Start( id, label, income, cost);
+                    f = new Start( id, label, cost, income);
                     break;
                 case "Plot":
-                    f = new Plot(id, label, income, cost, serieID);
+                    f = new Plot(id, label, cost, income, serieID);
                     propertyfields.add(f);
                     break;
                 case "Brewery":
-                    f = new Brewery(id, label, income, cost, serieID);
+                    f = new Brewery(id, label, cost, income, serieID);
                     propertyfields.add(f);
                     break;
                 case "ShippingLine":
-                    f = new ShippingLine(id, label, income, cost, serieID);
+                    f = new ShippingLine(id, label, cost, income, serieID);
                     propertyfields.add(f);
                     break;
                 case "Tax":
-                    f = new Tax(id, label, income, cost);
+                    f = new Tax(id, label, cost, income);
                     break;
                 case "Prison":
-                    f = new Prison(id, label, income, cost);
+                    f = new Prison(id, label, cost, income);
                     break;
                 case "Visit":
-                    f = new Visit(id, label, income, cost);
+                    f = new Visit(id, label, cost, income);
                     break;
                 case "Parking":
-                    f = new Parking(id, label, income, cost);
+                    f = new Parking(id, label, cost, income);
                     break;
 
                 default:

@@ -11,6 +11,7 @@ public class Game {
     private Player currentPlayer;
     private Dice dice;
     Board board;
+    private int startAmount = 30000;
 
     public Game(String name) {
         this.name = name;
@@ -45,8 +46,8 @@ public class Game {
         }
         while (players.size() < playerNum) {
             String name = ui.promptText("Type name of player " + (players.size()+1) + ":");
-            int startAmount = ui.promptNumeric("Type start amount:");
-            Player p = new Player(name, startAmount);
+          //  int startAmount = ui.promptNumeric("Type start amount:");
+            Player p = new Player(name, this.startAmount);
             this.addPlayer(p);
         }
         Collections.shuffle(players);

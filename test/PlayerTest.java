@@ -19,13 +19,14 @@ class PlayerTest {
     }
     @Test
     public void updatePositionPassingStart(){
+
         //arrange
         Player p = new Player("Egon");
-
 
         //act
         int actual = p.updatePosition(42);
         int expected = 3;
+
         //assert
         assertEquals(expected, actual);//tjekker at positionen er korrekt
         assertEquals(34000, p.getWorthInCash()); //tjekker at pengene er trukket

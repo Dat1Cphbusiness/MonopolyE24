@@ -1,10 +1,8 @@
 public class Account {
     private int balance;
-    private final static int startBalance = 30000;
 
-    public Account (){
-        this.balance = startBalance;
-    }
+
+
 
     public void deposit(int amount) {
         this.balance += amount;
