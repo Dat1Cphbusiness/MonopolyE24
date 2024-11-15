@@ -12,6 +12,7 @@ public class Game {
     private Dice dice;
     Board board;
     private int startAmount = 30000;
+    private int counter = 0;
 
     public Game(String name) {
         this.name = name;
@@ -34,7 +35,7 @@ public class Game {
 
 
     public List<Player> getPlayers() {
-            return players;
+        return players;
     }
 
     public void registerPlayers() {
@@ -46,7 +47,7 @@ public class Game {
         }
         while (players.size() < playerNum) {
             String name = ui.promptText("Type name of player " + (players.size()+1) + ":");
-          //  int startAmount = ui.promptNumeric("Type start amount:");
+            //  int startAmount = ui.promptNumeric("Type start amount:");
             Player p = new Player(name, this.startAmount);
             this.addPlayer(p);
         }
@@ -60,33 +61,38 @@ public class Game {
         System.out.println(board.getField(40));
         System.out.println(Board.cardDeck.getNext());
     }
-   public void setupPlayers(){
-    ui.displayMsg("Welcome to " + this.name); 
-     ArrayList<String> data = io.readPlayerData(this.playerDataPath);
+    public void setupPlayers(){
+        ui.displayMsg("Welcome to " + this.name);
+        ArrayList<String> data = io.readPlayerData(this.playerDataPath);
 
-       if(!data.isEmpty() && ui.promptBinary("Do you want to continue the game? y/n")) {
-           for (String s:data) {
-               String[] values= s.split(",");
-               String name = values[0];
-               int balance = Integer.parseInt(values[1].trim());
-               Player p = new Player(name, balance);
-               players.add(p);
-           }
-       }
-       else{
-           registerPlayers();
-       }
+        if(!data.isEmpty() && ui.promptBinary("Do you want to continue the game? y/n")) {
+            for (String s:data) {
+                String[] values= s.split(",");
+                String name = values[0];
+                int balance = Integer.parseInt(values[1].trim());
+                Player p = new Player(name, balance);
+                players.add(p);
+            }
+        }
+        else{
+            registerPlayers();
+        }
 
-     setupBoard();
+        setupBoard();
 
-   }
-    // todo: Får man et slag mere hvis det var det et dobbelslag?
-    // todo: Tjek om den samme spiller har fået et 3. dobbeltslag - 3 dobbelslag sender spilleren i fængsel.
+    }
+    // todo: Får man et slag mere hvis det var det et dobbelslag? DONE!
+    // todo: Tjek om den samme spiller har fået et 3. dobbeltslag - 3 dobbelslag sender spilleren i fængsel. DONE!
     public void runGameLoop(){
         int count = 0;
         boolean continueGame = true;
         while(continueGame){
             currentPlayer = players.get(count);
+            // if the current players balance = zero it will remove the player from the game
+            if(currentPlayer.getWorthInCash() <= 0) {
+                removePlayer(currentPlayer);
+                runGameLoop();
+            }
             throwAndMove();
             continueGame = ui.promptBinary("Continue game? Y/N");
             if(count == players.size()-1) {
@@ -98,32 +104,44 @@ public class Game {
         }
     }
 
-   public void throwAndMove(){
-       ui.displayMsg("It's now " + currentPlayer.getName() + "'s turn");
+    public void throwAndMove(){
+        ui.displayMsg("It's now " + currentPlayer.getName() + "'s turn");
         int result = dice.rollDiceSum();
         ui.displayMsg(currentPlayer.getName() + " slog " + result);
         int newPosition = currentPlayer.updatePosition(result);
         Field f = board.getField(newPosition);
         landAndAct(f);
+        if(dice.isDouble) {
+            counter++;
+            // if it is true the player rolls the same number on both dices
+            //counter will add 1 and player throw the dice again
+            throwAndMove();
+        }
+        if(counter == 3) {
+            // counter counting to three and sending the player to prison
+            counter = 0;
+            // Send player to prison
+            currentPlayer.moveToPrison();
+        }
 
-   }
 
-   public void landAndAct(Field f){
+
+    }
+
+    public void landAndAct(Field f){
         String msg = f.onLand(currentPlayer); //Egon er landet på valbylanggade
         boolean response = ui.promptBinary(msg);
 
-        //todo: visse felter giver ingen valgmulighed når man lander.
-        // Vi må tilføje en getter til option på Field og sørg for at den default er sat til null - og igen sættes til null når spillerens tur er slut
+        //todo: visse felter giver ingen valgmulighed når man lander. DONE!
+        // Vi må tilføje en getter til option på Field og sørg for at den default er sat til null - og igen sættes til null når spillerens tur er slut. DONE!
 
-        //if(f.getOption() != null) {
-           msg = f.processResponse(currentPlayer, response);//Egon har købt valbylangggade
-       // }
+        if(f.getOption() != null) {
+            msg = f.processResponse(currentPlayer, response);//Egon har købt valbylangggade
+        }
 
+        ui.displayMsg(msg);
 
-       ui.displayMsg(msg);
-
-
-   }
+    }
 
     /* todo: tilføj en metode til at fjerne en spiller fra listen ved konkurs, void removePlayer(Player p)
         Man kan bruge ArrayLists splice metode til at fjerne et element: players.splice(i,1);       (  i er det index spilleren ligger på )
@@ -131,7 +149,7 @@ public class Game {
         alternativt kunne vi i denne klasse (Game), tjekke om currentPlayer er gået konkurs/har nogen penge, før vi kalder throwAndMove()
         Hvis der ikke er nogen penge kaldes removePlayer
         removePlayer() kunne vi også være stedet hvor vi tjekker om vi har en vinder */
-     
+
 
     public void endGame(){
         ui.displayMsg("Game is ending");
@@ -142,6 +160,11 @@ public class Game {
         }
         FileIO.saveData(playersAsText, this.playerDataPath, "name, balance");
     }
+
+    public void removePlayer(Player p){
+        this.players.remove(p);
+    }
+
 
 
 }

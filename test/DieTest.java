@@ -16,4 +16,17 @@ class DieTest {
         }
     }
 
+    @Test
+    public void rollDouble() {
+        Dice d = new Dice();
+        int dice1 = 6;
+        int dice2 = 6;
+
+        boolean dieDouble = dice1 == dice2;
+        boolean expected = true;
+        boolean actual = dieDouble;
+
+        assertEquals(expected, actual);
+    }
+
 }

@@ -3,7 +3,7 @@ public class Field {
     protected int id;
     protected int cost;
     protected int income;
-    protected String option;
+    protected String option = null;
 
     public Field(int id, String label, int cost, int income) {
         this.label = label;
@@ -40,5 +40,10 @@ public class Field {
                 "id=" + id +
                 ", label='" + label + '\'' +
                 '}';
+    }
+
+    public String getOption(){
+        // plot shipping line brewery
+        return this.option;
     }
 }
