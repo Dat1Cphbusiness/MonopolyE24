@@ -12,14 +12,13 @@ public class Game {
     private Dice dice;
     Board board;
     private int startAmount = 30000;
-
+    int count = 0;
     public Game(String name) {
         this.name = name;
         this.players = new ArrayList<>();
         this.ui = new TextUI();
         this.io = new FileIO();
         this.playerDataPath ="data/playerdata.csv";
-        //this.dice = new Dice();
         this.dice = new Dice();
     }
     public void addPlayer(Player p){
@@ -84,7 +83,7 @@ public class Game {
     // todo: Får man et slag mere hvis det var det et dobbelslag?
     // todo: Tjek om den samme spiller har fået et 3. dobbeltslag - 3 dobbelslag sender spilleren i fængsel.
     public void runGameLoop(){
-        int count = 0;
+
         boolean continueGame = true;
         while(continueGame && players.size()>1){
 
@@ -104,10 +103,12 @@ public class Game {
 
         }
     }
-    static int counter = 0;
+    int counter = 0;
    public void throwAndMove(){
        ui.displayMsg("It's now " + currentPlayer.getName() + "'s turn");
-        int result = 39;//dice.rollDiceSum();
+
+        int result = dice.rollDiceSum();
+
         ui.displayMsg(currentPlayer.getName() + " slog " + result);
         int newPosition = currentPlayer.updatePosition(result);
         Field f = board.getField(newPosition);
@@ -116,6 +117,7 @@ public class Game {
             counter++;
             ui.displayMsg("You get another turn, thank double dice");
             if(counter != 3){
+
                 landAndAct(f);
                 throwAndMove();
 
@@ -125,8 +127,9 @@ public class Game {
                 counter = 0;
                 ui.displayMsg(currentPlayer.getName() + " has been sent to prison");
             }
+        }else {
+            landAndAct(f);
         }
-        else{ landAndAct(f);}
 
 
    }

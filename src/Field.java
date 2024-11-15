@@ -46,7 +46,5 @@ public class Field {
                 '}';
     }
 
-    public String getOption() {
-        return option;
-    }
+
 }
