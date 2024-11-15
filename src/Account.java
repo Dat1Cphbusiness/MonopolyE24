@@ -11,6 +11,7 @@ public class Account {
     public int getBalance() {
         return balance;
     }
+
     public boolean withdraw (int amount){
         if (amount > balance){
             return false;
