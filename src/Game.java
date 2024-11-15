@@ -118,7 +118,6 @@ public class Game {
                 currentPlayer.moveToPrison();
                 counter = 0;
                 ui.displayMsg(currentPlayer.getName() + " has been sent to prison");
-                return;
             }
         }
         else{ landAndAct(f);}
