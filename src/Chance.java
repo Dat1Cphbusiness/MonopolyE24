@@ -48,26 +48,80 @@ public class Chance extends Field {
 
                 break;
             case "prison":
-                p.updatePosition(31);
+                p.moveToPrison();
                 break;
                 // todo: hvordan kan vi rykke spilleren til et bestemt felt, og samtidig aktivere det felt der landes på
                 //  - Find feltet spilleren skal hen på.
                 //  - kald til landAndAct med feltet som argument.
 
+            case "moveToFerry":
+                int b = nearestFarry(p);
+                p.setDestination(b);
+                Main.games.get(0).throwAndMove();
+                p.setDestination(0);
+                break;
 
-            /* case "moveTo":
-                int m = position - moveToPosition;
-                p.updatePosition(moveToPosition);
-            */
+            case "doubleRentPaymentToPlayer":
+                int a = nearestFarry(p);
+                p.setPaymentTimes(2);
+                p.setDestination(a);
+                Main.games.get(0).throwAndMove();
+
+                p.setDestination(0);
+                p.setPaymentTimes(1);
+                break;
+
+
+
+            case "moveTo":
+                if (p.getPosition() < card.getMoveToPosition()) {
+                    int m = card.getMoveToPosition() - p.getPosition();
+                    p.setDestination(m);
+                    Main.games.get(0).throwAndMove();
+                    p.setDestination(0);
+                } else {
+                    int m = Math.abs(p.getPosition() - 40) + card.getMoveToPosition();
+                    p.setDestination(m);
+                    Main.games.get(0).throwAndMove();
+                    p.setDestination(0);
+                }
+                break;
+            }
+
+        return "Spiller " + p.getName() + " har accepteret tilbuddet.";
             // todo: hvordan kan vi håndtere at der er trukket et kort der giver imunitet overfor fængsling?
             //  Skal Player klassen have boolean attribut (et flag) der viser om man har et wildcard? Hvor skal dette flag tjekkes henne, så man ikke ryger i fængsel hvis man har wildcard?
         }
         //todo: kan vi gøre beskeden mere specifik så den afspejler den event der lige er sket?
-        return "Spiller " + p.getName() + " har accepteret tilbuddet.";
-    }
+
+
 
         protected String onReject (Player p){
-
         return "Spiller " + p.getName() + " afviste tilbuddet.";
         }
+
+    public int nearestFarry(Player p) {
+
+        if (p.getPosition() > 36 || p.getPosition() < 6) {
+            if (p.getPosition() < 6) {
+                int m = 6 - p.getPosition();
+                return m;
+            } else {
+                int m = Math.abs(p.getPosition() - 40) + 6;
+                return m;
+            }
+        }
+        else if (p.getPosition() > 6 || p.getPosition() < 16) {
+            int m = 16 - p.getPosition();
+            return m;
+        }
+        else if (p.getPosition() > 16 || p.getPosition() < 26) {
+            int m = 26 - p.getPosition();
+            return m;
+        } else {
+            int m = 36 - p.getPosition();
+            return m;
+        }
     }
+
+}

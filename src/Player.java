@@ -6,6 +6,8 @@ public class Player {
     private int position;
     Account account;
     ArrayList<Field> deeds;
+    private int destination;
+    private int paymentTimes = 1;
 
 
 
@@ -80,6 +82,7 @@ public class Player {
     }
 
     public int getWorthInCash(){
+
         return account.getBalance();
     }
 
@@ -106,5 +109,20 @@ public class Player {
 
     public boolean isBankrupt() {
         return isBankrupt;
+    }
+
+    public void setDestination(int destination) {
+        this.destination = destination;
+    }
+    public int getDestination() {
+        return destination;
+    }
+
+    public void setPaymentTimes(int paymentTimes) {
+        this.paymentTimes = paymentTimes;
+    }
+
+    public int getPaymentTimes() {
+        return paymentTimes;
     }
 }
