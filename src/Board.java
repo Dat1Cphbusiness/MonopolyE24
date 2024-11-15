@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Board {
     private Field[] fields;
     public static CardDeck cardDeck;
-    private ArrayList<Field> propertyfields  = new ArrayList<>();
+    public static ArrayList<Field> propertyfields  = new ArrayList<>();
 
     public Board(String[] fielddata, String[] carddata) {
         createFields(fielddata);
