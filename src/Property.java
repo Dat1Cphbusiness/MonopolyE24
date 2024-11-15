@@ -77,7 +77,7 @@ public class Property extends Field {
             return p.getName() + " købte " + this.label ;
         }
         else if ("build".equalsIgnoreCase(option)){
-            //todo: tilføj metoden i Playerklassen og indkommenter linjen:
+            //todo: tilføj metoden buildHouse i Playerklassen og indkommenter linjen:
 //            p.buildHouse();
            return p.getName() + " byggede på " + this.label ;
         }
